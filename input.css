@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: 'Rubik';
+    font-display: swap;
+    src: url(/assets/Rubik-Regular.ttf) format('woff2');
+  }
+}
+
 .material-symbols-rounded {
   font-variation-settings:
   'FILL' 1,
