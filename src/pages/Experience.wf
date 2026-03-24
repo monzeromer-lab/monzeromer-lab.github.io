@@ -1,0 +1,363 @@
+Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
+
+    Container {
+        style {
+            max-width: "800px"
+            margin: "0 auto"
+            padding: "120px 2rem"
+        }
+
+        Stack(gap: md) {
+            Heading("Experience", h1) {
+                style {
+                    font-size: "2rem"
+                    font-weight: "700"
+                    color: "#E8E6E1"
+                    letter-spacing: "-0.02em"
+                    margin-bottom: "1rem"
+                }
+            }
+
+            Text("A reverse-chronological record of impact and engineering decisions.", muted) {
+                style {
+                    color: "#8C8B88"
+                    font-size: "1rem"
+                    margin-bottom: "3rem"
+                }
+            }
+
+            Spacer(xl)
+
+            Card(elevated) {
+                style {
+                    background: "#242422"
+                    border: "1px solid #2D2C2A"
+                    border-radius: "0.75rem"
+                    padding: "2rem"
+                    margin-bottom: "2rem"
+                }
+
+                Stack(gap: md) {
+                    Row(justify: between, align: center) {
+                        Text("SilverKey Technologies", bold) {
+                            style {
+                                font-size: "1.2rem"
+                                color: "#E8E6E1"
+                            }
+                        }
+                        Text("Mar 2025 — Present", muted, small) {
+                            style {
+                                color: "#C69C6D"
+                                font-family: "JetBrains Mono, monospace"
+                                font-size: "0.8rem"
+                            }
+                        }
+                    }
+
+                    Text("Senior Node.js Developer", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Text("Built a high-performance image processing microservice using Rust, achieving an average performance increase of over 98%. Led the migration of the existing codebase to TypeScript for improved maintainability and type safety. Optimized database queries and implemented caching strategies for critical data paths.") {
+                        style {
+                            color: "#E8E6E1"
+                            line-height: "1.7"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Row(gap: sm) {
+                        Badge("Rust") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#C69C6D"
+                                color: "#1A1A19"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                                font-weight: "600"
+                            }
+                        }
+                        Badge("TypeScript") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Node.js") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+            }
+
+            Card(elevated) {
+                style {
+                    background: "#242422"
+                    border: "1px solid #2D2C2A"
+                    border-radius: "0.75rem"
+                    padding: "2rem"
+                    margin-bottom: "2rem"
+                }
+
+                Stack(gap: md) {
+                    Row(justify: between, align: center) {
+                        Text("Ecom Payments", bold) {
+                            style {
+                                font-size: "1.2rem"
+                                color: "#E8E6E1"
+                            }
+                        }
+                        Text("Aug 2024 — Feb 2025", muted, small) {
+                            style {
+                                color: "#C69C6D"
+                                font-family: "JetBrains Mono, monospace"
+                                font-size: "0.8rem"
+                            }
+                        }
+                    }
+
+                    Text("Backend Engineer", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Text("Designed and implemented NestJS microservices architecture for payment processing. Integrated AES encryption for securing sensitive transaction data. Built robust message queuing infrastructure with RabbitMQ and containerized deployments using Docker.") {
+                        style {
+                            color: "#E8E6E1"
+                            line-height: "1.7"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Row(gap: sm) {
+                        Badge("NestJS") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("RabbitMQ") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Docker") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("AES") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+            }
+
+            Card(elevated) {
+                style {
+                    background: "#242422"
+                    border: "1px solid #2D2C2A"
+                    border-radius: "0.75rem"
+                    padding: "2rem"
+                    margin-bottom: "2rem"
+                }
+
+                Stack(gap: md) {
+                    Row(justify: between, align: center) {
+                        Text("Circles", bold) {
+                            style {
+                                font-size: "1.2rem"
+                                color: "#E8E6E1"
+                            }
+                        }
+                        Text("Dec 2022 — Jan 2024", muted, small) {
+                            style {
+                                color: "#C69C6D"
+                                font-family: "JetBrains Mono, monospace"
+                                font-size: "0.8rem"
+                            }
+                        }
+                    }
+
+                    Text("Backend Engineer", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Text("Architected microservices using GraphQL for flexible API composition and Apache Kafka for real-time data streaming across distributed services. Designed event-driven systems handling high-throughput data pipelines with fault tolerance and horizontal scalability.") {
+                        style {
+                            color: "#E8E6E1"
+                            line-height: "1.7"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Row(gap: sm) {
+                        Badge("GraphQL") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Kafka") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Microservices") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+            }
+
+            Card(elevated) {
+                style {
+                    background: "#242422"
+                    border: "1px solid #2D2C2A"
+                    border-radius: "0.75rem"
+                    padding: "2rem"
+                    margin-bottom: "2rem"
+                }
+
+                Stack(gap: md) {
+                    Row(justify: between, align: center) {
+                        Text("EnayaTech", bold) {
+                            style {
+                                font-size: "1.2rem"
+                                color: "#E8E6E1"
+                            }
+                        }
+                        Text("Feb 2020 — Jul 2020", muted, small) {
+                            style {
+                                color: "#C69C6D"
+                                font-family: "JetBrains Mono, monospace"
+                                font-size: "0.8rem"
+                            }
+                        }
+                    }
+
+                    Text("Backend Developer", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Text("Developed RESTful APIs with Express.js, designed and maintained database schemas using both MySQL and MongoDB. Built backend services supporting mobile and web client applications with focus on API performance and data consistency.") {
+                        style {
+                            color: "#E8E6E1"
+                            line-height: "1.7"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Row(gap: sm) {
+                        Badge("Express.js") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("MySQL") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("MongoDB") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

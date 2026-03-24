@@ -1,0 +1,530 @@
+Page Projects (path: "/projects", title: "Projects — Monzer Omer") {
+
+    Container {
+        style {
+            max-width: "800px"
+            margin: "0 auto"
+            padding: "120px 2rem"
+        }
+
+        Stack(gap: md) {
+            Heading("Projects", h1) {
+                style {
+                    font-size: "2rem"
+                    font-weight: "700"
+                    color: "#E8E6E1"
+                    letter-spacing: "-0.02em"
+                    margin-bottom: "1rem"
+                }
+            }
+
+            Text("Things I've designed, built, and shipped.", muted) {
+                style {
+                    color: "#8C8B88"
+                    font-size: "1rem"
+                    margin-bottom: "3rem"
+                }
+            }
+
+            Spacer(xl)
+
+            Card(elevated) {
+                style {
+                    background: "#242422"
+                    border: "1px solid #C69C6D"
+                    border-radius: "0.75rem"
+                    padding: "2rem"
+                    margin-bottom: "2rem"
+                }
+
+                Stack(gap: md) {
+                    Row(justify: between, align: center) {
+                        Text("WebFluent", bold) {
+                            style {
+                                font-size: "1.2rem"
+                                color: "#E8E6E1"
+                            }
+                        }
+                        Badge("Flagship", primary) {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#C69C6D"
+                                color: "#1A1A19"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                                font-weight: "600"
+                            }
+                        }
+                    }
+
+                    Text("A web-first programming language that compiles to HTML, CSS, JavaScript, and PDF.", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Text("WebFluent replaces the traditional web stack with a single, expressive language. It features reactive state, declarative UI components, built-in routing, i18n, SSG, and PDF output — all from .wf source files. This portfolio is built entirely with WebFluent.") {
+                        style {
+                            color: "#E8E6E1"
+                            line-height: "1.7"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Stack(gap: md) {
+                        Text("Key features:", bold) {
+                            style {
+                                color: "#C69C6D"
+                                font-size: "0.9rem"
+                                font-weight: "600"
+                            }
+                        }
+                        Text("Reactive state & computed values with automatic UI updates") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.85rem"
+                            }
+                        }
+                        Text("Full component library — layout, forms, navigation, data display") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.85rem"
+                            }
+                        }
+                        Text("Static site generation with JS hydration") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.85rem"
+                            }
+                        }
+                        Text("PDF compilation with page layout, headers, footers") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.85rem"
+                            }
+                        }
+                        Text("Built-in i18n with automatic RTL support") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.85rem"
+                            }
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Row(gap: sm) {
+                        Badge("Rust") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#C69C6D"
+                                color: "#1A1A19"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                                font-weight: "600"
+                            }
+                        }
+                        Badge("Compiler Design") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Language Design") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("PDF Generation") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+            }
+
+            Card(elevated) {
+                style {
+                    background: "#242422"
+                    border: "1px solid #2D2C2A"
+                    border-radius: "0.75rem"
+                    padding: "2rem"
+                    margin-bottom: "2rem"
+                }
+
+                Stack(gap: md) {
+                    Row(justify: between, align: center) {
+                        Text("Circles", bold) {
+                            style {
+                                font-size: "1.2rem"
+                                color: "#E8E6E1"
+                            }
+                        }
+                        Badge("Team Lead", primary) {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#C69C6D"
+                                color: "#1A1A19"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                                font-weight: "600"
+                            }
+                        }
+                    }
+
+                    Text("A comprehensive business operating system for small and medium clinics.", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Text("Circles manages every aspect of clinic operations — from financials and patient scheduling to HIPAA-compliant EMR, telehealth, AI-powered diagnostics, multi-branch support, and branded patient apps. Available across MENA and Africa through local partners.") {
+                        style {
+                            color: "#E8E6E1"
+                            line-height: "1.7"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Row(gap: sm) {
+                        Badge("GraphQL") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Kafka") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Microservices") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Healthcare") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+            }
+
+            Card(elevated) {
+                style {
+                    background: "#242422"
+                    border: "1px solid #2D2C2A"
+                    border-radius: "0.75rem"
+                    padding: "2rem"
+                    margin-bottom: "2rem"
+                }
+
+                Stack(gap: md) {
+                    Row(justify: between, align: center) {
+                        Text("Al-Hakeem", bold) {
+                            style {
+                                font-size: "1.2rem"
+                                color: "#E8E6E1"
+                            }
+                        }
+                        Badge("Engineering Lead", primary) {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#C69C6D"
+                                color: "#1A1A19"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                                font-weight: "600"
+                            }
+                        }
+                    }
+
+                    Text("A healthcare platform connecting physicians with medical services.", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Text("Al-Hakeem streamlines physician onboarding and medical service delivery. The platform supports bilingual operation in Arabic and English, serving healthcare professionals across the region with credential management and service coordination.") {
+                        style {
+                            color: "#E8E6E1"
+                            line-height: "1.7"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Row(gap: sm) {
+                        Badge("Node.js") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("TypeScript") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Healthcare") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+            }
+
+            Card(elevated) {
+                style {
+                    background: "#242422"
+                    border: "1px solid #2D2C2A"
+                    border-radius: "0.75rem"
+                    padding: "2rem"
+                    margin-bottom: "2rem"
+                }
+
+                Stack(gap: md) {
+                    Row(justify: between, align: center) {
+                        Text("Dabdoob", bold) {
+                            style {
+                                font-size: "1.2rem"
+                                color: "#E8E6E1"
+                            }
+                        }
+                        Badge("Team Lead", primary) {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#C69C6D"
+                                color: "#1A1A19"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                                font-weight: "600"
+                            }
+                        }
+                    }
+
+                    Text("A mobile-first e-commerce platform serving the Middle East.", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Text("Dabdoob is a cross-platform shopping application available on iOS and Android, operating across Kuwait, Saudi Arabia, UAE, Qatar, and Bahrain. The platform delivers exclusive deals and a seamless mobile shopping experience across the GCC region.") {
+                        style {
+                            color: "#E8E6E1"
+                            line-height: "1.7"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Row(gap: sm) {
+                        Badge("Node.js") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("E-Commerce") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Mobile") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+            }
+
+            Card(elevated) {
+                style {
+                    background: "#242422"
+                    border: "1px solid #2D2C2A"
+                    border-radius: "0.75rem"
+                    padding: "2rem"
+                    margin-bottom: "2rem"
+                }
+
+                Stack(gap: md) {
+                    Row(justify: between, align: center) {
+                        Text("sys-voice-daemon", bold) {
+                            style {
+                                font-size: "1.2rem"
+                                color: "#E8E6E1"
+                            }
+                        }
+                        Badge("Open Source") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+
+                    Text("Privacy-first, offline voice-to-text daemon for Linux.", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Text("A system-level daemon that automatically detects active text fields and injects transcriptions into any window. Uses a kernel-level virtual keyboard via uinput for seamless, privacy-respecting voice input — entirely offline with no cloud dependency.") {
+                        style {
+                            color: "#E8E6E1"
+                            line-height: "1.7"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Row(gap: sm) {
+                        Badge("Rust") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#C69C6D"
+                                color: "#1A1A19"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                                font-weight: "600"
+                            }
+                        }
+                        Badge("Linux") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("uinput") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Systems") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

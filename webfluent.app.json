@@ -1,0 +1,35 @@
+{
+  "name": "Monzer Omer — Portfolio",
+  "version": "1.0.0",
+  "author": "Monzer Omer",
+  "theme": {
+    "name": "dark",
+    "mode": "dark",
+    "tokens": {
+      "color-primary": "#C69C6D",
+      "color-secondary": "#A87C62",
+      "color-background": "#1A1A19",
+      "color-surface": "#242422",
+      "color-text": "#E8E6E1",
+      "color-text-muted": "#8C8B88",
+      "color-border": "#2D2C2A",
+      "font-family": "Inter, system-ui, sans-serif",
+      "font-family-mono": "JetBrains Mono, monospace",
+      "radius-md": "0.5rem",
+      "radius-lg": "0.75rem"
+    }
+  },
+  "build": {
+    "output": "./build",
+    "minify": true,
+    "ssg": true
+  },
+  "dev": {
+    "port": 3000
+  },
+  "meta": {
+    "title": "Monzer Omer — Senior Backend Engineer",
+    "description": "Architecting scalable, resilient solutions and high-performance systems. Senior Backend Engineer specializing in Rust, Node.js, and Distributed Systems.",
+    "lang": "en"
+  }
+}

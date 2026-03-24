@@ -1,0 +1,100 @@
+App {
+
+    Navbar {
+        style {
+            background: "rgba(26, 26, 25, 0.85)"
+            backdrop-filter: "blur(12px)"
+            border-bottom: "1px solid #2D2C2A"
+            padding: "0.75rem 2rem"
+            position: "sticky"
+            top: "0"
+            z-index: "100"
+        }
+
+        Navbar.Brand {
+            Link(to: "/") {
+                Text("monzer.omer", bold) {
+                    style {
+                        font-family: "JetBrains Mono, monospace"
+                        color: "#E8E6E1"
+                        font-size: "0.95rem"
+                        font-weight: "600"
+                    }
+                }
+            }
+        }
+
+        Navbar.Links {
+            Link(to: "/projects") {
+                Text("Projects") {
+                    style {
+                        color: "#8C8B88"
+                        font-size: "0.875rem"
+                    }
+                }
+            }
+            Link(to: "/experience") {
+                Text("Experience") {
+                    style {
+                        color: "#8C8B88"
+                        font-size: "0.875rem"
+                    }
+                }
+            }
+            Link(to: "/skills") {
+                Text("Skills") {
+                    style {
+                        color: "#8C8B88"
+                        font-size: "0.875rem"
+                    }
+                }
+            }
+            Link(to: "/education") {
+                Text("Education") {
+                    style {
+                        color: "#8C8B88"
+                        font-size: "0.875rem"
+                    }
+                }
+            }
+            Link(to: "/contact") {
+                Text("Contact") {
+                    style {
+                        color: "#8C8B88"
+                        font-size: "0.875rem"
+                    }
+                }
+            }
+        }
+    }
+
+    Router {
+        Route(path: "/", page: Home)
+        Route(path: "/projects", page: Projects)
+        Route(path: "/experience", page: Experience)
+        Route(path: "/skills", page: Skills)
+        Route(path: "/education", page: Education)
+        Route(path: "/contact", page: Contact)
+    }
+
+    Footer {
+        style {
+            border-top: "1px solid #2D2C2A"
+            padding: "1.5rem 2rem"
+            text-align: "center"
+            position: "sticky"
+            bottom: "0"
+            background: "rgba(26, 26, 25, 0.85)"
+            backdrop-filter: "blur(12px)"
+            z-index: "100"
+        }
+
+        Text("Built with WebFluent", muted, small) {
+            style {
+                font-family: "JetBrains Mono, monospace"
+                color: "#8C8B88"
+                font-size: "0.8rem"
+            }
+        }
+    }
+}

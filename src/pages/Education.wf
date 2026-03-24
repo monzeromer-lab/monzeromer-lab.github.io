@@ -1,0 +1,55 @@
+Page Education (path: "/education", title: "Education — Monzer Omer") {
+
+    Container {
+        style {
+            max-width: "800px"
+            margin: "0 auto"
+            padding: "120px 2rem"
+        }
+
+        Stack(gap: md) {
+            Heading("Education", h1) {
+                style {
+                    font-size: "2rem"
+                    font-weight: "700"
+                    color: "#E8E6E1"
+                    letter-spacing: "-0.02em"
+                    margin-bottom: "3rem"
+                }
+            }
+
+            Card(elevated) {
+                style {
+                    background: "#242422"
+                    border: "1px solid #2D2C2A"
+                    border-radius: "0.75rem"
+                    padding: "2rem"
+                }
+
+                Stack(gap: md) {
+                    Text("National Ribat University", bold) {
+                        style {
+                            font-size: "1.2rem"
+                            color: "#E8E6E1"
+                        }
+                    }
+
+                    Text("Bachelor of Information Technology") {
+                        style {
+                            color: "#E8E6E1"
+                            font-size: "1rem"
+                        }
+                    }
+
+                    Text("Oct 2018 — Feb 2025", muted) {
+                        style {
+                            color: "#C69C6D"
+                            font-family: "JetBrains Mono, monospace"
+                            font-size: "0.85rem"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
