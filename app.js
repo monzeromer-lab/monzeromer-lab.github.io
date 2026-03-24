@@ -1655,8 +1655,8 @@ function Page_Contact(params) {
   _e212.style.fontSize = "0.85rem";
   _e212.style.minWidth = "80px";
   _e211.appendChild(_e212);
-  const _e213 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://linkedin.com/in/monzer-omer" });
-  const _e214 = WF.h("p", { className: "wf-text" }, "linkedin.com/in/monzer-omer");
+  const _e213 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://www.linkedin.com/in/monzeromer/" });
+  const _e214 = WF.h("p", { className: "wf-text" }, "linkedin.com/in/monzeromer");
   _e214.style.color = "#C69C6D";
   _e214.style.fontFamily = "JetBrains Mono, monospace";
   _e214.style.fontSize = "0.95rem";
@@ -1673,8 +1673,8 @@ function Page_Contact(params) {
   _e217.style.fontSize = "0.85rem";
   _e217.style.minWidth = "80px";
   _e216.appendChild(_e217);
-  const _e218 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://github.com/monzer-omer" });
-  const _e219 = WF.h("p", { className: "wf-text" }, "github.com/monzer-omer");
+  const _e218 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://github.com/monzeromer-lab" });
+  const _e219 = WF.h("p", { className: "wf-text" }, "github.com/monzeromer-lab");
   _e219.style.color = "#C69C6D";
   _e219.style.fontFamily = "JetBrains Mono, monospace";
   _e219.style.fontSize = "0.95rem";

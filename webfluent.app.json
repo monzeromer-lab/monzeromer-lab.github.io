@@ -20,7 +20,7 @@
     }
   },
   "build": {
-    "output": "./build",
+    "output": "./",
     "minify": true,
     "ssg": true
   },
