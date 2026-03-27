@@ -4,14 +4,14 @@ Page Home (path: "/", title: "Monzer Omer — Senior Backend Engineer") {
         style {
             max-width: "800px"
             margin: "0 auto"
-            padding: "120px 2rem"
+            padding: "80px 2rem"
             min-height: "100vh"
             display: "flex"
             flex-direction: "column"
             justify-content: "center"
         }
 
-        Stack(gap: md) {
+        Stack(gap: md, fadeIn) {
             Heading("Monzer Omer", h1) {
                 style {
                     font-size: "3rem"
@@ -81,13 +81,23 @@ Page Home (path: "/", title: "Monzer Omer — Senior Backend Engineer") {
 
             Spacer(xl)
 
-            Row(gap: md) {
-                Link(to: "/experience") {
-                    Text("View Experience →") {
+            Row(gap: md, align: center) {
+                Link(to: "/projects") {
+                    Text("View Projects →") {
                         style {
                             color: "#C69C6D"
                             font-weight: "500"
                             font-size: "1rem"
+                            transition: "color 200ms ease"
+                        }
+                    }
+                }
+                Link(to: "/experience") {
+                    Text("Experience →") {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "1rem"
+                            transition: "color 200ms ease"
                         }
                     }
                 }
@@ -96,6 +106,52 @@ Page Home (path: "/", title: "Monzer Omer — Senior Backend Engineer") {
                         style {
                             color: "#8C8B88"
                             font-size: "1rem"
+                            transition: "color 200ms ease"
+                        }
+                    }
+                }
+            }
+
+            Spacer()
+
+            Row(gap: md, align: center) {
+                Link(to: "https://github.com/monzeromer-lab") {
+                    Text("GitHub") {
+                        style {
+                            font-family: "JetBrains Mono, monospace"
+                            color: "#8C8B88"
+                            font-size: "0.85rem"
+                            transition: "color 200ms ease"
+                        }
+                    }
+                }
+                Text("·", muted) {
+                    style {
+                        color: "#2D2C2A"
+                    }
+                }
+                Link(to: "https://www.linkedin.com/in/monzeromer/") {
+                    Text("LinkedIn") {
+                        style {
+                            font-family: "JetBrains Mono, monospace"
+                            color: "#8C8B88"
+                            font-size: "0.85rem"
+                            transition: "color 200ms ease"
+                        }
+                    }
+                }
+                Text("·", muted) {
+                    style {
+                        color: "#2D2C2A"
+                    }
+                }
+                Link(to: "mailto:monzer.a.omer@gmail.com") {
+                    Text("Email") {
+                        style {
+                            font-family: "JetBrains Mono, monospace"
+                            color: "#8C8B88"
+                            font-size: "0.85rem"
+                            transition: "color 200ms ease"
                         }
                     }
                 }

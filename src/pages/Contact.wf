@@ -4,7 +4,7 @@ Page Contact (path: "/contact", title: "Contact — Monzer Omer") {
         style {
             max-width: "800px"
             margin: "0 auto"
-            padding: "120px 2rem"
+            padding: "80px 2rem"
             min-height: "60vh"
             display: "flex"
             flex-direction: "column"
@@ -12,7 +12,7 @@ Page Contact (path: "/contact", title: "Contact — Monzer Omer") {
         }
 
         Stack(gap: md) {
-            Heading("Let's build something robust.", h1) {
+            Heading("Let's build something robust.", h1, fadeIn) {
                 style {
                     font-size: "2rem"
                     font-weight: "700"

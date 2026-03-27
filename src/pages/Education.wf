@@ -4,11 +4,11 @@ Page Education (path: "/education", title: "Education — Monzer Omer") {
         style {
             max-width: "800px"
             margin: "0 auto"
-            padding: "120px 2rem"
+            padding: "80px 2rem"
         }
 
         Stack(gap: md) {
-            Heading("Education", h1) {
+            Heading("Education", h1, fadeIn) {
                 style {
                     font-size: "2rem"
                     font-weight: "700"

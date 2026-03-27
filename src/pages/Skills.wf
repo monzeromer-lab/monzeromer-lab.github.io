@@ -4,11 +4,11 @@ Page Skills (path: "/skills", title: "Skills — Monzer Omer") {
         style {
             max-width: "800px"
             margin: "0 auto"
-            padding: "120px 2rem"
+            padding: "80px 2rem"
         }
 
         Stack(gap: md) {
-            Heading("Infrastructure & Capabilities", h1) {
+            Heading("Infrastructure & Capabilities", h1, fadeIn) {
                 style {
                     font-size: "2rem"
                     font-weight: "700"

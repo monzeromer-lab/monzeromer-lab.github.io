@@ -68,12 +68,22 @@ const WF = (() => {
           } else {
             el.value = v;
           }
-        } else if (k === "disabled") {
+        } else if (k === "disabled" || k === "multiple" || k === "required" || k === "readOnly") {
           if (typeof v === "function") {
-            effect(() => { el.disabled = v(); });
+            effect(() => { el[k] = !!v(); });
           } else {
-            el.disabled = v;
+            el[k] = !!v;
           }
+        } else if (k === "min" || k === "max" || k === "step") {
+          if (typeof v === "function") {
+            effect(() => { el[k] = String(v()); });
+          } else {
+            el[k] = String(v);
+          }
+        } else if (k === "data-icon") {
+          // Render icon as inline SVG or text emoji/symbol
+          const iconName = typeof v === "function" ? v() : v;
+          _renderIcon(el, iconName);
         } else if (typeof v === "function") {
           effect(() => { el.setAttribute(k, v()); });
         } else if (v != null && v !== false) {
@@ -628,6 +638,51 @@ const WF = (() => {
     return i18nInstance;
   }
 
+  // ─── Icon System ────────────────────────────────────
+  // Built-in SVG icons for common UI needs
+  const _ICONS = {
+    close: '<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    menu: '<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    search: '<circle cx="11" cy="11" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    home: '<path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3v-5h6v5h3a1 1 0 001-1V10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    user: '<path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    settings: '<circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" fill="none" stroke="currentColor" stroke-width="2"/>',
+    check: '<polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    "chevron-down": '<polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    "chevron-right": '<polyline points="9 18 15 12 9 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    "chevron-left": '<polyline points="15 18 9 12 15 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    plus: '<line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    minus: '<line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    edit: '<path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" fill="none" stroke="currentColor" stroke-width="2"/>',
+    trash: '<polyline points="3 6 5 6 21 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    star: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+    heart: '<path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" fill="none" stroke="currentColor" stroke-width="2"/>',
+    mail: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2"/>',
+    bell: '<path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    download: '<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    upload: '<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    eye: '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/>',
+    link: '<path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    calendar: '<rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>',
+    filter: '<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+    info: '<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="16" x2="12" y2="12" stroke="currentColor" stroke-width="2"/><line x1="12" y1="8" x2="12.01" y2="8" stroke="currentColor" stroke-width="2"/>',
+    warning: '<path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="2"/><line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2"/>',
+    "arrow-left": '<line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    "arrow-right": '<line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    logout: '<path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    copy: '<rect x="9" y="9" width="13" height="13" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" fill="none" stroke="currentColor" stroke-width="2"/>',
+  };
+
+  function _renderIcon(el, name) {
+    const svgData = _ICONS[name];
+    if (svgData) {
+      el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">${svgData}</svg>`;
+    } else {
+      // Fallback: render name as text
+      el.textContent = name;
+    }
+  }
+
   // ─── Exports ─────────────────────────────────────────
   return {
     signal, effect, computed,
@@ -646,11 +701,25 @@ const WF = (() => {
 
 
 WF.setSsgMode(true);
+const NavStore = WF.createStore({
+  state: {
+    sidebarOpen: false,
+  },
+  actions: {
+    toggle: (store) => {
+      store.sidebarOpen = !store.sidebarOpen;
+    },
+    close: (store) => {
+      store.sidebarOpen = false;
+    },
+  },
+});
+
 function Page_Education(params) {
   const _root = document.createDocumentFragment();
   const _e0 = WF.h("div", { className: "wf-container" });
   const _e1 = WF.h("div", { className: "wf-stack wf-stack--gap-md" });
-  const _e2 = WF.h("h2", { className: "wf-heading wf-heading--h1" }, "Education");
+  const _e2 = WF.h("h2", { className: "wf-heading wf-heading--h1 wf-animate-fadeIn" }, "Education");
   _e2.style.fontSize = "2rem";
   _e2.style.fontWeight = "700";
   _e2.style.color = "#E8E6E1";
@@ -681,7 +750,7 @@ function Page_Education(params) {
   _e0.appendChild(_e1);
   _e0.style.maxWidth = "800px";
   _e0.style.margin = "0 auto";
-  _e0.style.padding = "120px 2rem";
+  _e0.style.padding = "80px 2rem";
   _root.appendChild(_e0);
   return _root;
 }
@@ -690,7 +759,7 @@ function Page_Experience(params) {
   const _root = document.createDocumentFragment();
   const _e8 = WF.h("div", { className: "wf-container" });
   const _e9 = WF.h("div", { className: "wf-stack wf-stack--gap-md" });
-  const _e10 = WF.h("h2", { className: "wf-heading wf-heading--h1" }, "Experience");
+  const _e10 = WF.h("h2", { className: "wf-heading wf-heading--h1 wf-animate-fadeIn" }, "Experience");
   _e10.style.fontSize = "2rem";
   _e10.style.fontWeight = "700";
   _e10.style.color = "#E8E6E1";
@@ -952,7 +1021,7 @@ function Page_Experience(params) {
   _e8.appendChild(_e9);
   _e8.style.maxWidth = "800px";
   _e8.style.margin = "0 auto";
-  _e8.style.padding = "120px 2rem";
+  _e8.style.padding = "80px 2rem";
   _root.appendChild(_e8);
   return _root;
 }
@@ -961,14 +1030,14 @@ function Page_Projects(params) {
   const _root = document.createDocumentFragment();
   const _e66 = WF.h("div", { className: "wf-container" });
   const _e67 = WF.h("div", { className: "wf-stack wf-stack--gap-md" });
-  const _e68 = WF.h("h2", { className: "wf-heading wf-heading--h1" }, "Projects");
+  const _e68 = WF.h("h2", { className: "wf-heading wf-heading--h1 wf-animate-fadeIn" }, "Projects");
   _e68.style.fontSize = "2rem";
   _e68.style.fontWeight = "700";
   _e68.style.color = "#E8E6E1";
   _e68.style.letterSpacing = "-0.02em";
   _e68.style.marginBottom = "1rem";
   _e67.appendChild(_e68);
-  const _e69 = WF.h("p", { className: "wf-text wf-text--muted" }, "Things I've designed, built, and shipped.");
+  const _e69 = WF.h("p", { className: "wf-text wf-text--muted wf-animate-fadeIn" }, "Things I've designed, built, and shipped.");
   _e69.style.color = "#8C8B88";
   _e69.style.fontSize = "1rem";
   _e69.style.marginBottom = "3rem";
@@ -1352,7 +1421,7 @@ function Page_Projects(params) {
   _e66.appendChild(_e67);
   _e66.style.maxWidth = "800px";
   _e66.style.margin = "0 auto";
-  _e66.style.padding = "120px 2rem";
+  _e66.style.padding = "80px 2rem";
   _root.appendChild(_e66);
   return _root;
 }
@@ -1361,7 +1430,7 @@ function Page_Skills(params) {
   const _root = document.createDocumentFragment();
   const _e147 = WF.h("div", { className: "wf-container" });
   const _e148 = WF.h("div", { className: "wf-stack wf-stack--gap-md" });
-  const _e149 = WF.h("h2", { className: "wf-heading wf-heading--h1" }, "Infrastructure & Capabilities");
+  const _e149 = WF.h("h2", { className: "wf-heading wf-heading--h1 wf-animate-fadeIn" }, "Infrastructure & Capabilities");
   _e149.style.fontSize = "2rem";
   _e149.style.fontWeight = "700";
   _e149.style.color = "#E8E6E1";
@@ -1521,7 +1590,7 @@ function Page_Skills(params) {
   _e147.appendChild(_e148);
   _e147.style.maxWidth = "800px";
   _e147.style.margin = "0 auto";
-  _e147.style.padding = "120px 2rem";
+  _e147.style.padding = "80px 2rem";
   _root.appendChild(_e147);
   return _root;
 }
@@ -1529,7 +1598,7 @@ function Page_Skills(params) {
 function Page_Home(params) {
   const _root = document.createDocumentFragment();
   const _e182 = WF.h("div", { className: "wf-container" });
-  const _e183 = WF.h("div", { className: "wf-stack wf-stack--gap-md" });
+  const _e183 = WF.h("div", { className: "wf-stack wf-animate-fadeIn wf-stack--gap-md" });
   const _e184 = WF.h("h2", { className: "wf-heading wf-heading--h1" }, "Monzer Omer");
   _e184.style.fontSize = "3rem";
   _e184.style.fontWeight = "700";
@@ -1583,25 +1652,68 @@ function Page_Home(params) {
   _e183.appendChild(_e190);
   const _e194 = WF.h("div", { className: "wf-spacer" });
   _e183.appendChild(_e194);
-  const _e195 = WF.h("div", { className: "wf-row wf-row--gap-md" });
-  const _e196 = WF.h("a", { className: "wf-link", href: WF._basePath + "/experience" });
-  const _e197 = WF.h("p", { className: "wf-text" }, "View Experience →");
+  const _e195 = WF.h("div", { className: "wf-row wf-row--gap-md wf-row--center" });
+  const _e196 = WF.h("a", { className: "wf-link", href: WF._basePath + "/projects" });
+  const _e197 = WF.h("p", { className: "wf-text" }, "View Projects →");
   _e197.style.color = "#C69C6D";
   _e197.style.fontWeight = "500";
   _e197.style.fontSize = "1rem";
+  _e197.style.transition = "color 200ms ease";
   _e196.appendChild(_e197);
   _e195.appendChild(_e196);
-  const _e198 = WF.h("a", { className: "wf-link", href: WF._basePath + "/contact" });
-  const _e199 = WF.h("p", { className: "wf-text" }, "Get in Touch →");
+  const _e198 = WF.h("a", { className: "wf-link", href: WF._basePath + "/experience" });
+  const _e199 = WF.h("p", { className: "wf-text" }, "Experience →");
   _e199.style.color = "#8C8B88";
   _e199.style.fontSize = "1rem";
+  _e199.style.transition = "color 200ms ease";
   _e198.appendChild(_e199);
   _e195.appendChild(_e198);
+  const _e200 = WF.h("a", { className: "wf-link", href: WF._basePath + "/contact" });
+  const _e201 = WF.h("p", { className: "wf-text" }, "Get in Touch →");
+  _e201.style.color = "#8C8B88";
+  _e201.style.fontSize = "1rem";
+  _e201.style.transition = "color 200ms ease";
+  _e200.appendChild(_e201);
+  _e195.appendChild(_e200);
   _e183.appendChild(_e195);
+  const _e202 = WF.h("div", { className: "wf-spacer" });
+  _e183.appendChild(_e202);
+  const _e203 = WF.h("div", { className: "wf-row wf-row--gap-md wf-row--center" });
+  const _e204 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://github.com/monzeromer-lab" });
+  const _e205 = WF.h("p", { className: "wf-text" }, "GitHub");
+  _e205.style.fontFamily = "JetBrains Mono, monospace";
+  _e205.style.color = "#8C8B88";
+  _e205.style.fontSize = "0.85rem";
+  _e205.style.transition = "color 200ms ease";
+  _e204.appendChild(_e205);
+  _e203.appendChild(_e204);
+  const _e206 = WF.h("p", { className: "wf-text wf-text--muted" }, "·");
+  _e206.style.color = "#2D2C2A";
+  _e203.appendChild(_e206);
+  const _e207 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://www.linkedin.com/in/monzeromer/" });
+  const _e208 = WF.h("p", { className: "wf-text" }, "LinkedIn");
+  _e208.style.fontFamily = "JetBrains Mono, monospace";
+  _e208.style.color = "#8C8B88";
+  _e208.style.fontSize = "0.85rem";
+  _e208.style.transition = "color 200ms ease";
+  _e207.appendChild(_e208);
+  _e203.appendChild(_e207);
+  const _e209 = WF.h("p", { className: "wf-text wf-text--muted" }, "·");
+  _e209.style.color = "#2D2C2A";
+  _e203.appendChild(_e209);
+  const _e210 = WF.h("a", { className: "wf-link", href: WF._basePath + "mailto:monzer.a.omer@gmail.com" });
+  const _e211 = WF.h("p", { className: "wf-text" }, "Email");
+  _e211.style.fontFamily = "JetBrains Mono, monospace";
+  _e211.style.color = "#8C8B88";
+  _e211.style.fontSize = "0.85rem";
+  _e211.style.transition = "color 200ms ease";
+  _e210.appendChild(_e211);
+  _e203.appendChild(_e210);
+  _e183.appendChild(_e203);
   _e182.appendChild(_e183);
   _e182.style.maxWidth = "800px";
   _e182.style.margin = "0 auto";
-  _e182.style.padding = "120px 2rem";
+  _e182.style.padding = "80px 2rem";
   _e182.style.minHeight = "100vh";
   _e182.style.display = "flex";
   _e182.style.flexDirection = "column";
@@ -1612,146 +1724,249 @@ function Page_Home(params) {
 
 function Page_Contact(params) {
   const _root = document.createDocumentFragment();
-  const _e200 = WF.h("div", { className: "wf-container" });
-  const _e201 = WF.h("div", { className: "wf-stack wf-stack--gap-md" });
-  const _e202 = WF.h("h2", { className: "wf-heading wf-heading--h1" }, "Let's build something robust.");
-  _e202.style.fontSize = "2rem";
-  _e202.style.fontWeight = "700";
-  _e202.style.color = "#E8E6E1";
-  _e202.style.letterSpacing = "-0.02em";
-  _e202.style.marginBottom = "1rem";
-  _e201.appendChild(_e202);
-  const _e203 = WF.h("p", { className: "wf-text wf-text--muted" }, "Available for senior backend roles, architecture consulting, and high-impact engineering challenges.");
-  _e203.style.color = "#8C8B88";
-  _e203.style.fontSize = "1rem";
-  _e203.style.lineHeight = "1.7";
-  _e203.style.marginBottom = "2rem";
-  _e203.style.maxWidth = "500px";
-  _e201.appendChild(_e203);
-  const _e204 = WF.h("div", { className: "wf-spacer" });
-  _e201.appendChild(_e204);
-  const _e205 = WF.h("div", { className: "wf-stack wf-stack--gap-md" });
-  const _e206 = WF.h("div", { className: "wf-row wf-row--gap-md wf-row--center" });
-  const _e207 = WF.h("p", { className: "wf-text wf-text--muted" }, "Email");
-  _e207.style.color = "#8C8B88";
-  _e207.style.fontSize = "0.85rem";
-  _e207.style.minWidth = "80px";
-  _e206.appendChild(_e207);
-  const _e208 = WF.h("a", { className: "wf-link", href: WF._basePath + "mailto:monzer.a.omer@gmail.com" });
-  const _e209 = WF.h("p", { className: "wf-text" }, "monzer.a.omer@gmail.com");
-  _e209.style.color = "#C69C6D";
-  _e209.style.fontFamily = "JetBrains Mono, monospace";
-  _e209.style.fontSize = "0.95rem";
-  _e208.appendChild(_e209);
-  _e206.appendChild(_e208);
-  _e205.appendChild(_e206);
-  const _e210 = WF.h("hr", { className: "wf-divider" });
-  _e210.style.borderColor = "#2D2C2A";
-  _e210.style.margin = "0.5rem 0";
-  _e205.appendChild(_e210);
-  const _e211 = WF.h("div", { className: "wf-row wf-row--gap-md wf-row--center" });
-  const _e212 = WF.h("p", { className: "wf-text wf-text--muted" }, "LinkedIn");
-  _e212.style.color = "#8C8B88";
-  _e212.style.fontSize = "0.85rem";
-  _e212.style.minWidth = "80px";
-  _e211.appendChild(_e212);
-  const _e213 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://www.linkedin.com/in/monzeromer/" });
-  const _e214 = WF.h("p", { className: "wf-text" }, "linkedin.com/in/monzeromer");
-  _e214.style.color = "#C69C6D";
-  _e214.style.fontFamily = "JetBrains Mono, monospace";
-  _e214.style.fontSize = "0.95rem";
+  const _e212 = WF.h("div", { className: "wf-container" });
+  const _e213 = WF.h("div", { className: "wf-stack wf-stack--gap-md" });
+  const _e214 = WF.h("h2", { className: "wf-heading wf-heading--h1 wf-animate-fadeIn" }, "Let's build something robust.");
+  _e214.style.fontSize = "2rem";
+  _e214.style.fontWeight = "700";
+  _e214.style.color = "#E8E6E1";
+  _e214.style.letterSpacing = "-0.02em";
+  _e214.style.marginBottom = "1rem";
   _e213.appendChild(_e214);
-  _e211.appendChild(_e213);
-  _e205.appendChild(_e211);
-  const _e215 = WF.h("hr", { className: "wf-divider" });
-  _e215.style.borderColor = "#2D2C2A";
-  _e215.style.margin = "0.5rem 0";
-  _e205.appendChild(_e215);
-  const _e216 = WF.h("div", { className: "wf-row wf-row--gap-md wf-row--center" });
-  const _e217 = WF.h("p", { className: "wf-text wf-text--muted" }, "GitHub");
-  _e217.style.color = "#8C8B88";
-  _e217.style.fontSize = "0.85rem";
-  _e217.style.minWidth = "80px";
-  _e216.appendChild(_e217);
-  const _e218 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://github.com/monzeromer-lab" });
-  const _e219 = WF.h("p", { className: "wf-text" }, "github.com/monzeromer-lab");
-  _e219.style.color = "#C69C6D";
-  _e219.style.fontFamily = "JetBrains Mono, monospace";
-  _e219.style.fontSize = "0.95rem";
+  const _e215 = WF.h("p", { className: "wf-text wf-text--muted" }, "Available for senior backend roles, architecture consulting, and high-impact engineering challenges.");
+  _e215.style.color = "#8C8B88";
+  _e215.style.fontSize = "1rem";
+  _e215.style.lineHeight = "1.7";
+  _e215.style.marginBottom = "2rem";
+  _e215.style.maxWidth = "500px";
+  _e213.appendChild(_e215);
+  const _e216 = WF.h("div", { className: "wf-spacer" });
+  _e213.appendChild(_e216);
+  const _e217 = WF.h("div", { className: "wf-stack wf-stack--gap-md" });
+  const _e218 = WF.h("div", { className: "wf-row wf-row--gap-md wf-row--center" });
+  const _e219 = WF.h("p", { className: "wf-text wf-text--muted" }, "Email");
+  _e219.style.color = "#8C8B88";
+  _e219.style.fontSize = "0.85rem";
+  _e219.style.minWidth = "80px";
   _e218.appendChild(_e219);
-  _e216.appendChild(_e218);
-  _e205.appendChild(_e216);
-  _e201.appendChild(_e205);
-  _e200.appendChild(_e201);
-  _e200.style.maxWidth = "800px";
-  _e200.style.margin = "0 auto";
-  _e200.style.padding = "120px 2rem";
-  _e200.style.minHeight = "60vh";
-  _e200.style.display = "flex";
-  _e200.style.flexDirection = "column";
-  _e200.style.justifyContent = "center";
-  _root.appendChild(_e200);
+  const _e220 = WF.h("a", { className: "wf-link", href: WF._basePath + "mailto:monzer.a.omer@gmail.com" });
+  const _e221 = WF.h("p", { className: "wf-text" }, "monzer.a.omer@gmail.com");
+  _e221.style.color = "#C69C6D";
+  _e221.style.fontFamily = "JetBrains Mono, monospace";
+  _e221.style.fontSize = "0.95rem";
+  _e220.appendChild(_e221);
+  _e218.appendChild(_e220);
+  _e217.appendChild(_e218);
+  const _e222 = WF.h("hr", { className: "wf-divider" });
+  _e222.style.borderColor = "#2D2C2A";
+  _e222.style.margin = "0.5rem 0";
+  _e217.appendChild(_e222);
+  const _e223 = WF.h("div", { className: "wf-row wf-row--gap-md wf-row--center" });
+  const _e224 = WF.h("p", { className: "wf-text wf-text--muted" }, "LinkedIn");
+  _e224.style.color = "#8C8B88";
+  _e224.style.fontSize = "0.85rem";
+  _e224.style.minWidth = "80px";
+  _e223.appendChild(_e224);
+  const _e225 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://www.linkedin.com/in/monzeromer/" });
+  const _e226 = WF.h("p", { className: "wf-text" }, "linkedin.com/in/monzeromer");
+  _e226.style.color = "#C69C6D";
+  _e226.style.fontFamily = "JetBrains Mono, monospace";
+  _e226.style.fontSize = "0.95rem";
+  _e225.appendChild(_e226);
+  _e223.appendChild(_e225);
+  _e217.appendChild(_e223);
+  const _e227 = WF.h("hr", { className: "wf-divider" });
+  _e227.style.borderColor = "#2D2C2A";
+  _e227.style.margin = "0.5rem 0";
+  _e217.appendChild(_e227);
+  const _e228 = WF.h("div", { className: "wf-row wf-row--gap-md wf-row--center" });
+  const _e229 = WF.h("p", { className: "wf-text wf-text--muted" }, "GitHub");
+  _e229.style.color = "#8C8B88";
+  _e229.style.fontSize = "0.85rem";
+  _e229.style.minWidth = "80px";
+  _e228.appendChild(_e229);
+  const _e230 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://github.com/monzeromer-lab" });
+  const _e231 = WF.h("p", { className: "wf-text" }, "github.com/monzeromer-lab");
+  _e231.style.color = "#C69C6D";
+  _e231.style.fontFamily = "JetBrains Mono, monospace";
+  _e231.style.fontSize = "0.95rem";
+  _e230.appendChild(_e231);
+  _e228.appendChild(_e230);
+  _e217.appendChild(_e228);
+  _e213.appendChild(_e217);
+  _e212.appendChild(_e213);
+  _e212.style.maxWidth = "800px";
+  _e212.style.margin = "0 auto";
+  _e212.style.padding = "80px 2rem";
+  _e212.style.minHeight = "60vh";
+  _e212.style.display = "flex";
+  _e212.style.flexDirection = "column";
+  _e212.style.justifyContent = "center";
+  _root.appendChild(_e212);
   return _root;
 }
 
 (function() {
   const _app = document.getElementById('app');
   _app.innerHTML = '';
-  const _e220 = WF.h("nav", { className: "wf-navbar" });
-  const _e221 = WF.h("div", { className: "wf-navbar__brand" });
-  const _e222 = WF.h("a", { className: "wf-link", href: WF._basePath + "/" });
-  const _e223 = WF.h("p", { className: "wf-text wf-text--bold" }, "monzer.omer");
-  _e223.style.fontFamily = "JetBrains Mono, monospace";
-  _e223.style.color = "#E8E6E1";
-  _e223.style.fontSize = "0.95rem";
-  _e223.style.fontWeight = "600";
-  _e222.appendChild(_e223);
-  _e221.appendChild(_e222);
-  _e220.appendChild(_e221);
-  const _e224 = WF.h("div", { className: "wf-navbar__links" });
-  const _e225 = WF.h("a", { className: "wf-link", href: WF._basePath + "/projects" });
-  const _e226 = WF.h("p", { className: "wf-text" }, "Projects");
-  _e226.style.color = "#8C8B88";
-  _e226.style.fontSize = "0.875rem";
-  _e225.appendChild(_e226);
-  _e224.appendChild(_e225);
-  const _e227 = WF.h("a", { className: "wf-link", href: WF._basePath + "/experience" });
-  const _e228 = WF.h("p", { className: "wf-text" }, "Experience");
-  _e228.style.color = "#8C8B88";
-  _e228.style.fontSize = "0.875rem";
-  _e227.appendChild(_e228);
-  _e224.appendChild(_e227);
-  const _e229 = WF.h("a", { className: "wf-link", href: WF._basePath + "/skills" });
-  const _e230 = WF.h("p", { className: "wf-text" }, "Skills");
-  _e230.style.color = "#8C8B88";
-  _e230.style.fontSize = "0.875rem";
-  _e229.appendChild(_e230);
-  _e224.appendChild(_e229);
-  const _e231 = WF.h("a", { className: "wf-link", href: WF._basePath + "/education" });
-  const _e232 = WF.h("p", { className: "wf-text" }, "Education");
-  _e232.style.color = "#8C8B88";
-  _e232.style.fontSize = "0.875rem";
-  _e231.appendChild(_e232);
-  _e224.appendChild(_e231);
-  const _e233 = WF.h("a", { className: "wf-link", href: WF._basePath + "/contact" });
-  const _e234 = WF.h("p", { className: "wf-text" }, "Contact");
-  _e234.style.color = "#8C8B88";
-  _e234.style.fontSize = "0.875rem";
+  const _e232 = WF.h("div", { className: "wf-container" });
+  const _e233 = WF.h("div", { className: "wf-container" });
+  const _e234 = WF.h("div", { className: "wf-stack wf-stack--gap-sm" });
+  const _e235 = WF.h("a", { className: "wf-link", href: WF._basePath + "/" });
+  const _e236 = WF.h("p", { className: "wf-text wf-text--bold" }, "monzer.omer");
+  _e236.style.fontFamily = "JetBrains Mono, monospace";
+  _e236.style.color = "#E8E6E1";
+  _e236.style.fontSize = "1rem";
+  _e236.style.fontWeight = "600";
+  _e235.appendChild(_e236);
+  _e234.appendChild(_e235);
+  const _e237 = WF.h("p", { className: "wf-text wf-text--muted" }, "Senior Backend Engineer");
+  _e237.style.color = "#8C8B88";
+  _e237.style.fontSize = "0.75rem";
+  _e234.appendChild(_e237);
   _e233.appendChild(_e234);
-  _e224.appendChild(_e233);
-  _e220.appendChild(_e224);
-  _e220.style.background = "rgba(26, 26, 25, 0.85)";
-  _e220.style.backdropFilter = "blur(12px)";
-  _e220.style.borderBottom = "1px solid #2D2C2A";
-  _e220.style.padding = "0.75rem 2rem";
-  _e220.style.position = "sticky";
-  _e220.style.top = "0";
-  _e220.style.zIndex = "100";
-  _app.appendChild(_e220);
+  _e233.style.padding = "1.5rem";
+  _e233.style.borderBottom = "1px solid #2D2C2A";
+  _e233.style.maxWidth = "100%";
+  _e232.appendChild(_e233);
+  const _e238 = WF.h("div", { className: "wf-stack wf-stack--gap-sm" });
+  const _e239 = WF.h("a", { className: "wf-link", href: WF._basePath + "/" });
+  const _e240 = WF.h("div", { className: "wf-row wf-row--gap-sm wf-row--center" });
+  const _e241 = WF.h("i", { className: "wf-icon" }, "home");
+  _e241.style.width = "16px";
+  _e241.style.height = "16px";
+  _e240.appendChild(_e241);
+  const _e242 = WF.h("p", { className: "wf-text" }, "Home");
+  _e242.style.fontSize = "0.875rem";
+  _e240.appendChild(_e242);
+  _e240.style.padding = "0.5rem 1.5rem";
+  _e240.style.color = "#8C8B88";
+  _e240.style.cursor = "pointer";
+  _e239.appendChild(_e240);
+  _e238.appendChild(_e239);
+  const _e243 = WF.h("a", { className: "wf-link", href: WF._basePath + "/projects" });
+  const _e244 = WF.h("div", { className: "wf-row wf-row--gap-sm wf-row--center" });
+  const _e245 = WF.h("i", { className: "wf-icon" }, "star");
+  _e245.style.width = "16px";
+  _e245.style.height = "16px";
+  _e244.appendChild(_e245);
+  const _e246 = WF.h("p", { className: "wf-text" }, "Projects");
+  _e246.style.fontSize = "0.875rem";
+  _e244.appendChild(_e246);
+  _e244.style.padding = "0.5rem 1.5rem";
+  _e244.style.color = "#8C8B88";
+  _e244.style.cursor = "pointer";
+  _e243.appendChild(_e244);
+  _e238.appendChild(_e243);
+  const _e247 = WF.h("a", { className: "wf-link", href: WF._basePath + "/experience" });
+  const _e248 = WF.h("div", { className: "wf-row wf-row--gap-sm wf-row--center" });
+  const _e249 = WF.h("i", { className: "wf-icon" }, "calendar");
+  _e249.style.width = "16px";
+  _e249.style.height = "16px";
+  _e248.appendChild(_e249);
+  const _e250 = WF.h("p", { className: "wf-text" }, "Experience");
+  _e250.style.fontSize = "0.875rem";
+  _e248.appendChild(_e250);
+  _e248.style.padding = "0.5rem 1.5rem";
+  _e248.style.color = "#8C8B88";
+  _e248.style.cursor = "pointer";
+  _e247.appendChild(_e248);
+  _e238.appendChild(_e247);
+  const _e251 = WF.h("a", { className: "wf-link", href: WF._basePath + "/skills" });
+  const _e252 = WF.h("div", { className: "wf-row wf-row--gap-sm wf-row--center" });
+  const _e253 = WF.h("i", { className: "wf-icon" }, "settings");
+  _e253.style.width = "16px";
+  _e253.style.height = "16px";
+  _e252.appendChild(_e253);
+  const _e254 = WF.h("p", { className: "wf-text" }, "Skills");
+  _e254.style.fontSize = "0.875rem";
+  _e252.appendChild(_e254);
+  _e252.style.padding = "0.5rem 1.5rem";
+  _e252.style.color = "#8C8B88";
+  _e252.style.cursor = "pointer";
+  _e251.appendChild(_e252);
+  _e238.appendChild(_e251);
+  const _e255 = WF.h("a", { className: "wf-link", href: WF._basePath + "/education" });
+  const _e256 = WF.h("div", { className: "wf-row wf-row--gap-sm wf-row--center" });
+  const _e257 = WF.h("i", { className: "wf-icon" }, "info");
+  _e257.style.width = "16px";
+  _e257.style.height = "16px";
+  _e256.appendChild(_e257);
+  const _e258 = WF.h("p", { className: "wf-text" }, "Education");
+  _e258.style.fontSize = "0.875rem";
+  _e256.appendChild(_e258);
+  _e256.style.padding = "0.5rem 1.5rem";
+  _e256.style.color = "#8C8B88";
+  _e256.style.cursor = "pointer";
+  _e255.appendChild(_e256);
+  _e238.appendChild(_e255);
+  const _e259 = WF.h("a", { className: "wf-link", href: WF._basePath + "/contact" });
+  const _e260 = WF.h("div", { className: "wf-row wf-row--gap-sm wf-row--center" });
+  const _e261 = WF.h("i", { className: "wf-icon" }, "mail");
+  _e261.style.width = "16px";
+  _e261.style.height = "16px";
+  _e260.appendChild(_e261);
+  const _e262 = WF.h("p", { className: "wf-text" }, "Contact");
+  _e262.style.fontSize = "0.875rem";
+  _e260.appendChild(_e262);
+  _e260.style.padding = "0.5rem 1.5rem";
+  _e260.style.color = "#8C8B88";
+  _e260.style.cursor = "pointer";
+  _e259.appendChild(_e260);
+  _e238.appendChild(_e259);
+  _e238.style.padding = "1rem 0";
+  _e232.appendChild(_e238);
+  const _e263 = WF.h("div", { className: "wf-stack wf-stack--gap-sm" });
+  const _e264 = WF.h("div", { className: "wf-row wf-row--gap-md" });
+  const _e265 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://github.com/monzeromer-lab" });
+  const _e266 = WF.h("p", { className: "wf-text" }, "GitHub");
+  _e266.style.fontFamily = "JetBrains Mono, monospace";
+  _e266.style.color = "#8C8B88";
+  _e266.style.fontSize = "0.75rem";
+  _e265.appendChild(_e266);
+  _e264.appendChild(_e265);
+  const _e267 = WF.h("a", { className: "wf-link", href: WF._basePath + "https://www.linkedin.com/in/monzeromer/" });
+  const _e268 = WF.h("p", { className: "wf-text" }, "LinkedIn");
+  _e268.style.fontFamily = "JetBrains Mono, monospace";
+  _e268.style.color = "#8C8B88";
+  _e268.style.fontSize = "0.75rem";
+  _e267.appendChild(_e268);
+  _e264.appendChild(_e267);
+  _e263.appendChild(_e264);
+  const _e269 = WF.h("p", { className: "wf-text wf-text--muted" }, "Built with WebFluent");
+  _e269.style.fontFamily = "JetBrains Mono, monospace";
+  _e269.style.color = "#555";
+  _e269.style.fontSize = "0.7rem";
+  _e269.style.marginTop = "0.5rem";
+  _e263.appendChild(_e269);
+  _e263.style.padding = "1rem 1.5rem";
+  _e263.style.marginTop = "auto";
+  _e263.style.borderTop = "1px solid #2D2C2A";
+  _e232.appendChild(_e263);
+  _e232.style.position = "fixed";
+  _e232.style.top = "0";
+  _e232.style.left = "0";
+  _e232.style.bottom = "0";
+  _e232.style.width = "220px";
+  _e232.style.maxWidth = "220px";
+  _e232.style.zIndex = "300";
+  _e232.style.padding = "0";
+  _e232.style.background = "#1A1A19";
+  _e232.style.borderRight = "1px solid #2D2C2A";
+  _e232.style.overflowY = "auto";
+  _e232.style.display = "flex";
+  _e232.style.flexDirection = "column";
+  _app.appendChild(_e232);
+  const _e270 = WF.h("div", { className: "wf-container" });
+  _e270.style.marginLeft = "220px";
+  _e270.style.maxWidth = "100%";
+  _e270.style.minHeight = "100vh";
+  _e270.style.padding = "0";
+  _app.appendChild(_e270);
   const _routerEl = document.createElement('div');
   _routerEl.id = 'wf-router';
   _routerEl.style.flex = '1';
-  _app.appendChild(_routerEl);
+  _e270.appendChild(_routerEl);
   const _routes = [
     { path: "/", render: (params) => Page_Home(params) },
     { path: "/projects", render: (params) => Page_Projects(params) },
@@ -1761,19 +1976,4 @@ function Page_Contact(params) {
     { path: "/contact", render: (params) => Page_Contact(params) },
   ];
   WF.createRouter(_routes, _routerEl);
-  const _e235 = WF.h("div", {});
-  const _e236 = WF.h("p", { className: "wf-text wf-text--muted wf-text--small" }, "Built with WebFluent");
-  _e236.style.fontFamily = "JetBrains Mono, monospace";
-  _e236.style.color = "#8C8B88";
-  _e236.style.fontSize = "0.8rem";
-  _e235.appendChild(_e236);
-  _e235.style.borderTop = "1px solid #2D2C2A";
-  _e235.style.padding = "1.5rem 2rem";
-  _e235.style.textAlign = "center";
-  _e235.style.position = "sticky";
-  _e235.style.bottom = "0";
-  _e235.style.background = "rgba(26, 26, 25, 0.85)";
-  _e235.style.backdropFilter = "blur(12px)";
-  _e235.style.zIndex = "100";
-  _app.appendChild(_e235);
 })();

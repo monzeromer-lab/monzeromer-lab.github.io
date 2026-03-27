@@ -4,11 +4,11 @@ Page Projects (path: "/projects", title: "Projects — Monzer Omer") {
         style {
             max-width: "800px"
             margin: "0 auto"
-            padding: "120px 2rem"
+            padding: "80px 2rem"
         }
 
         Stack(gap: md) {
-            Heading("Projects", h1) {
+            Heading("Projects", h1, fadeIn) {
                 style {
                     font-size: "2rem"
                     font-weight: "700"
@@ -18,7 +18,7 @@ Page Projects (path: "/projects", title: "Projects — Monzer Omer") {
                 }
             }
 
-            Text("Things I've designed, built, and shipped.", muted) {
+            Text("Things I've designed, built, and shipped.", muted, fadeIn) {
                 style {
                     color: "#8C8B88"
                     font-size: "1rem"
