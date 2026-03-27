@@ -1,187 +1,415 @@
 App {
+    use NavStore
 
-    // Fixed sidebar navigation
-    Container {
+    // Mobile top bar — hidden on desktop, shown on mobile
+    Row(align: center, justify: between) {
         style {
-            position: "fixed"
-            top: "0"
-            left: "0"
-            bottom: "0"
-            width: "220px"
-            max-width: "220px"
-            z-index: "300"
-            padding: "0"
+            display: "none"
             background: "#1A1A19"
-            border-right: "1px solid #2D2C2A"
-            overflow-y: "auto"
-            display: "flex"
-            flex-direction: "column"
-        }
+            border-bottom: "1px solid #2D2C2A"
+            padding: "0.75rem 1.25rem"
+            position: "sticky"
+            top: "0"
+            z-index: "200"
+            flex-direction: "row"
 
-        // Brand
-        Container {
-            style {
-                padding: "1.5rem"
-                border-bottom: "1px solid #2D2C2A"
-                max-width: "100%"
-            }
-
-            Stack(gap: sm) {
-                Link(to: "/") {
-                    Text("monzer.omer", bold) {
-                        style {
-                            font-family: "JetBrains Mono, monospace"
-                            color: "#E8E6E1"
-                            font-size: "1rem"
-                            font-weight: "600"
-                        }
-                    }
-                }
-                Text("Senior Backend Engineer", muted) {
-                    style {
-                        color: "#8C8B88"
-                        font-size: "0.75rem"
-                    }
-                }
+            @media (max-width: 768px) {
+                display: "flex"
             }
         }
 
-        // Nav links
-        Stack {
-            style {
-                padding: "1rem 0"
-                gap: "2px"
-            }
-
-            Link(to: "/") {
-                Text("Home") {
-                    style {
-                        display: "block"
-                        padding: "0.55rem 1.5rem"
-                        color: "#8C8B88"
-                        font-size: "0.875rem"
-                        cursor: "pointer"
-                    }
-                }
-            }
-
-            Link(to: "/projects") {
-                Text("Projects") {
-                    style {
-                        display: "block"
-                        padding: "0.55rem 1.5rem"
-                        color: "#8C8B88"
-                        font-size: "0.875rem"
-                        cursor: "pointer"
-                    }
-                }
-            }
-
-            Link(to: "/experience") {
-                Text("Experience") {
-                    style {
-                        display: "block"
-                        padding: "0.55rem 1.5rem"
-                        color: "#8C8B88"
-                        font-size: "0.875rem"
-                        cursor: "pointer"
-                    }
-                }
-            }
-
-            Link(to: "/skills") {
-                Text("Skills") {
-                    style {
-                        display: "block"
-                        padding: "0.55rem 1.5rem"
-                        color: "#8C8B88"
-                        font-size: "0.875rem"
-                        cursor: "pointer"
-                    }
-                }
-            }
-
-            Link(to: "/education") {
-                Text("Education") {
-                    style {
-                        display: "block"
-                        padding: "0.55rem 1.5rem"
-                        color: "#8C8B88"
-                        font-size: "0.875rem"
-                        cursor: "pointer"
-                    }
-                }
-            }
-
-            Link(to: "/contact") {
-                Text("Contact") {
-                    style {
-                        display: "block"
-                        padding: "0.55rem 1.5rem"
-                        color: "#8C8B88"
-                        font-size: "0.875rem"
-                        cursor: "pointer"
-                    }
-                }
-            }
-        }
-
-        // Bottom section — social + branding
-        Stack(gap: sm) {
-            style {
-                padding: "1rem 1.5rem"
-                margin-top: "auto"
-                border-top: "1px solid #2D2C2A"
-            }
-
-            Row(gap: md) {
-                Link(to: "https://github.com/monzeromer-lab") {
-                    Text("GitHub") {
-                        style {
-                            font-family: "JetBrains Mono, monospace"
-                            color: "#8C8B88"
-                            font-size: "0.75rem"
-                        }
-                    }
-                }
-                Link(to: "https://www.linkedin.com/in/monzeromer/") {
-                    Text("LinkedIn") {
-                        style {
-                            font-family: "JetBrains Mono, monospace"
-                            color: "#8C8B88"
-                            font-size: "0.75rem"
-                        }
-                    }
-                }
-            }
-
-            Text("Built with WebFluent", muted) {
+        Link(to: "/") {
+            Text("monzer.omer", bold) {
                 style {
                     font-family: "JetBrains Mono, monospace"
-                    color: "#555"
-                    font-size: "0.7rem"
-                    margin-top: "0.5rem"
+                    color: "#E8E6E1"
+                    font-size: "0.9rem"
+                    font-weight: "600"
+                }
+            }
+        }
+
+        Button("Menu", small, outlined) {
+            style {
+                color: "#8C8B88"
+                background: "transparent"
+                border: "1px solid #2D2C2A"
+                cursor: "pointer"
+                font-family: "JetBrains Mono, monospace"
+                font-size: "0.75rem"
+                padding: "0.35rem 0.75rem"
+                border-radius: "0.375rem"
+            }
+            NavStore.toggle()
+        }
+    }
+
+    // Mobile sidebar overlay — only when open
+    if NavStore.sidebarOpen {
+        // Backdrop
+        Container {
+            style {
+                position: "fixed"
+                top: "0"
+                left: "0"
+                right: "0"
+                bottom: "0"
+                background: "rgba(0, 0, 0, 0.5)"
+                z-index: "399"
+                max-width: "100%"
+                padding: "0"
+            }
+            on:click { NavStore.close() }
+        }
+
+        // Mobile sidebar panel
+        Container {
+            style {
+                position: "fixed"
+                top: "0"
+                left: "0"
+                bottom: "0"
+                width: "260px"
+                max-width: "80vw"
+                z-index: "400"
+                padding: "0"
+                background: "#1A1A19"
+                border-right: "1px solid #2D2C2A"
+                overflow-y: "auto"
+                display: "flex"
+                flex-direction: "column"
+            }
+
+            // Brand
+            Container {
+                style {
+                    padding: "1.5rem"
+                    border-bottom: "1px solid #2D2C2A"
+                    max-width: "100%"
+                }
+
+                Stack(gap: sm) {
+                    Link(to: "/") {
+                        Text("monzer.omer", bold) {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "1rem"
+                                font-weight: "600"
+                            }
+                        }
+                        on:click { NavStore.close() }
+                    }
+                    Text("Senior Backend Engineer", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.75rem"
+                        }
+                    }
+                }
+            }
+
+            // Mobile nav links
+            Stack {
+                style {
+                    padding: "1rem 0"
+                    gap: "2px"
+                }
+
+                Link(to: "/") {
+                    Text("Home") {
+                        style {
+                            display: "block"
+                            padding: "0.6rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.9rem"
+                        }
+                    }
+                    on:click { NavStore.close() }
+                }
+                Link(to: "/projects") {
+                    Text("Projects") {
+                        style {
+                            display: "block"
+                            padding: "0.6rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.9rem"
+                        }
+                    }
+                    on:click { NavStore.close() }
+                }
+                Link(to: "/experience") {
+                    Text("Experience") {
+                        style {
+                            display: "block"
+                            padding: "0.6rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.9rem"
+                        }
+                    }
+                    on:click { NavStore.close() }
+                }
+                Link(to: "/skills") {
+                    Text("Skills") {
+                        style {
+                            display: "block"
+                            padding: "0.6rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.9rem"
+                        }
+                    }
+                    on:click { NavStore.close() }
+                }
+                Link(to: "/education") {
+                    Text("Education") {
+                        style {
+                            display: "block"
+                            padding: "0.6rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.9rem"
+                        }
+                    }
+                    on:click { NavStore.close() }
+                }
+                Link(to: "/contact") {
+                    Text("Contact") {
+                        style {
+                            display: "block"
+                            padding: "0.6rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.9rem"
+                        }
+                    }
+                    on:click { NavStore.close() }
+                }
+            }
+
+            // Mobile social + branding
+            Stack(gap: sm) {
+                style {
+                    padding: "1rem 1.5rem"
+                    margin-top: "auto"
+                    border-top: "1px solid #2D2C2A"
+                }
+
+                Row(gap: md) {
+                    Link(to: "https://github.com/monzeromer-lab") {
+                        Text("GitHub") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#8C8B88"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                    Link(to: "https://www.linkedin.com/in/monzeromer/") {
+                        Text("LinkedIn") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#8C8B88"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+
+                Text("Built with WebFluent", muted) {
+                    style {
+                        font-family: "JetBrains Mono, monospace"
+                        color: "#555"
+                        font-size: "0.7rem"
+                        margin-top: "0.5rem"
+                    }
                 }
             }
         }
     }
 
-    // Main content area
-    Container {
+    // Main layout row — sidebar + content
+    Row {
         style {
-            margin-left: "220px"
-            max-width: "100%"
             min-height: "100vh"
-            padding: "0"
+            flex-direction: "row"
+            flex-wrap: "nowrap"
         }
 
-        Router {
-            Route(path: "/", page: Home)
-            Route(path: "/projects", page: Projects)
-            Route(path: "/experience", page: Experience)
-            Route(path: "/skills", page: Skills)
-            Route(path: "/education", page: Education)
-            Route(path: "/contact", page: Contact)
+        // Desktop sidebar — hidden on mobile via display:none
+        Container {
+            style {
+                width: "220px"
+                min-width: "220px"
+                max-width: "220px"
+                padding: "0"
+                position: "sticky"
+                top: "0"
+                height: "100vh"
+                background: "#1A1A19"
+                border-right: "1px solid #2D2C2A"
+                overflow-y: "auto"
+                display: "flex"
+                flex-direction: "column"
+                flex-shrink: "0"
+
+                @media (max-width: 768px) {
+                    display: "none"
+                }
+            }
+
+            // Brand
+            Container {
+                style {
+                    padding: "1.5rem"
+                    border-bottom: "1px solid #2D2C2A"
+                    max-width: "100%"
+                }
+
+                Stack(gap: sm) {
+                    Link(to: "/") {
+                        Text("monzer.omer", bold) {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "1rem"
+                                font-weight: "600"
+                            }
+                        }
+                    }
+                    Text("Senior Backend Engineer", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.75rem"
+                        }
+                    }
+                }
+            }
+
+            // Desktop nav links
+            Stack {
+                style {
+                    padding: "1rem 0"
+                    gap: "2px"
+                }
+
+                Link(to: "/") {
+                    Text("Home") {
+                        style {
+                            display: "block"
+                            padding: "0.55rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.875rem"
+                        }
+                    }
+                }
+                Link(to: "/projects") {
+                    Text("Projects") {
+                        style {
+                            display: "block"
+                            padding: "0.55rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.875rem"
+                        }
+                    }
+                }
+                Link(to: "/experience") {
+                    Text("Experience") {
+                        style {
+                            display: "block"
+                            padding: "0.55rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.875rem"
+                        }
+                    }
+                }
+                Link(to: "/skills") {
+                    Text("Skills") {
+                        style {
+                            display: "block"
+                            padding: "0.55rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.875rem"
+                        }
+                    }
+                }
+                Link(to: "/education") {
+                    Text("Education") {
+                        style {
+                            display: "block"
+                            padding: "0.55rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.875rem"
+                        }
+                    }
+                }
+                Link(to: "/contact") {
+                    Text("Contact") {
+                        style {
+                            display: "block"
+                            padding: "0.55rem 1.5rem"
+                            color: "#8C8B88"
+                            font-size: "0.875rem"
+                        }
+                    }
+                }
+            }
+
+            // Desktop social + branding
+            Stack(gap: sm) {
+                style {
+                    padding: "1rem 1.5rem"
+                    margin-top: "auto"
+                    border-top: "1px solid #2D2C2A"
+                }
+
+                Row(gap: md) {
+                    Link(to: "https://github.com/monzeromer-lab") {
+                        Text("GitHub") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#8C8B88"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                    Link(to: "https://www.linkedin.com/in/monzeromer/") {
+                        Text("LinkedIn") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#8C8B88"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+
+                Text("Built with WebFluent", muted) {
+                    style {
+                        font-family: "JetBrains Mono, monospace"
+                        color: "#555"
+                        font-size: "0.7rem"
+                        margin-top: "0.5rem"
+                    }
+                }
+            }
+        }
+
+        // Main content — takes remaining space
+        Container {
+            style {
+                flex: "1"
+                max-width: "100%"
+                min-height: "100vh"
+                padding: "0"
+                min-width: "0"
+            }
+
+            Router {
+                Route(path: "/", page: Home)
+                Route(path: "/projects", page: Projects)
+                Route(path: "/experience", page: Experience)
+                Route(path: "/skills", page: Skills)
+                Route(path: "/education", page: Education)
+                Route(path: "/contact", page: Contact)
+            }
         }
     }
 }
