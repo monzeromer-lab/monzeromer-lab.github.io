@@ -47,133 +47,80 @@ App {
         }
 
         // Nav links
-        Stack(gap: sm) {
+        Stack {
             style {
                 padding: "1rem 0"
+                gap: "2px"
             }
 
             Link(to: "/") {
-                Row(gap: sm, align: center) {
+                Text("Home") {
                     style {
-                        padding: "0.5rem 1.5rem"
+                        display: "block"
+                        padding: "0.55rem 1.5rem"
                         color: "#8C8B88"
+                        font-size: "0.875rem"
                         cursor: "pointer"
-                    }
-                    Icon("home") {
-                        style {
-                            width: "16px"
-                            height: "16px"
-                        }
-                    }
-                    Text("Home") {
-                        style {
-                            font-size: "0.875rem"
-                        }
                     }
                 }
             }
 
             Link(to: "/projects") {
-                Row(gap: sm, align: center) {
+                Text("Projects") {
                     style {
-                        padding: "0.5rem 1.5rem"
+                        display: "block"
+                        padding: "0.55rem 1.5rem"
                         color: "#8C8B88"
+                        font-size: "0.875rem"
                         cursor: "pointer"
-                    }
-                    Icon("star") {
-                        style {
-                            width: "16px"
-                            height: "16px"
-                        }
-                    }
-                    Text("Projects") {
-                        style {
-                            font-size: "0.875rem"
-                        }
                     }
                 }
             }
 
             Link(to: "/experience") {
-                Row(gap: sm, align: center) {
+                Text("Experience") {
                     style {
-                        padding: "0.5rem 1.5rem"
+                        display: "block"
+                        padding: "0.55rem 1.5rem"
                         color: "#8C8B88"
+                        font-size: "0.875rem"
                         cursor: "pointer"
-                    }
-                    Icon("calendar") {
-                        style {
-                            width: "16px"
-                            height: "16px"
-                        }
-                    }
-                    Text("Experience") {
-                        style {
-                            font-size: "0.875rem"
-                        }
                     }
                 }
             }
 
             Link(to: "/skills") {
-                Row(gap: sm, align: center) {
+                Text("Skills") {
                     style {
-                        padding: "0.5rem 1.5rem"
+                        display: "block"
+                        padding: "0.55rem 1.5rem"
                         color: "#8C8B88"
+                        font-size: "0.875rem"
                         cursor: "pointer"
-                    }
-                    Icon("settings") {
-                        style {
-                            width: "16px"
-                            height: "16px"
-                        }
-                    }
-                    Text("Skills") {
-                        style {
-                            font-size: "0.875rem"
-                        }
                     }
                 }
             }
 
             Link(to: "/education") {
-                Row(gap: sm, align: center) {
+                Text("Education") {
                     style {
-                        padding: "0.5rem 1.5rem"
+                        display: "block"
+                        padding: "0.55rem 1.5rem"
                         color: "#8C8B88"
+                        font-size: "0.875rem"
                         cursor: "pointer"
-                    }
-                    Icon("info") {
-                        style {
-                            width: "16px"
-                            height: "16px"
-                        }
-                    }
-                    Text("Education") {
-                        style {
-                            font-size: "0.875rem"
-                        }
                     }
                 }
             }
 
             Link(to: "/contact") {
-                Row(gap: sm, align: center) {
+                Text("Contact") {
                     style {
-                        padding: "0.5rem 1.5rem"
+                        display: "block"
+                        padding: "0.55rem 1.5rem"
                         color: "#8C8B88"
+                        font-size: "0.875rem"
                         cursor: "pointer"
-                    }
-                    Icon("mail") {
-                        style {
-                            width: "16px"
-                            height: "16px"
-                        }
-                    }
-                    Text("Contact") {
-                        style {
-                            font-size: "0.875rem"
-                        }
                     }
                 }
             }
