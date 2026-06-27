@@ -9,6 +9,15 @@ Page Contact (path: "/contact", title: "Contact — Monzer Omer") {
             display: "flex"
             flex-direction: "column"
             justify-content: "center"
+
+            @media (max-width: 768px) {
+                padding: "60px 1.5rem"
+                min-height: "50vh"
+            }
+            @media (max-width: 480px) {
+                padding: "40px 1rem"
+                min-height: "auto"
+            }
         }
 
         Stack(gap: md) {

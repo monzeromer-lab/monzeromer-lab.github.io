@@ -5,6 +5,13 @@ Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
             max-width: "800px"
             margin: "0 auto"
             padding: "80px 2rem"
+
+            @media (max-width: 768px) {
+                padding: "60px 1.5rem"
+            }
+            @media (max-width: 480px) {
+                padding: "40px 1rem"
+            }
         }
 
         Stack(gap: md) {

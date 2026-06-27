@@ -1,0 +1,59 @@
+/* ─── Custom Responsive Overrides ───────────────────── */
+/* These override the base WebFluent library for better mobile UX */
+
+@media (max-width: 768px) {
+  /* Replace column layout with wrapping */
+  .wf-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  h3.wf-heading { font-size: var(--font-size-lg); }
+  h4.wf-heading { font-size: var(--font-size-base); }
+
+  /* Hide desktop sidebar on mobile (pre-JS fallback) */
+  #app > .wf-row:nth-of-type(2) > .wf-container:first-of-type {
+    display: none;
+  }
+
+  /* Ensure mobile top bar stays horizontal */
+  #app > .wf-row:first-of-type {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  h1.wf-heading { font-size: var(--font-size-xl); }
+  h2.wf-heading { font-size: var(--font-size-lg); }
+  h3.wf-heading { font-size: var(--font-size-base); }
+
+  .wf-card { padding: var(--spacing-md) !important; }
+  .wf-container { padding: 0 var(--spacing-xs); }
+
+  .wf-badge {
+    font-size: var(--font-size-xs) !important;
+    padding: 0.2rem 0.6rem !important;
+  }
+
+  .wf-text { font-size: var(--font-size-sm); }
+
+  .wf-spacer { height: var(--spacing-sm); }
+  .wf-spacer--xl { height: var(--spacing-lg); }
+  .wf-spacer--lg { height: var(--spacing-md); }
+
+  /* Mobile touch improvements */
+  a, button, .wf-btn, .wf-link {
+    touch-action: manipulation;
+  }
+  .wf-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  #app > .wf-row:first-of-type {
+    padding: 0.5rem 1rem;
+  }
+}

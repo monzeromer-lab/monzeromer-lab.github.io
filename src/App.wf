@@ -12,9 +12,13 @@ App {
             top: "0"
             z-index: "200"
             flex-direction: "row"
+            flex-wrap: "nowrap"
 
             @media (max-width: 768px) {
                 display: "flex"
+            }
+            @media (max-width: 480px) {
+                padding: "0.6rem 1rem"
             }
         }
 
@@ -39,6 +43,13 @@ App {
                 font-size: "0.75rem"
                 padding: "0.35rem 0.75rem"
                 border-radius: "0.375rem"
+
+                @media (max-width: 768px) {
+                    padding: "0.5rem 1rem"
+                    font-size: "0.85rem"
+                    min-height: "44px"
+                    min-width: "44px"
+                }
             }
             NavStore.toggle()
         }
@@ -120,9 +131,11 @@ App {
                     Text("Home") {
                         style {
                             display: "block"
-                            padding: "0.6rem 1.5rem"
+                            padding: "0.75rem 1.5rem"
                             color: "#8C8B88"
-                            font-size: "0.9rem"
+                            font-size: "0.95rem"
+                            min-height: "44px"
+                            line-height: "1.4"
                         }
                     }
                     on:click { NavStore.close() }
@@ -131,9 +144,11 @@ App {
                     Text("Projects") {
                         style {
                             display: "block"
-                            padding: "0.6rem 1.5rem"
+                            padding: "0.75rem 1.5rem"
                             color: "#8C8B88"
-                            font-size: "0.9rem"
+                            font-size: "0.95rem"
+                            min-height: "44px"
+                            line-height: "1.4"
                         }
                     }
                     on:click { NavStore.close() }
@@ -142,9 +157,11 @@ App {
                     Text("Experience") {
                         style {
                             display: "block"
-                            padding: "0.6rem 1.5rem"
+                            padding: "0.75rem 1.5rem"
                             color: "#8C8B88"
-                            font-size: "0.9rem"
+                            font-size: "0.95rem"
+                            min-height: "44px"
+                            line-height: "1.4"
                         }
                     }
                     on:click { NavStore.close() }
@@ -153,9 +170,11 @@ App {
                     Text("Skills") {
                         style {
                             display: "block"
-                            padding: "0.6rem 1.5rem"
+                            padding: "0.75rem 1.5rem"
                             color: "#8C8B88"
-                            font-size: "0.9rem"
+                            font-size: "0.95rem"
+                            min-height: "44px"
+                            line-height: "1.4"
                         }
                     }
                     on:click { NavStore.close() }
@@ -164,9 +183,11 @@ App {
                     Text("Education") {
                         style {
                             display: "block"
-                            padding: "0.6rem 1.5rem"
+                            padding: "0.75rem 1.5rem"
                             color: "#8C8B88"
-                            font-size: "0.9rem"
+                            font-size: "0.95rem"
+                            min-height: "44px"
+                            line-height: "1.4"
                         }
                     }
                     on:click { NavStore.close() }
@@ -175,9 +196,11 @@ App {
                     Text("Contact") {
                         style {
                             display: "block"
-                            padding: "0.6rem 1.5rem"
+                            padding: "0.75rem 1.5rem"
                             color: "#8C8B88"
-                            font-size: "0.9rem"
+                            font-size: "0.95rem"
+                            min-height: "44px"
+                            line-height: "1.4"
                         }
                     }
                     on:click { NavStore.close() }
@@ -231,6 +254,10 @@ App {
             min-height: "100vh"
             flex-direction: "row"
             flex-wrap: "nowrap"
+
+            @media (max-width: 768px) {
+                flex-direction: "column"
+            }
         }
 
         // Desktop sidebar — hidden on mobile via display:none
@@ -400,6 +427,10 @@ App {
                 min-height: "100vh"
                 padding: "0"
                 min-width: "0"
+
+                @media (max-width: 768px) {
+                    min-height: "auto"
+                }
             }
 
             Router {

@@ -9,6 +9,15 @@ Page Home (path: "/", title: "Monzer Omer — Senior Backend Engineer") {
             display: "flex"
             flex-direction: "column"
             justify-content: "center"
+
+            @media (max-width: 768px) {
+                padding: "60px 1.5rem"
+                min-height: "90vh"
+            }
+            @media (max-width: 480px) {
+                padding: "40px 1rem"
+                min-height: "auto"
+            }
         }
 
         Stack(gap: md, fadeIn) {
@@ -19,6 +28,10 @@ Page Home (path: "/", title: "Monzer Omer — Senior Backend Engineer") {
                     color: "#E8E6E1"
                     letter-spacing: "-0.02em"
                     line-height: "1.1"
+
+                    @media (max-width: 480px) {
+                        font-size: "2rem"
+                    }
                 }
             }
 
@@ -29,6 +42,10 @@ Page Home (path: "/", title: "Monzer Omer — Senior Backend Engineer") {
                     font-size: "1.25rem"
                     color: "#8C8B88"
                     font-weight: "400"
+
+                    @media (max-width: 480px) {
+                        font-size: "1rem"
+                    }
                 }
             }
 
