@@ -1,0 +1,121 @@
+/* ─── Custom Responsive Overrides ───────────────────── */
+/* Applied AFTER base WebFluent CSS — takes precedence via cascade */
+
+/* ── Tablet & Mobile (≤768px) ──────────────────────── */
+@media (max-width: 768px) {
+    /* Override base .wf-row column rule — allow wrapping */
+    .wf-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    /* Force the main layout row to stack (sidebar + content) on mobile.
+     !important needed to beat JS-inlined flex-direction:row */
+    #app > .wf-row {
+        flex-direction: column !important;
+    }
+
+    /* Exception: mobile top bar MUST stay horizontal */
+    #app > .wf-row:first-of-type {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center;
+        justify-content: space-between;
+        display: flex !important;
+        padding: 0.75rem 1.25rem;
+    }
+
+    /* Keep inner content rows horizontal (badges, links, etc.) */
+    .wf-card .wf-row,
+    .wf-stack .wf-row,
+    .wf-container .wf-container .wf-row {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+    }
+
+    /* Hide desktop sidebar on mobile — !important beats JS-inlined display:flex */
+    #app > .wf-row > .wf-container:first-of-type {
+        display: none !important;
+    }
+
+    h3.wf-heading {
+        font-size: var(--font-size-lg);
+    }
+    h4.wf-heading {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* ── Phone (≤480px) ────────────────────────────────── */
+@media (max-width: 480px) {
+    h1.wf-heading {
+        font-size: var(--font-size-xl) !important;
+    }
+    h2.wf-heading {
+        font-size: var(--font-size-lg) !important;
+    }
+    h3.wf-heading {
+        font-size: var(--font-size-base) !important;
+    }
+
+    .wf-card {
+        padding: var(--spacing-md) !important;
+        margin-bottom: var(--spacing-md) !important;
+    }
+
+    .wf-container {
+        padding: 0 var(--spacing-xs);
+    }
+
+    .wf-badge {
+        font-size: var(--font-size-xs) !important;
+        padding: 0.2rem 0.6rem !important;
+    }
+
+    .wf-text {
+        font-size: var(--font-size-sm);
+    }
+
+    .wf-spacer {
+        height: var(--spacing-sm);
+    }
+    .wf-spacer--xl {
+        height: var(--spacing-lg);
+    }
+    .wf-spacer--lg {
+        height: var(--spacing-md);
+    }
+
+    /* Touch: 44px min targets, kill 300ms tap delay */
+    a,
+    button,
+    .wf-btn,
+    .wf-link {
+        touch-action: manipulation;
+    }
+    .wf-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    #app > .wf-row:first-of-type {
+        padding: 0.5rem 1rem !important;
+    }
+
+    body {
+        font-size: var(--font-size-sm);
+    }
+
+    /* Prevent horizontal overflow */
+    body,
+    #app {
+        overflow-x: hidden;
+    }
+    img,
+    pre,
+    code,
+    table {
+        max-width: 100%;
+    }
+}

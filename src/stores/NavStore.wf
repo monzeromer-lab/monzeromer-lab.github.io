@@ -1,0 +1,11 @@
+Store NavStore {
+    state sidebarOpen = false
+
+    action toggle() {
+        sidebarOpen = !sidebarOpen
+    }
+
+    action close() {
+        sidebarOpen = false
+    }
+}
