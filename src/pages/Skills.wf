@@ -94,61 +94,6 @@ Page Skills (path: "/skills", title: "Skills — Monzer Omer") {
                     }
 
                     Stack(gap: md) {
-                        Text("Backend Frameworks", bold) {
-                            style {
-                                font-size: "1rem"
-                                color: "#C69C6D"
-                                font-weight: "600"
-                                margin-bottom: "0.5rem"
-                            }
-                        }
-                        Text("Node.js") {
-                            style {
-                                font-family: "JetBrains Mono, monospace"
-                                color: "#E8E6E1"
-                                font-size: "0.9rem"
-                            }
-                        }
-                        Text("NestJS") {
-                            style {
-                                font-family: "JetBrains Mono, monospace"
-                                color: "#E8E6E1"
-                                font-size: "0.9rem"
-                            }
-                        }
-                        Text("Express.js") {
-                            style {
-                                font-family: "JetBrains Mono, monospace"
-                                color: "#E8E6E1"
-                                font-size: "0.9rem"
-                            }
-                        }
-                        Text("GraphQL") {
-                            style {
-                                font-family: "JetBrains Mono, monospace"
-                                color: "#E8E6E1"
-                                font-size: "0.9rem"
-                            }
-                        }
-                        Text("REST APIs") {
-                            style {
-                                font-family: "JetBrains Mono, monospace"
-                                color: "#E8E6E1"
-                                font-size: "0.9rem"
-                            }
-                        }
-                    }
-                }
-
-                Card(elevated) {
-                    style {
-                        background: "#242422"
-                        border: "1px solid #2D2C2A"
-                        border-radius: "0.75rem"
-                        padding: "2rem"
-                    }
-
-                    Stack(gap: md) {
                         Text("Databases & Storage", bold) {
                             style {
                                 font-size: "1rem"
