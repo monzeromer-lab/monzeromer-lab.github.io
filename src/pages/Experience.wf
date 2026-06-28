@@ -25,7 +25,7 @@ Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
                 }
             }
 
-            Text("A reverse-chronological record of impact and engineering decisions.", muted) {
+            Text("A reverse-chronological record of roles, responsibilities, and impact.", muted) {
                 style {
                     color: "#8C8B88"
                     font-size: "1rem"
@@ -70,11 +70,55 @@ Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
 
                     Spacer(sm)
 
-                    Text("Built a high-performance image processing microservice using Rust, achieving an average performance increase of over 98%. Led the migration of the existing codebase to TypeScript for improved maintainability and type safety. Optimized database queries and implemented caching strategies for critical data paths.") {
-                        style {
-                            color: "#E8E6E1"
-                            line-height: "1.7"
-                            font-size: "0.95rem"
+                    Stack(gap: md) {
+                        Text("Designed, developed, and maintained core backend functionality to improve reliability and performance across web and mobile platforms.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Integrated Firebase Analytics, Adjust, and MoEngage to enable data-driven marketing and user engagement strategies.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Optimized product view endpoints and resolved crawler-related issues to enhance SEO and product discoverability.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Built a high-performance image processing microservice using Rust, achieving an average performance increase of over 98%.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Migrated the codebase to TypeScript, improving code maintainability, type safety, and long-term scalability.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Improved internal documentation and tooling, streamlining onboarding and enhancing cross-team collaboration.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Improved platform performance by optimizing queries and system design.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
                         }
                     }
 
@@ -103,6 +147,16 @@ Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
                             }
                         }
                         Badge("Node.js") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Firebase") {
                             style {
                                 font-family: "JetBrains Mono, monospace"
                                 background: "#2D2C2A"
@@ -142,7 +196,7 @@ Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
                         }
                     }
 
-                    Text("Backend Engineer", muted) {
+                    Text("Backend Developer", muted) {
                         style {
                             color: "#8C8B88"
                             font-size: "0.95rem"
@@ -151,11 +205,41 @@ Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
 
                     Spacer(sm)
 
-                    Text("Designed and implemented NestJS microservices architecture for payment processing. Integrated AES encryption for securing sensitive transaction data. Built robust message queuing infrastructure with RabbitMQ and containerized deployments using Docker.") {
-                        style {
-                            color: "#E8E6E1"
-                            line-height: "1.7"
-                            font-size: "0.95rem"
+                    Stack(gap: md) {
+                        Text("Designed, developed, and maintained high-performance, scalable microservices using NestJS, enabling seamless integration with front-end systems and third-party APIs.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Built and managed microservices for document generation, file storage, and file uploads, implementing AES encryption to ensure data security and compliance.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Developed a merchant management microservice to handle critical merchant data, including bank details, user information, payment methods, and fee structures.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Created a statistics microservice to calculate and analyze key metrics, providing actionable insights for business decision-making.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Utilized RabbitMQ for efficient message queuing and Docker for containerization, streamlining deployment processes and improving system reliability.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
                         }
                     }
 
@@ -232,7 +316,7 @@ Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
                         }
                     }
 
-                    Text("Backend Engineer", muted) {
+                    Text("Backend Developer", muted) {
                         style {
                             color: "#8C8B88"
                             font-size: "0.95rem"
@@ -241,11 +325,34 @@ Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
 
                     Spacer(sm)
 
-                    Text("Architected microservices using GraphQL for flexible API composition and Apache Kafka for real-time data streaming across distributed services. Designed event-driven systems handling high-throughput data pipelines with fault tolerance and horizontal scalability.") {
-                        style {
-                            color: "#E8E6E1"
-                            line-height: "1.7"
-                            font-size: "0.95rem"
+                    Stack(gap: md) {
+                        Text("Designed, developed, and maintained a highly scalable Healthcare Management System (HMS) using a microservices architecture, leveraging GraphQL for optimized data fetching and Kafka for real-time data streaming and event-driven communication.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Built and enhanced a Community & Learning Platform to foster knowledge sharing and collaboration among users, ensuring seamless performance and scalability.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Collaborated closely with frontend developers to deliver high-quality, user-centric features, ensuring smooth integration between backend services and frontend applications.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Continuously expanded technical expertise by mastering NestJS, Rust, and GraphQL, applying these technologies to optimize platform performance, reliability, and maintainability.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
                         }
                     }
 
@@ -273,6 +380,129 @@ Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
                             }
                         }
                         Badge("Microservices") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("NestJS") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                    }
+                }
+            }
+
+            Card(elevated) {
+                style {
+                    background: "#242422"
+                    border: "1px solid #2D2C2A"
+                    border-radius: "0.75rem"
+                    padding: "2rem"
+                    margin-bottom: "2rem"
+                }
+
+                Stack(gap: md) {
+                    Row(justify: between, align: center) {
+                        Text("Alimny", bold) {
+                            style {
+                                font-size: "1.2rem"
+                                color: "#E8E6E1"
+                            }
+                        }
+                        Text("Jan 2021 — Dec 2022", muted, small) {
+                            style {
+                                color: "#C69C6D"
+                                font-family: "JetBrains Mono, monospace"
+                                font-size: "0.8rem"
+                            }
+                        }
+                    }
+
+                    Text("Backend Developer & Co-founder", muted) {
+                        style {
+                            color: "#8C8B88"
+                            font-size: "0.95rem"
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Stack(gap: md) {
+                        Text("Co-founded a startup providing innovative and accessible e-learning solutions for students and teachers, using technologies such as web development, machine learning, and cloud computing to make education more engaging and effective.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Designed, developed, and maintained server-side logic, APIs, and databases for web applications powering the e-learning platform using Node.js, Express.js, MongoDB, GraphQL, and Firebase.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Developed a robust authentication system using JWT and Firebase, and optimized database queries and indexes to improve response time and reduce server load.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Wrote unit tests and documentation for the codebase, and collaborated with co-founders and frontend developers to ensure application quality and performance.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                    }
+
+                    Spacer(sm)
+
+                    Row(gap: sm) {
+                        Badge("Node.js") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("GraphQL") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("Firebase") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                background: "#2D2C2A"
+                                color: "#E8E6E1"
+                                padding: "0.25rem 0.75rem"
+                                border-radius: "0.375rem"
+                                font-size: "0.75rem"
+                            }
+                        }
+                        Badge("MongoDB") {
                             style {
                                 font-family: "JetBrains Mono, monospace"
                                 background: "#2D2C2A"
@@ -321,11 +551,27 @@ Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
 
                     Spacer(sm)
 
-                    Text("Developed RESTful APIs with Express.js, designed and maintained database schemas using both MySQL and MongoDB. Built backend services supporting mobile and web client applications with focus on API performance and data consistency.") {
-                        style {
-                            color: "#E8E6E1"
-                            line-height: "1.7"
-                            font-size: "0.95rem"
+                    Stack(gap: md) {
+                        Text("Designed, developed, and maintained RESTful APIs using Express.js, MySQL, and MongoDB to support various web applications, gaining hands-on experience in backend development.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Collaborated closely with frontend developers, designers, and product managers to deliver high-quality features and seamless user experiences.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
+                        }
+                        Text("Actively learned and applied new technologies and tools, participated in code reviews, documentation, and testing processes to contribute to overall codebase quality.") {
+                            style {
+                                color: "#E8E6E1"
+                                line-height: "1.7"
+                                font-size: "0.95rem"
+                            }
                         }
                     }
 

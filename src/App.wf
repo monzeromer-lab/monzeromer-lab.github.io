@@ -224,19 +224,6 @@ App {
                     }
                     on:click { NavStore.close() }
                 }
-                Link(to: "/history") {
-                    Text("History") {
-                        style {
-                            display: "block"
-                            padding: "0.75rem 1.5rem"
-                            color: "#8C8B88"
-                            font-size: "0.95rem"
-                            min-height: "44px"
-                            line-height: "1.4"
-                        }
-                    }
-                    on:click { NavStore.close() }
-                }
                 Link(to: "/contact") {
                     Text("Contact") {
                         style {
@@ -414,16 +401,6 @@ App {
                         }
                     }
                 }
-                Link(to: "/history") {
-                    Text("History") {
-                        style {
-                            display: "block"
-                            padding: "0.55rem 1.5rem"
-                            color: "#8C8B88"
-                            font-size: "0.875rem"
-                        }
-                    }
-                }
                 Link(to: "/contact") {
                     Text("Contact") {
                         style {
@@ -496,7 +473,6 @@ App {
                 Route(path: "/experience", page: Experience)
                 Route(path: "/skills", page: Skills)
                 Route(path: "/education", page: Education)
-                Route(path: "/history", page: History)
                 Route(path: "/contact", page: Contact)
             }
         }
