@@ -3,47 +3,45 @@
 
 /* ── Tablet & Mobile (≤768px) ──────────────────────── */
 @media (max-width: 768px) {
+    /* Override base .wf-row column rule — allow wrapping */
+    .wf-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
 
-  /* Override base .wf-row column rule — allow wrapping instead of forcing column.
-     This lets inner rows (badges, contact links, etc.) wrap naturally. */
-  .wf-row {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--spacing-sm);
-  }
-
-  /* Force the main layout row to stack (sidebar + content) on mobile.
+    /* Force the main layout row to stack (sidebar + content) on mobile.
      !important needed to beat JS-inlined flex-direction:row */
-  #app > .wf-row {
-    flex-direction: column !important;
-  }
+    #app > .wf-row {
+        flex-direction: column !important;
+    }
 
-  /* Exception: mobile top bar MUST stay horizontal */
-  #app > .wf-row:first-of-type {
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    align-items: center;
-    justify-content: space-between;
-    display: flex !important;
-    padding: 0.75rem 1.25rem;
-  }
+    /* Exception: mobile top bar MUST stay horizontal */
+    #app > .wf-row:first-of-type {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center;
+        justify-content: space-between;
+        display: flex !important;
+        padding: 0.75rem 1.25rem;
+    }
 
-  /* Keep inner content rows horizontal (badges, links, etc.) */
-  .wf-card .wf-row,
-  .wf-stack .wf-row,
-  .wf-container .wf-container .wf-row {
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-  }
+    /* Keep inner content rows horizontal (badges, links, etc.) */
+    .wf-card .wf-row,
+    .wf-stack .wf-row,
+    .wf-container .wf-container .wf-row {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+    }
 
-  /* Hide desktop sidebar on mobile */
-  #app > .wf-row > .wf-container:first-of-type {
-    display: none;
-  }
+    /* Hide desktop sidebar on mobile — !important beats JS-inlined display:flex */
+    #app > .wf-row > .wf-container:first-of-type {
+        display: none !important;
+    }
 
-  h3.wf-heading { font-size: var(--font-size-lg); }
-  h4.wf-heading { font-size: var(--font-size-base); }
-}
+    h3.wf-heading {
+        font-size: var(--font-size-lg);
+    }
     h4.wf-heading {
         font-size: var(--font-size-base);
     }
@@ -89,7 +87,7 @@
         height: var(--spacing-md);
     }
 
-    /* Touch: 44px minimum targets, kill 300ms tap delay */
+    /* Touch: 44px min targets, kill 300ms tap delay */
     a,
     button,
     .wf-btn,
