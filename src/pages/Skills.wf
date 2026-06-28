@@ -25,7 +25,7 @@ Page Skills (path: "/skills", title: "Skills — Monzer Omer") {
                 }
             }
 
-            Text("The systems, languages, and tools I architect with.", muted) {
+            Text("Languages, frameworks, and systems I architect, build, and deploy with.", muted) {
                 style {
                     color: "#8C8B88"
                     font-size: "1rem"
@@ -94,7 +94,7 @@ Page Skills (path: "/skills", title: "Skills — Monzer Omer") {
                     }
 
                     Stack(gap: md) {
-                        Text("Frameworks & Runtime", bold) {
+                        Text("Backend Frameworks", bold) {
                             style {
                                 font-size: "1rem"
                                 color: "#C69C6D"
@@ -130,6 +130,13 @@ Page Skills (path: "/skills", title: "Skills — Monzer Omer") {
                                 font-size: "0.9rem"
                             }
                         }
+                        Text("REST APIs") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
                     }
                 }
 
@@ -142,7 +149,7 @@ Page Skills (path: "/skills", title: "Skills — Monzer Omer") {
                     }
 
                     Stack(gap: md) {
-                        Text("Data & Streaming", bold) {
+                        Text("Databases & Storage", bold) {
                             style {
                                 font-size: "1rem"
                                 color: "#C69C6D"
@@ -171,14 +178,14 @@ Page Skills (path: "/skills", title: "Skills — Monzer Omer") {
                                 font-size: "0.9rem"
                             }
                         }
-                        Text("Apache Kafka") {
+                        Text("Firebase") {
                             style {
                                 font-family: "JetBrains Mono, monospace"
                                 color: "#E8E6E1"
                                 font-size: "0.9rem"
                             }
                         }
-                        Text("RabbitMQ") {
+                        Text("Redis") {
                             style {
                                 font-family: "JetBrains Mono, monospace"
                                 color: "#E8E6E1"
@@ -197,7 +204,62 @@ Page Skills (path: "/skills", title: "Skills — Monzer Omer") {
                     }
 
                     Stack(gap: md) {
-                        Text("Systems & Security", bold) {
+                        Text("Messaging & Streaming", bold) {
+                            style {
+                                font-size: "1rem"
+                                color: "#C69C6D"
+                                font-weight: "600"
+                                margin-bottom: "0.5rem"
+                            }
+                        }
+                        Text("Apache Kafka") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("RabbitMQ") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("Event-Driven Design") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("WebSocket") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("gRPC") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                    }
+                }
+
+                Card(elevated) {
+                    style {
+                        background: "#242422"
+                        border: "1px solid #2D2C2A"
+                        border-radius: "0.75rem"
+                        padding: "2rem"
+                    }
+
+                    Stack(gap: md) {
+                        Text("Systems & Architecture", bold) {
                             style {
                                 font-size: "1rem"
                                 color: "#C69C6D"
@@ -219,6 +281,157 @@ Page Skills (path: "/skills", title: "Skills — Monzer Omer") {
                                 font-size: "0.9rem"
                             }
                         }
+                        Text("WebAssembly") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("System Design") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("Compiler Design") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                    }
+                }
+
+                Card(elevated) {
+                    style {
+                        background: "#242422"
+                        border: "1px solid #2D2C2A"
+                        border-radius: "0.75rem"
+                        padding: "2rem"
+                    }
+
+                    Stack(gap: md) {
+                        Text("DevOps & Infrastructure", bold) {
+                            style {
+                                font-size: "1rem"
+                                color: "#C69C6D"
+                                font-weight: "600"
+                                margin-bottom: "0.5rem"
+                            }
+                        }
+                        Text("Docker") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("Nginx") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("Linux") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("CI/CD") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("Git") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                    }
+                }
+
+                Card(elevated) {
+                    style {
+                        background: "#242422"
+                        border: "1px solid #2D2C2A"
+                        border-radius: "0.75rem"
+                        padding: "2rem"
+                    }
+
+                    Stack(gap: md) {
+                        Text("Frontend & Desktop", bold) {
+                            style {
+                                font-size: "1rem"
+                                color: "#C69C6D"
+                                font-weight: "600"
+                                margin-bottom: "0.5rem"
+                            }
+                        }
+                        Text("React") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("React Native") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("Electron") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("Tauri") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("GTK4 / libadwaita") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                    }
+                }
+
+                Card(elevated) {
+                    style {
+                        background: "#242422"
+                        border: "1px solid #2D2C2A"
+                        border-radius: "0.75rem"
+                        padding: "2rem"
+                    }
+
+                    Stack(gap: md) {
+                        Text("Security & Quality", bold) {
+                            style {
+                                font-size: "1rem"
+                                color: "#C69C6D"
+                                font-weight: "600"
+                                margin-bottom: "0.5rem"
+                            }
+                        }
                         Text("AES Encryption") {
                             style {
                                 font-family: "JetBrains Mono, monospace"
@@ -226,7 +439,28 @@ Page Skills (path: "/skills", title: "Skills — Monzer Omer") {
                                 font-size: "0.9rem"
                             }
                         }
-                        Text("Docker") {
+                        Text("JWT / OAuth") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("Unit Testing") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("Code Review") {
+                            style {
+                                font-family: "JetBrains Mono, monospace"
+                                color: "#E8E6E1"
+                                font-size: "0.9rem"
+                            }
+                        }
+                        Text("Agile / Scrum") {
                             style {
                                 font-family: "JetBrains Mono, monospace"
                                 color: "#E8E6E1"
