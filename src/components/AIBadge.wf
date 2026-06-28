@@ -1,0 +1,45 @@
+// AIBadge — inline pill showing AI-augmented workflow with animated progress bar.
+// Used on the home hero and optionally the skills page.
+Component AIBadge() {
+    Row(align: center, gap: sm) {
+        style {
+            display: "inline-flex"
+            flex-wrap: "wrap"
+            border: "0.5px solid var(--color-primary)"
+            background: "rgba(37,99,235,0.08)"
+            border-radius: "6px"
+            padding: "7px 13px"
+            @media (max-width: 480px) { padding: "6px 10px" gap: "var(--spacing-xs)" }
+        }
+
+        Icon("cpu", small, primary)
+
+        Text("AI-augmented workflow", small, primary) {
+            style { font-family: "var(--font-family-mono)" }
+        }
+
+        // Progress bar: 95% filled
+        Row(gap: xs, align: center) {
+            Stack {
+                style {
+                    width: "42px"
+                    height: "3px"
+                    background: "var(--color-primary)"
+                    border-radius: "2px"
+                }
+            }
+            Stack {
+                style {
+                    width: "2px"
+                    height: "3px"
+                    background: "var(--color-muted)"
+                    border-radius: "2px"
+                    opacity: "0.4"
+                }
+            }
+            Text("95%", small, primary, bold) {
+                style { font-family: "var(--font-family-mono)" }
+            }
+        }
+    }
+}

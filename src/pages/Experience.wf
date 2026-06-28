@@ -1,0 +1,203 @@
+Page Experience (path: "/experience", title: "Experience — Monzer Omer") {
+
+    Container {
+        style { max-width: "860px" }
+
+        SiteNav()
+
+        Heading("Experience", h1) {
+            style { margin-bottom: "0.4rem" }
+        }
+        Text("A reverse-chronological record of roles, responsibilities, and impact.", muted) {
+            style { margin-bottom: "2.5rem" }
+        }
+
+        // ── ROLES ──────────────────────────────────────────────
+
+        // SilverKey Technologies
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Row(justify: between, align: center) {
+                Text("SilverKey Technologies", bold) {
+                    style { font-size: "16px" }
+                }
+                Badge("Current", success)
+            }
+            Text("Mar 2025 — Present", muted, small) {
+                style {
+                    font-family: "var(--font-family-mono)"
+                    margin-bottom: "0.3rem"
+                }
+            }
+            Text("Senior Node.js Developer", bold, small) {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            List {
+                Text("Designed, developed, and maintained core backend functionality to improve reliability and performance across web and mobile platforms.")
+                Text("Integrated Firebase Analytics, Adjust, and MoEngage to enable data-driven marketing and user engagement strategies.")
+                Text("Optimized product view endpoints and resolved crawler-related issues to enhance SEO and product discoverability.")
+                Text("Built a high-performance image processing microservice using Rust, achieving an average performance increase of over 98%.")
+                Text("Migrated the codebase to TypeScript, improving code maintainability, type safety, and long-term scalability.")
+                Text("Improved internal documentation and tooling, streamlining onboarding and enhancing cross-team collaboration.")
+                Text("Improved platform performance by optimizing queries and system design.")
+            }
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("Rust")
+                Badge("TypeScript")
+                Badge("Node.js")
+                Badge("Firebase")
+            }
+        }
+
+        // Ecom Payments
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Text("Ecom Payments", bold) {
+                style { font-size: "16px" }
+            }
+            Text("Aug 2024 — Feb 2025", muted, small) {
+                style {
+                    font-family: "var(--font-family-mono)"
+                    margin-bottom: "0.3rem"
+                }
+            }
+            Text("Backend Developer", bold, small) {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            List {
+                Text("Designed, developed, and maintained high-performance, scalable microservices using NestJS, enabling seamless integration with front-end systems and third-party APIs.")
+                Text("Built and managed microservices for document generation, file storage, and file uploads, implementing AES encryption to ensure data security and compliance.")
+                Text("Developed a merchant management microservice to handle critical merchant data, including bank details, user information, payment methods, and fee structures.")
+                Text("Created a statistics microservice to calculate and analyze key metrics, providing actionable insights for business decision-making.")
+                Text("Utilized RabbitMQ for efficient message queuing and Docker for containerization, streamlining deployment processes and improving system reliability.")
+            }
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("NestJS")
+                Badge("RabbitMQ")
+                Badge("Docker")
+                Badge("AES")
+            }
+        }
+
+        // Circles
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Text("Circles", bold) {
+                style { font-size: "16px" }
+            }
+            Text("Dec 2022 — Jan 2024", muted, small) {
+                style {
+                    font-family: "var(--font-family-mono)"
+                    margin-bottom: "0.3rem"
+                }
+            }
+            Text("Backend Developer", bold, small) {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            List {
+                Text("Designed, developed, and maintained a highly scalable Healthcare Management System using a microservices architecture, leveraging GraphQL for optimized data fetching and Kafka for real-time data streaming and event-driven communication.")
+                Text("Built and enhanced a Community & Learning Platform to foster knowledge sharing and collaboration among users, ensuring seamless performance and scalability.")
+                Text("Collaborated closely with frontend developers to deliver high-quality, user-centric features, ensuring smooth integration between backend services and frontend applications.")
+                Text("Continuously expanded technical expertise by mastering NestJS, Rust, and GraphQL, applying these technologies to optimize platform performance, reliability, and maintainability.")
+            }
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("GraphQL")
+                Badge("Kafka")
+                Badge("Microservices")
+                Badge("NestJS")
+            }
+        }
+
+        // Alimny
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Text("Alimny", bold) {
+                style { font-size: "16px" }
+            }
+            Text("Jan 2021 — Dec 2022", muted, small) {
+                style {
+                    font-family: "var(--font-family-mono)"
+                    margin-bottom: "0.3rem"
+                }
+            }
+            Text("Backend Developer & Co-founder", bold, small) {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            List {
+                Text("Co-founded a startup providing innovative and accessible e-learning solutions for students and teachers, using technologies such as web development, machine learning, and cloud computing.")
+                Text("Designed, developed, and maintained server-side logic, APIs, and databases for web applications powering the e-learning platform using Node.js, Express.js, MongoDB, GraphQL, and Firebase.")
+                Text("Developed a robust authentication system using JWT and Firebase, and optimized database queries and indexes to improve response time and reduce server load.")
+                Text("Wrote unit tests and documentation for the codebase, and collaborated with co-founders and frontend developers to ensure application quality and performance.")
+            }
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("Node.js")
+                Badge("GraphQL")
+                Badge("Firebase")
+                Badge("MongoDB")
+            }
+        }
+
+        // EnayaTech
+        Stack {
+            Text("EnayaTech", bold) {
+                style { font-size: "16px" }
+            }
+            Text("Feb 2020 — Jul 2020", muted, small) {
+                style {
+                    font-family: "var(--font-family-mono)"
+                    margin-bottom: "0.3rem"
+                }
+            }
+            Text("Backend Developer", bold, small) {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            List {
+                Text("Designed, developed, and maintained RESTful APIs using Express.js, MySQL, and MongoDB to support various web applications, gaining hands-on experience in backend development.")
+                Text("Collaborated closely with frontend developers, designers, and product managers to deliver high-quality features and seamless user experiences.")
+                Text("Actively learned and applied new technologies and tools, participated in code reviews, documentation, and testing processes to contribute to overall codebase quality.")
+            }
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("Express.js")
+                Badge("MySQL")
+                Badge("MongoDB")
+            }
+        }
+
+        SiteFooter()
+    }
+}

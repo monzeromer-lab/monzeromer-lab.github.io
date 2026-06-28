@@ -1,0 +1,21 @@
+// AICallout — left-bordered block that explains the AI-first workflow.
+// Place on the home page below the hero.
+Component AICallout() {
+    Stack {
+        style {
+            background: "var(--color-surface-alt)"
+            border: "0.5px solid var(--color-border)"
+            border-left: "2px solid var(--color-primary)"
+            border-radius: "0 8px 8px 0"
+            padding: "1.1rem 1.25rem"
+        }
+
+        Row(align: center, gap: sm) {
+            style { margin-bottom: "6px" }
+            Icon("sparkles", small, primary)
+            Text("I code with AI — intentionally", bold)
+        }
+
+        Text("95% of my code is now written with AI assistance. I treat it as a force multiplier: I architect, review, and own the output — the AI accelerates execution. The results speak for themselves: a Rust image service that improved performance by 98%, a compiler built with WebFluent, and production systems running across MENA and Africa.")
+    }
+}

@@ -1,0 +1,23 @@
+Component SiteFooter() {
+    Divider()
+
+    Row(justify: between, align: center) {
+        style { padding: "1.5rem 0 0" }
+
+        Text("© 2026 Monzer Omer", muted, small) {
+            style { font-family: "var(--font-family-mono)" }
+        }
+
+        Row(gap: lg) {
+            Link(to: "https://github.com/monzeromer-lab") {
+                Text("GitHub", muted, small)
+            }
+            Link(to: "https://linkedin.com/in/monzeromer") {
+                Text("LinkedIn", muted, small)
+            }
+            Link(to: "mailto:monzer.a.omer@gmail.com") {
+                Text("Email", muted, small)
+            }
+        }
+    }
+}

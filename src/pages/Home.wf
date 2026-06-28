@@ -1,0 +1,247 @@
+Page Home (path: "/", title: "Monzer Omer — Senior Backend Engineer") {
+
+    // Typewriter state — cycles through four lines
+    state twLines = [
+        "> specializing in Rust, Node.js, distributed systems",
+        "> 6+ years shipping production-grade backends",
+        "> building with AI — 95% of my workflow, intentionally",
+        "> available for senior roles & architecture consulting"
+    ]
+    state twIndex   = 0
+    state twDisplay = ""
+    state twCharIdx = 0
+    state twPhase   = "typing"   // "typing" | "pausing" | "deleting"
+
+    Container {
+        style { max-width: "860px" }
+
+        SiteNav()
+
+        // ── HERO ──────────────────────────────────────────────
+        Stack {
+            style {
+                margin-bottom: "3rem"
+                @media (max-width: 768px) { margin-bottom: "2rem" }
+                @media (max-width: 480px) { margin-bottom: "1.5rem" }
+            }
+
+            // Availability eyebrow
+            Row(align: center, gap: xs) {
+                style {
+                    flex-wrap: "nowrap"
+                    margin-bottom: "1.1rem"
+                    font-family: "var(--font-family-mono)"
+                }
+                Stack {
+                    style {
+                        flex-shrink: "0"
+                        width: "8px"
+                        height: "8px"
+                        border-radius: "50%"
+                        background: "var(--color-primary)"
+                    }
+                }
+                Text("available for work", small, primary, uppercase) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        letter-spacing: "0.06em"
+                    }
+                }
+            }
+
+            // Name + title
+            Heading("Monzer Omer", h1) {
+                style {
+                    font-size: "38px"
+                    font-weight: "300"
+                    letter-spacing: "-0.03em"
+                    line-height: "1.15"
+                    margin-bottom: "0.2rem"
+                    @media (max-width: 768px) { font-size: "32px" }
+                    @media (max-width: 480px) { font-size: "28px" }
+                }
+            }
+            Heading("Senior Backend Engineer", h2) {
+                style {
+                    font-size: "38px"
+                    font-weight: "500"
+                    letter-spacing: "-0.03em"
+                    line-height: "1.15"
+                    margin-bottom: "0.9rem"
+                    @media (max-width: 768px) { font-size: "28px" }
+                    @media (max-width: 480px) { font-size: "24px" }
+                }
+            }
+
+            // Typewriter line
+            Row(align: center) {
+                style { margin-bottom: "1.6rem" }
+                Text("{twDisplay}|", muted) {
+                    style { font-family: "var(--font-family-mono)" }
+                }
+            }
+
+            // Subtitle
+            Text("Building scalable, resilient systems — with Rust, Node.js, and distributed architecture. I design for correctness and optimize for the long run.") {
+                style {
+                    font-size: "15px"
+                    font-weight: "300"
+                    line-height: "1.7"
+                    max-width: "540px"
+                    margin-bottom: "1.8rem"
+                    @media (max-width: 480px) { font-size: "14px" margin-bottom: "1.2rem" }
+                }
+            }
+
+            // AI badge
+            AIBadge()
+
+            Spacer(md)
+
+            // CTAs
+            Row(gap: sm) {
+                Button("View projects", primary) {
+                    navigate("/projects")
+                }
+                Button("Get in touch") {
+                    navigate("/contact")
+                }
+            }
+        }
+
+        Divider()
+
+        // ── AI CALLOUT ─────────────────────────────────────────
+        AICallout()
+
+        Spacer(lg)
+
+        // ── SELECTED PROJECTS ──────────────────────────────────
+        Text("Selected projects", muted, small, uppercase) {
+            style {
+                font-family: "var(--font-family-mono)"
+                letter-spacing: "0.12em"
+                margin-bottom: "1.2rem"
+            }
+        }
+
+        Stack {
+            // Project 01 — WebFluent
+            Row(align: start, gap: md) {
+                style {
+                    padding: "1rem 0"
+                    border-bottom: "0.5px solid var(--color-border)"
+                }
+                Text("01", muted, small) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        min-width: "24px"
+                    }
+                }
+                Stack {
+                    Text("WebFluent", bold)
+                    Text("A web-first language that compiles to HTML, CSS, JS, and PDF. This portfolio is built with it.") {
+                        style { color: "var(--color-muted)" }
+                    }
+                    Row(gap: xs) {
+                        style { margin-top: "8px" }
+                        Badge("Flagship", primary)
+                        Badge("Rust")
+                        Badge("Compiler Design")
+                    }
+                }
+            }
+
+            // Project 02 — Circles
+            Row(align: start, gap: md) {
+                style {
+                    padding: "1rem 0"
+                    border-bottom: "0.5px solid var(--color-border)"
+                }
+                Text("02", muted, small) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        min-width: "24px"
+                    }
+                }
+                Stack {
+                    Text("Circles", bold)
+                    Text("Business OS for clinics — EMR, telehealth, AI diagnostics, multi-branch. Live across MENA & Africa.") {
+                        style { color: "var(--color-muted)" }
+                    }
+                    Row(gap: xs) {
+                        style { margin-top: "8px" }
+                        Badge("GraphQL")
+                        Badge("Kafka")
+                        Badge("Microservices")
+                    }
+                }
+            }
+
+            // Project 03 — sys-voice-daemon
+            Row(align: start, gap: md) {
+                style { padding: "1rem 0" }
+                Text("03", muted, small) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        min-width: "24px"
+                    }
+                }
+                Stack {
+                    Text("sys-voice-daemon", bold)
+                    Text("Privacy-first offline voice-to-text for Linux. Kernel-level uinput injection, zero cloud dependency.") {
+                        style { color: "var(--color-muted)" }
+                    }
+                    Row(gap: xs) {
+                        style { margin-top: "8px" }
+                        Badge("Open Source")
+                        Badge("Rust")
+                        Badge("Linux")
+                    }
+                }
+            }
+        }
+
+        Spacer(md)
+        Link(to: "/projects") {
+            Text("All projects →", primary)
+        }
+
+        SiteFooter()
+    }
+
+    // ── TYPEWRITER LOOP ───────────────────────────────────────
+    effect {
+        eval("setTimeout(function tick() { " +
+            "var lines = _twLines(); " +
+            "var idx = _twIndex(); " +
+            "var line = lines[idx]; " +
+            "var phase = _twPhase(); " +
+            "if (phase === 'typing') { " +
+                "var ci = _twCharIdx() + 1; " +
+                "_twCharIdx.set(ci); " +
+                "_twDisplay.set(line.slice(0, ci)); " +
+                "if (ci === line.length) { " +
+                    "_twPhase.set('pausing'); " +
+                    "setTimeout(tick, 2200); " +
+                    "return; " +
+                "} " +
+                "setTimeout(tick, 38); " +
+            "} else if (phase === 'pausing') { " +
+                "_twPhase.set('deleting'); " +
+                "setTimeout(tick, 40); " +
+            "} else { " +
+                "var ci = _twCharIdx() - 1; " +
+                "_twCharIdx.set(ci); " +
+                "_twDisplay.set(line.slice(0, ci)); " +
+                "if (ci === 0) { " +
+                    "_twIndex.set((idx + 1) % lines.length); " +
+                    "_twPhase.set('typing'); " +
+                    "setTimeout(tick, 320); " +
+                    "return; " +
+                "} " +
+                "setTimeout(tick, 18); " +
+            "} " +
+        "}, 600)")
+    }
+}

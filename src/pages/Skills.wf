@@ -1,0 +1,205 @@
+Page Skills (path: "/skills", title: "Skills — Monzer Omer") {
+
+    Container {
+        style { max-width: "860px" }
+
+        SiteNav()
+
+        Heading("Infrastructure & Capabilities", h1) {
+            style { margin-bottom: "0.4rem" }
+        }
+        Text("Languages, frameworks, and systems I architect, build, and deploy with.", muted) {
+            style { margin-bottom: "2.5rem" }
+        }
+
+        // AI callout — prominent on the skills page too
+        AICallout()
+
+        Spacer(xl)
+
+        // ── SKILLS GRID ────────────────────────────────────────
+        Grid(columns: 3, gap: md) {
+            style {
+                @media (max-width: 768px) { grid-template-columns: "repeat(2, 1fr)" gap: "var(--spacing-sm)" }
+                @media (max-width: 480px) { grid-template-columns: "1fr" }
+            }
+
+            // AI & Tooling — listed first, intentionally
+            Card {
+                style {
+                    padding: "1.25rem"
+                    @media (max-width: 768px) { padding: "1rem" }
+                    @media (max-width: 480px) { padding: "0.875rem" }
+                }
+                Text("AI & Tooling", muted, small, uppercase) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        letter-spacing: "0.08em"
+                        margin-bottom: "8px"
+                    }
+                }
+                List {
+                    Text("Claude")
+                    Text("Cursor")
+                    Text("GitHub Copilot")
+                    Text("LLM APIs")
+                }
+            }
+
+            Card {
+                style {
+                    padding: "1.25rem"
+                    @media (max-width: 768px) { padding: "1rem" }
+                    @media (max-width: 480px) { padding: "0.875rem" }
+                }
+                Text("Languages", muted, small, uppercase) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        letter-spacing: "0.08em"
+                        margin-bottom: "8px"
+                    }
+                }
+                List {
+                    Text("Rust")
+                    Text("TypeScript")
+                    Text("JavaScript")
+                    Text("SQL")
+                }
+            }
+
+            Card {
+                style {
+                    padding: "1.25rem"
+                    @media (max-width: 768px) { padding: "1rem" }
+                    @media (max-width: 480px) { padding: "0.875rem" }
+                }
+                Text("Databases & Storage", muted, small, uppercase) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        letter-spacing: "0.08em"
+                        margin-bottom: "8px"
+                    }
+                }
+                List {
+                    Text("PostgreSQL")
+                    Text("MySQL")
+                    Text("MongoDB")
+                    Text("Firebase")
+                    Text("Redis")
+                }
+            }
+
+            Card {
+                style {
+                    padding: "1.25rem"
+                    @media (max-width: 768px) { padding: "1rem" }
+                    @media (max-width: 480px) { padding: "0.875rem" }
+                }
+                Text("Messaging & Streaming", muted, small, uppercase) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        letter-spacing: "0.08em"
+                        margin-bottom: "8px"
+                    }
+                }
+                List {
+                    Text("Apache Kafka")
+                    Text("RabbitMQ")
+                    Text("Event-Driven Design")
+                    Text("WebSocket")
+                    Text("gRPC")
+                }
+            }
+
+            Card {
+                style {
+                    padding: "1.25rem"
+                    @media (max-width: 768px) { padding: "1rem" }
+                    @media (max-width: 480px) { padding: "0.875rem" }
+                }
+                Text("Systems & Architecture", muted, small, uppercase) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        letter-spacing: "0.08em"
+                        margin-bottom: "8px"
+                    }
+                }
+                List {
+                    Text("Microservices Architecture")
+                    Text("Distributed Systems")
+                    Text("WebAssembly")
+                    Text("System Design")
+                    Text("Compiler Design")
+                }
+            }
+
+            Card {
+                style {
+                    padding: "1.25rem"
+                    @media (max-width: 768px) { padding: "1rem" }
+                    @media (max-width: 480px) { padding: "0.875rem" }
+                }
+                Text("DevOps & Infrastructure", muted, small, uppercase) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        letter-spacing: "0.08em"
+                        margin-bottom: "8px"
+                    }
+                }
+                List {
+                    Text("Docker")
+                    Text("Nginx")
+                    Text("Linux")
+                    Text("CI/CD")
+                    Text("Git")
+                }
+            }
+
+            Card {
+                style {
+                    padding: "1.25rem"
+                    @media (max-width: 768px) { padding: "1rem" }
+                    @media (max-width: 480px) { padding: "0.875rem" }
+                }
+                Text("Frontend & Desktop", muted, small, uppercase) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        letter-spacing: "0.08em"
+                        margin-bottom: "8px"
+                    }
+                }
+                List {
+                    Text("React")
+                    Text("React Native")
+                    Text("Electron")
+                    Text("Tauri")
+                    Text("GTK4 / libadwaita")
+                }
+            }
+
+            Card {
+                style {
+                    padding: "1.25rem"
+                    @media (max-width: 768px) { padding: "1rem" }
+                    @media (max-width: 480px) { padding: "0.875rem" }
+                }
+                Text("Security & Quality", muted, small, uppercase) {
+                    style {
+                        font-family: "var(--font-family-mono)"
+                        letter-spacing: "0.08em"
+                        margin-bottom: "8px"
+                    }
+                }
+                List {
+                    Text("AES Encryption")
+                    Text("JWT / OAuth")
+                    Text("Unit Testing")
+                    Text("Code Review")
+                    Text("Agile / Scrum")
+                }
+            }
+        }
+
+        SiteFooter()
+    }
+}

@@ -1,0 +1,94 @@
+Page Education (path: "/education", title: "Education — Monzer Omer") {
+
+    Container {
+        style { max-width: "860px" }
+
+        SiteNav()
+
+        Heading("Education", h1) {
+            style { margin-bottom: "2.5rem" }
+        }
+
+        // ── DEGREE ─────────────────────────────────────────────
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Text("National Ribat University", bold) {
+                style {
+                    font-size: "18px"
+                    margin-bottom: "2px"
+                }
+            }
+            Text("Bachelor of Information Technology", muted, small) {
+                style { margin-bottom: "2px" }
+            }
+            Text("Oct 2018 — Feb 2025", muted, small) {
+                style { font-family: "var(--font-family-mono)" }
+            }
+
+            Spacer(sm)
+
+            Text("Completed a comprehensive IT degree over nearly 7 years, overcoming challenges such as COVID-19, political unrest, and revolution. Gained expertise in programming fundamentals, data structures, software engineering, database management, system analysis, and network technologies.")
+
+            Spacer(sm)
+
+            Text("Highlights:", bold, small) {
+                style { margin-bottom: "4px" }
+            }
+            List {
+                Text("Developed practical skills through semester-long projects starting from Semester 3, applying theoretical knowledge to real-world IT solutions")
+                Text("Enhanced soft skills through courses in communication, research methodology, and professional ethics")
+                Text("Balanced academics with work experience, gaining hands-on industry insights and strengthening adaptability and time management")
+                Text("Built a strong foundation in IT, combining technical expertise with problem-solving and teamwork skills")
+            }
+
+            Spacer(sm)
+            Text("Activities: GDSC, Open Days, Juniors Welcoming", muted, small)
+        }
+
+        // ── CERTIFICATIONS ─────────────────────────────────────
+        Heading("Certifications", h2) {
+            style { margin-bottom: "1.5rem" }
+        }
+
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "1.5rem"
+                margin-bottom: "1.5rem"
+            }
+
+            Text("Fundamentals of Backend Engineering", bold)
+            Text("Udemy — Aug 2025", muted, small) {
+                style {
+                    font-family: "var(--font-family-mono)"
+                    margin-bottom: "4px"
+                }
+            }
+            Text("Deep dive into the protocols and communication patterns that power modern backend systems.")
+        }
+
+        Stack {
+            Row(gap: sm) {
+                Badge("Coursera")
+                Badge("2020")
+            }
+
+            Spacer(sm)
+
+            Text("Server-side Development with NodeJS, Express and MongoDB", bold) {
+                style { margin-bottom: "4px" }
+            }
+
+            Text("Introduction to HTML5 · Interactivity with JavaScript · Front-End Web UI Frameworks: Bootstrap 4 · IT Project Management · Front-End Web Development with React · Introduction to TCP/IP · Introduction to CSS3 · Computer Security and Systems Management", muted, small) {
+                style { line-height: "1.6" }
+            }
+        }
+
+        SiteFooter()
+    }
+}

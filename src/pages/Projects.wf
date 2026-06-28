@@ -1,0 +1,321 @@
+Page Projects (path: "/projects", title: "Projects — Monzer Omer") {
+
+    Container {
+        style { max-width: "860px" }
+
+        SiteNav()
+
+        Heading("Projects", h1) {
+            style { margin-bottom: "0.4rem" }
+        }
+        Text("Things I've designed, built, and shipped.", muted) {
+            style { margin-bottom: "2.5rem" }
+        }
+
+        // ── PROJECT LIST ───────────────────────────────────────
+
+        // 01 WebFluent
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Row(justify: between, align: center) {
+                style { margin-bottom: "0.5rem" }
+                Link(to: "https://github.com/monzeromer-lab/WebFluent") {
+                    Text("WebFluent", bold) {
+                        style { font-size: "18px" }
+                    }
+                }
+                Badge("Flagship", primary)
+            }
+
+            Text("A web-first programming language that compiles to HTML, CSS, JavaScript, and PDF.") {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            Text("WebFluent replaces the traditional web stack with a single, expressive language. It features reactive state, declarative UI components, built-in routing, i18n, SSG, and PDF output — all from .wf source files. This portfolio is built entirely with WebFluent.")
+
+            Spacer(sm)
+
+            Text("Key features:", bold, small) {
+                style { margin-bottom: "4px" }
+            }
+            List {
+                Text("Reactive state with automatic UI updates")
+                Text("Full component library — layout, forms, navigation, data display")
+                Text("Static site generation with JS hydration")
+                Text("PDF compilation with page layout, headers, footers")
+                Text("Built-in i18n with automatic RTL support")
+            }
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("Rust")
+                Badge("Compiler Design")
+                Badge("Language Design")
+                Badge("PDF Generation")
+            }
+        }
+
+        // 02 Circles
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Row(justify: between, align: center) {
+                style { margin-bottom: "0.5rem" }
+                Link(to: "https://www.circles.clinic/ar/") {
+                    Text("Circles", bold) {
+                        style { font-size: "18px" }
+                    }
+                }
+                Badge("Team Lead", primary)
+            }
+
+            Text("A comprehensive business operating system for small and medium clinics.") {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            Text("Circles manages every aspect of clinic operations — from financials and patient scheduling to HIPAA-compliant EMR, telehealth, AI-powered diagnostics, multi-branch support, and branded patient apps. Available across MENA and Africa through local partners.")
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("GraphQL")
+                Badge("Kafka")
+                Badge("Microservices")
+                Badge("Healthcare")
+            }
+        }
+
+        // 03 Al-Hakeem
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Row(justify: between, align: center) {
+                style { margin-bottom: "0.5rem" }
+                Link(to: "https://platform.alhakeem.app/") {
+                    Text("Al-Hakeem", bold) {
+                        style { font-size: "18px" }
+                    }
+                }
+                Badge("Engineering Lead", primary)
+            }
+
+            Text("A healthcare platform connecting physicians with medical services.") {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            Text("Al-Hakeem streamlines physician onboarding and medical service delivery. The platform supports bilingual operation in Arabic and English, serving healthcare professionals across the region with credential management and service coordination.")
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("Node.js")
+                Badge("TypeScript")
+                Badge("Healthcare")
+            }
+        }
+
+        // 04 Dabdoob
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Row(justify: between, align: center) {
+                style { margin-bottom: "0.5rem" }
+                Link(to: "https://dabdoob.com/") {
+                    Text("Dabdoob", bold) {
+                        style { font-size: "18px" }
+                    }
+                }
+                Badge("Featured", primary)
+            }
+
+            Text("A mobile-first e-commerce platform serving the Middle East.") {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            Text("Dabdoob is a cross-platform shopping application available on iOS and Android, operating across Kuwait, Saudi Arabia, UAE, Qatar, and Bahrain. The platform delivers exclusive deals and a seamless mobile shopping experience across the GCC region.")
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("Node.js")
+                Badge("E-Commerce")
+                Badge("Mobile")
+            }
+        }
+
+        // 05 sys-voice-daemon
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Row(justify: between, align: center) {
+                style { margin-bottom: "0.5rem" }
+                Link(to: "https://github.com/monzeromer-lab/sys-voice-daemon") {
+                    Text("sys-voice-daemon", bold) {
+                        style { font-size: "18px" }
+                    }
+                }
+                Badge("Open Source")
+            }
+
+            Text("Privacy-first, offline voice-to-text daemon for Linux.") {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            Text("A system-level daemon that automatically detects active text fields and injects transcriptions into any window. Uses a kernel-level virtual keyboard via uinput for seamless, privacy-respecting voice input — entirely offline with no cloud dependency.")
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("Rust")
+                Badge("Linux")
+                Badge("uinput")
+                Badge("Systems")
+            }
+        }
+
+        // 06 rubiks-trainer
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Row(justify: between, align: center) {
+                style { margin-bottom: "0.5rem" }
+                Link(to: "https://github.com/monzeromer-lab/rubik-cube-trainer") {
+                    Text("rubiks-trainer", bold) {
+                        style { font-size: "18px" }
+                    }
+                }
+                Badge("Open Source")
+            }
+
+            Text("A virtual 3D Rubik's cube game and speedcubing trainer built in Rust.") {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            Text("Supports 2×2, 3×3, 4×4, and 5×5 cubes with custom-built solvers written from scratch — no external solver crates. Features a progressive learning track from beginner LBL through advanced CFOP, plus a daily-use timer and drill mode designed for speedcubers.")
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("Rust")
+                Badge("Bevy")
+                Badge("3D Graphics")
+                Badge("Algorithms")
+            }
+        }
+
+        // 07 Oxide Explorer
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Row(justify: between, align: center) {
+                style { margin-bottom: "0.5rem" }
+                Link(to: "https://github.com/monzeromer-lab/oxide-explorer") {
+                    Text("Oxide Explorer", bold) {
+                        style { font-size: "18px" }
+                    }
+                }
+                Badge("Open Source")
+            }
+
+            Text("A blazing-fast, power-user-centric file manager built with Rust, GTK4, and libadwaita.") {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            Text("Combines the visual elegance of GNOME Files with the advanced productivity features of Directory Opus and Total Commander. Designed for developers and power users who need dual-pane browsing, batch operations, and keyboard-driven workflows in a native Linux environment.")
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("Rust")
+                Badge("GTK4")
+                Badge("libadwaita")
+                Badge("Linux Desktop")
+            }
+        }
+
+        // 08 xbuild
+        Stack {
+            style {
+                border-bottom: "0.5px solid var(--color-border)"
+                padding-bottom: "2rem"
+                margin-bottom: "2rem"
+            }
+
+            Row(justify: between, align: center) {
+                style { margin-bottom: "0.5rem" }
+                Link(to: "https://github.com/rust-mobile/xbuild") {
+                    Text("xbuild", bold) {
+                        style { font-size: "18px" }
+                    }
+                }
+                Badge("Contribution")
+            }
+
+            Text("A build tool for Rust projects with cross-compilation and publishing to all major app stores.") {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            Text("Contributed ARM 32-bit target support to xbuild, expanding the tool's cross-compilation reach to legacy and embedded ARM devices. xbuild aims to make native app development as easy as web development — build once, publish everywhere.")
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("Rust")
+                Badge("Cross-Compilation")
+                Badge("ARM")
+                Badge("Open Source")
+            }
+        }
+
+        // 09 Micro-kernel Architecture
+        Stack {
+            Row(justify: between, align: center) {
+                style { margin-bottom: "0.5rem" }
+                Link(to: "https://github.com/monzeromer-lab/micro-kernel-backend") {
+                    Text("Micro-kernel Architecture", bold) {
+                        style { font-size: "18px" }
+                    }
+                }
+                Badge("Tech Talk", primary)
+            }
+
+            Text("A micro-kernel web backend where business logic lives in dynamically-loaded WebAssembly modules.") {
+                style { margin-bottom: "0.75rem" }
+            }
+
+            Text("The server core is intentionally minimal — routing, auth, and module lifecycle. All business logic runs in sandboxed WebAssembly modules that can be deployed, hot-swapped, rolled back, call external services, and call each other via an internal IPC layer. A demonstration of how micro-kernel principles apply to backend architecture.")
+
+            Spacer(sm)
+            Row(gap: xs) {
+                Badge("Rust")
+                Badge("WebAssembly")
+                Badge("Systems Design")
+                Badge("Architecture")
+            }
+        }
+
+        SiteFooter()
+    }
+}

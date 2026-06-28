@@ -1,0 +1,21 @@
+{
+    "name": "Monzer Omer — Senior Backend Engineer",
+    "theme": {
+        "name": "default",
+        "tokens": {
+            "color-primary": "#2563EB",
+            "color-primary-dark": "#1d4ed8",
+            "font-family": "Inter, system-ui, sans-serif",
+            "font-family-mono": "'JetBrains Mono', 'Fira Code', monospace"
+        }
+    },
+    "build": {
+        "output": "./",
+        "ssg": true,
+        "output_type": "static"
+    },
+    "meta": {
+        "description": "Senior Backend Engineer specializing in Rust, Node.js, and Distributed Systems. AI-augmented workflow.",
+        "author": "Monzer Omer"
+    }
+}
