@@ -1,55 +1,71 @@
 /* ─── Custom Responsive Overrides ───────────────────── */
-/* These override the base WebFluent library for better mobile UX */
+/* Applied AFTER base WebFluent CSS — takes precedence via cascade */
 
+/* ── Tablet & Mobile (≤768px) ──────────────────────── */
 @media (max-width: 768px) {
-    /* Replace column layout with wrapping */
-    .wf-row {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-    }
 
-    h3.wf-heading {
-        font-size: var(--font-size-lg);
-    }
+  /* Override base .wf-row column rule — allow wrapping instead of forcing column.
+     This lets inner rows (badges, contact links, etc.) wrap naturally. */
+  .wf-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  /* Force the main layout row to stack (sidebar + content) on mobile.
+     !important needed to beat JS-inlined flex-direction:row */
+  #app > .wf-row {
+    flex-direction: column !important;
+  }
+
+  /* Exception: mobile top bar MUST stay horizontal */
+  #app > .wf-row:first-of-type {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    justify-content: space-between;
+    display: flex !important;
+    padding: 0.75rem 1.25rem;
+  }
+
+  /* Keep inner content rows horizontal (badges, links, etc.) */
+  .wf-card .wf-row,
+  .wf-stack .wf-row,
+  .wf-container .wf-container .wf-row {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* Hide desktop sidebar on mobile */
+  #app > .wf-row > .wf-container:first-of-type {
+    display: none;
+  }
+
+  h3.wf-heading { font-size: var(--font-size-lg); }
+  h4.wf-heading { font-size: var(--font-size-base); }
+}
     h4.wf-heading {
         font-size: var(--font-size-base);
     }
-
-    /* Hide desktop sidebar on mobile (pre-JS fallback) */
-    #app > .wf-row:nth-of-type(2) > .wf-container:first-of-type {
-        display: none;
-    }
-
-    /* Ensure mobile top bar stays horizontal */
-    #app > .wf-row:first-of-type {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: space-between;
-        display: flex;
-    }
-
-    /* Mobile top bar brand text sizing */
-    #app > .wf-row:first-of-type .wf-text--bold {
-        font-size: 0.85rem;
-    }
 }
 
+/* ── Phone (≤480px) ────────────────────────────────── */
 @media (max-width: 480px) {
     h1.wf-heading {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-xl) !important;
     }
     h2.wf-heading {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-lg) !important;
     }
     h3.wf-heading {
-        font-size: var(--font-size-base);
+        font-size: var(--font-size-base) !important;
     }
 
     .wf-card {
         padding: var(--spacing-md) !important;
+        margin-bottom: var(--spacing-md) !important;
     }
+
     .wf-container {
         padding: 0 var(--spacing-xs);
     }
@@ -73,7 +89,7 @@
         height: var(--spacing-md);
     }
 
-    /* Mobile touch improvements */
+    /* Touch: 44px minimum targets, kill 300ms tap delay */
     a,
     button,
     .wf-btn,
@@ -84,10 +100,24 @@
         min-height: 44px;
         min-width: 44px;
     }
+
     #app > .wf-row:first-of-type {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 1rem !important;
     }
-    #app > .wf-row:first-of-type .wf-text--bold {
-        font-size: 0.8rem;
+
+    body {
+        font-size: var(--font-size-sm);
+    }
+
+    /* Prevent horizontal overflow */
+    body,
+    #app {
+        overflow-x: hidden;
+    }
+    img,
+    pre,
+    code,
+    table {
+        max-width: 100%;
     }
 }
