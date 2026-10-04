@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 37 823 454" role="img" aria-label="MO">
+<title>MO</title>
+<defs>
+<mask id="mo-m" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="520"><rect width="900" height="520" fill="#fff"/><circle cx="640" cy="250" r="212" fill="#000"/><path d="M408.0 246.0L512.0 246.0M376.0 262.0L296.0 368.0M296.0 368.0L225.6 382.1M255.9 438.6L296.0 368.0M337.0 390.8L436.0 304.0" stroke="#000" stroke-width="23" stroke-linecap="round" fill="none"/><g fill="#000"><circle cx="388" cy="246" r="31.0"/><circle cx="532" cy="246" r="31.0"/><circle cx="206" cy="386" r="31.0"/><circle cx="322" cy="404" r="31.0"/><circle cx="246" cy="456" r="31.0"/></g></mask>
+<mask id="mo-o" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="520"><rect width="900" height="520" fill="#fff"/><path d="M408.0 246.0L512.0 246.0M376.0 262.0L296.0 368.0M296.0 368.0L225.6 382.1M255.9 438.6L296.0 368.0M337.0 390.8L436.0 304.0" stroke="#000" stroke-width="23" stroke-linecap="round" fill="none"/><g fill="#000"><circle cx="388" cy="246" r="31.0"/><circle cx="532" cy="246" r="31.0"/><circle cx="206" cy="386" r="31.0"/><circle cx="322" cy="404" r="31.0"/><circle cx="246" cy="456" r="31.0"/></g></mask>
+</defs>
+<g mask="url(#mo-m)"><path fill="#4C4D4F" d="M106 60H206L306.5 272.9L397.0 62.0L421.0 70.0L300.0 352.0ZM72 60H134V446H72ZM38 52H182V72H38ZM38 428H164V446H38ZM400 60H466V266L400 304ZM372 52H494V72H372Z"/><path fill="#2B5178" d="M400 322L466 284V446H400Z"/></g>
+<path mask="url(#mo-o)" fill="#4C4D4F" fill-rule="evenodd" d="M435 250a205 205 0 1 0 410 0a205 205 0 1 0 -410 0ZM513 250a127 127 0 1 0 254 0a127 127 0 1 0 -254 0Z"/>
+<path stroke="#2B5178" d="M408.0 246.0L512.0 246.0M376.0 262.0L296.0 368.0M296.0 368.0L225.6 382.1M255.9 438.6L296.0 368.0M337.0 390.8L436.0 304.0" stroke-width="13" stroke-linecap="round" fill="none"/>
+<g stroke="#2B5178" fill="none" stroke-width="12"><circle cx="388" cy="246" r="20"/><circle cx="532" cy="246" r="20"/><circle cx="206" cy="386" r="20"/><circle cx="322" cy="404" r="20"/><circle cx="246" cy="456" r="20"/></g>
+</svg>

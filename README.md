@@ -38,7 +38,13 @@ wf verify         # Load every built page in headless Chrome
 Nothing built is committed. `.github/workflows/deploy.yml` installs the
 pinned `wf` release, runs `wf check --deny-warnings`, builds, and publishes
 `build/` to GitHub Pages on every push to `master`. Pull requests are checked
-and built but not deployed. To move to a new WebFluent release, change
+and built but not deployed.
+
+Between the build and the upload, `tools/pages.py` finishes the output for
+GitHub Pages: a `<route>.html` beside each `<route>/index.html`, so `/contact`
+is served directly instead of redirecting to `/contact/`; a `Person` in the
+structured data where WebFluent writes an `Organization`; and the sharing
+card's size and alt text. To move to a new WebFluent release, change
 `WF_VERSION` in the workflow. The custom domain, `monzeromer.dev`, is
 `public/CNAME`, copied into every build.
 

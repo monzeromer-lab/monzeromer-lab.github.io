@@ -1,0 +1,97 @@
+<!doctype html>
+<!-- The sharing card: what a link to the site shows on LinkedIn, X, Slack,
+     WhatsApp and the rest. `./build.sh` renders it to public/og.png
+     (1200x630) and brand/github-social-preview.png (1280x640); the layout
+     follows the window, so both sizes come from this one file. MO Systems,
+     dark: graphite is structure, blue is intent, cyan is data. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Monzer Omer — sharing card</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=block">
+<style>
+  :root {
+    --canvas: #0E1012; --surface: #17191C; --raised: #1F2225; --border: #2C3035;
+    --ink: #EEF0F2; --ink-muted: #A9AEB4; --ink-subtle: #878D93;
+    --brand: #3D6FA3; --brand-ink: #8FBDE7; --brand-trace: #6A9BCB;
+    --accent: #2F9FB6; --accent-ink: #6FD3E6; --accent-subtle: #10313A;
+    --term-bg: #101315; --term-ink: #E6E9EC; --term-dim: #959BA1;
+    --syn-key: #8FBDE7; --syn-str: #7FD6A8; --syn-num: #E0B070; --syn-fn: #6FD3E6; --syn-punct: #B3BAC0;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 100vw; height: 100vh; overflow: hidden; background: var(--canvas); }
+  body {
+    font-family: "Inter", system-ui, sans-serif; color: var(--ink);
+    -webkit-font-smoothing: antialiased; position: relative;
+    display: grid; grid-template-columns: 1.08fr 0.92fr; align-items: center; gap: 56px;
+    padding: 64px 72px;
+  }
+  /* The circuit, as a quiet field behind everything: the same 13px traces
+     and ringed nodes as the mark, at a low contrast. */
+  .field { position: absolute; inset: 0; z-index: 0; }
+  .field path, .field circle { fill: none; stroke: var(--border); stroke-width: 2; }
+  .field circle { fill: var(--canvas); }
+  .field .lit { stroke: var(--brand); }
+  .left, .right { position: relative; z-index: 1; }
+
+  .left { display: flex; flex-direction: column; gap: 22px; }
+  .logo { width: 172px; height: auto; margin-bottom: 10px; }
+  .overline { font-size: 15px; line-height: 18px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-subtle); }
+  h1 { font-size: 84px; line-height: 84px; font-weight: 800; letter-spacing: -0.03em; }
+  .lead { font-size: 26px; line-height: 36px; color: var(--ink-muted); max-width: 560px; }
+  .lead b { color: var(--ink); font-weight: 600; }
+  .foot { display: flex; align-items: center; gap: 16px; margin-top: 14px; }
+  .url { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 500; color: var(--brand-ink); }
+  .pill { display: inline-flex; align-items: center; gap: 9px; height: 34px; padding: 0 14px; border-radius: 999px;
+          background: var(--accent-subtle); border: 1px solid var(--accent); color: var(--accent-ink); font-size: 16px; font-weight: 500; }
+  .pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+  .term { background: var(--term-bg); border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.5), 0 24px 60px rgba(0,0,0,0.55); }
+  .bar { display: flex; justify-content: space-between; align-items: center; height: 46px; padding: 0 20px;
+         border-bottom: 1px solid rgba(255,255,255,0.06); font-family: "JetBrains Mono", monospace; font-size: 15px; color: var(--term-dim); }
+  pre { padding: 20px 22px 24px; font-family: "JetBrains Mono", monospace; font-size: 19px; line-height: 32px; color: var(--term-ink); white-space: pre; }
+  .k { color: var(--syn-key); } .s { color: var(--syn-str); } .n { color: var(--syn-num); }
+  .f { color: var(--syn-fn); } .p { color: var(--syn-punct); } .c { color: var(--term-dim); }
+</style>
+</head>
+<body>
+  <svg class="field" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M200 0V18L236 54H520"/>
+    <path d="M0 560H140L210 490H460"/>
+    <path d="M640 0V40L700 100H1200"/>
+    <path d="M760 630V590L820 530H1200"/>
+    <path class="lit" d="M1200 596H1080L1046 562"/>
+    <circle cx="520" cy="54" r="7"/><circle cx="460" cy="490" r="7"/>
+    <circle cx="700" cy="100" r="7"/><circle cx="820" cy="530" r="7"/>
+    <circle class="lit" cx="1046" cy="562" r="7"/>
+  </svg>
+
+  <div class="left">
+    <img class="logo" src="mo-logo-on-dark.svg" alt="">
+    <p class="overline">Senior backend engineer</p>
+    <h1>Monzer Omer</h1>
+    <p class="lead">Scalable, resilient backends in <b>Rust</b>, <b>Node.js</b> and <b>distributed systems</b>.</p>
+    <div class="foot">
+      <span class="url">monzeromer.dev</span>
+      <span class="pill">Available for work</span>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="term">
+      <div class="bar"><span>~/profile.toml</span><span>toml</span></div>
+<pre><span class="k">[engineer]</span>
+<span class="f">name</span>     <span class="p">=</span> <span class="s">"Monzer Omer"</span>
+<span class="f">role</span>     <span class="p">=</span> <span class="s">"Engineering lead"</span>
+<span class="f">since</span>    <span class="p">=</span> <span class="n">2020</span>
+<span class="f">ai_share</span> <span class="p">=</span> <span class="n">0.95</span>
+
+<span class="k">[engineer.focus]</span>
+<span class="f">langs</span>    <span class="p">= [</span><span class="s">"Rust"</span><span class="p">,</span> <span class="s">"TypeScript"</span><span class="p">]</span>
+<span class="f">systems</span>  <span class="p">= [</span><span class="s">"Kafka"</span><span class="p">,</span> <span class="s">"RabbitMQ"</span><span class="p">]</span>
+<span class="c"># Builds a language on the side.</span></pre>
+    </div>
+  </div>
+</body>
+</html>

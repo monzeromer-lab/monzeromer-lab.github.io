@@ -37,7 +37,9 @@ jobs:
           wf check --format github --deny-warnings
 
       - name: Build
-        run: wf build
+        run: |
+          wf build
+          python3 tools/pages.py build
 
       - uses: actions/upload-pages-artifact@v3
         with:

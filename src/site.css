@@ -105,7 +105,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--brand-ring); ou
 @media (min-width: 768px) { .site-header-inner { height: 60px; padding: 0 40px; } }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--color-text); text-decoration: none; flex-wrap: nowrap; }
 .brand:hover { text-decoration: none; }
-.mark { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 6px; background: var(--color-primary); color: #ffffff; font-family: var(--font-family-mono); font-size: 12px; font-weight: 600; letter-spacing: -0.02em; margin: 0; }
+/* The mark: the on-dark drawing by default, the light one when a reader picks light. */
+.logo { display: block; width: auto; height: 26px; }
+.logo-on-light, :root[data-theme="light"] .logo-on-dark { display: none; }
+:root[data-theme="light"] .logo-on-light { display: block; }
 .brand-name { margin: 0; font-size: 15px; line-height: 20px; font-weight: 600; letter-spacing: -0.004em; white-space: nowrap; }
 .nav { display: none; align-items: center; gap: 2px; flex-wrap: nowrap; }
 .nav a, .menu a { display: inline-flex; align-items: center; border-radius: 4px; color: var(--color-text-muted); text-decoration: none; font-size: 13px; line-height: 16px; font-weight: 500; transition: background 120ms ease, color 120ms ease; }

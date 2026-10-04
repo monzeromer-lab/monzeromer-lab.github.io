@@ -23,9 +23,11 @@
   },
   "meta": {
     "title": "Monzer Omer — Senior backend engineer",
-    "description": "Senior backend engineer working in Rust, Node.js and distributed systems.",
+    "description": "Monzer Omer, senior backend engineer: Rust, Node.js and distributed systems. Projects, experience and how to reach me.",
     "lang": "en",
     "favicon": "/favicon.svg",
+    "touch_icon": "/apple-touch-icon.png",
+    "image": "/og.png",
     "site_url": "https://monzeromer.dev",
     "site_name": "Monzer Omer",
     "sitemap": true,
