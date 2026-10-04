@@ -1,91 +1,56 @@
 #!/usr/bin/env python3
 """The MO mark, as geometry.
 
-Redrawn from the original raster: a serif M and an O in graphite, and a
-blue circuit trace that runs out of the M's right stem past five nodes.
-Every SVG under brand/ and the site's icons are written from here, so a
-change to the mark is a change to these numbers, then `./build.sh`.
+A geometric M and O in graphite, drawn on MO Systems' 4px grid at the
+weight Inter has at display size. The O overlaps the M's right stem and cuts
+into it, as in the original mark. Below the cut the stem turns blue, and
+leaves the letter as a circuit trace — along, then up at 45°, the angle every
+trace in the system takes — into a ringed node at the centre of the O.
+Graphite is structure, blue is intent.
 
-Coordinates are in a 880 x 500 drawing space; the viewBox crops to the
-mark with a little room. The gaps between the letters and the trace are
-masks, not white strokes, so the mark sits on any background.
+Every SVG under brand/ and the site's icons are written from here, so a
+change to the mark is a change to these numbers, then `brand/build.sh`.
+
+The clear space between the letters, and between a letter and the trace,
+is a mask, not a white stroke, so the mark sits on any background.
 """
-import math
 import sys
 
 # ── The palette (MO Systems) ─────────────────────────────────────────────
-GRAPHITE = "#4C4D4F"        # graphite-800: the M and the O, on light
-BLUE = "#2B5178"            # blue-800: the trace, on light
+GRAPHITE = "#4C4D4F"          # graphite-800, on light
+BLUE = "#2B5178"              # blue-800, on light
 GRAPHITE_ON_DARK = "#E2E5E8"  # graphite-200
 BLUE_ON_DARK = "#6A9BCB"      # blue-400
+SURFACE_DARK = "#17191C"      # surface, dark: the icon's tile
 
-# ── The trace ────────────────────────────────────────────────────────────
-TRACE = 13                  # stroke width of a trace
-NODE_R = 20                 # radius of a node, to the middle of its ring
-NODE_RING = 12              # ring width
-GAP = 5                     # clear space the letters keep from the trace
-
-NODES = {"a": (388, 246), "b": (532, 246), "c": (206, 386), "d": (322, 404), "e": (246, 456)}
-JUNCTION = (296, 368)
-
-# ── The O ────────────────────────────────────────────────────────────────
-O_CENTRE, O_OUTER, O_INNER = (640, 250), 205, 127
+# ── Grid and weights ─────────────────────────────────────────────────────
+TOP, BASE = 8, 120            # cap height 112, on the 4px grid
+STROKE = 20                   # the letters' weight
+TRACE = 8                     # a trace's width
+NODE_R = 9                    # a node's radius, to the middle of its ring
+GAP = 6                       # clear space around the trace and the O
 
 # ── The M ────────────────────────────────────────────────────────────────
-V_POINT = (300, 352)                             # the bottom of the V
-THIN_TOP_L, THIN_TOP_R = (397, 62), (421, 70)    # thin diagonal into the right stem
-THICK_TOP = (106, 206)                           # x range of the heavy diagonal at y=60
-FOOT_CUT = ((400, 322), (466, 284))              # slanted top of the blue foot
+# One mitred stroke — stem, diagonal, diagonal, stem — clipped flat to the
+# cap height and the baseline, so the joins are sharp and the ends square.
+M_BOX = (8, TOP, 120, BASE)   # left, top, right, bottom
+M_STROKE = "M18 140V20L64 100L110 20V140"
+# The right stem turns blue below a 45° cut; GAP apart, measured vertically.
+GRAPHITE_PART = "M0 0H130V62L88 104V140H0Z"
+BLUE_FOOT = "M88 110L130 68V140H88Z"
 
-VIEWBOX = (30, 37, 823, 454)
+# ── The O ────────────────────────────────────────────────────────────────
+O_CENTRE = (174, 64)
+O_OUTER = 56                  # as tall as the M
+O_INNER = O_OUTER - STROKE
+O_CLEAR = O_OUTER + GAP       # how far the O cuts into the M
 
+# ── The trace ────────────────────────────────────────────────────────────
+# Out of the blue foot, along, up at 45° into the node at the O's centre.
+TRACE_START = (102, 104)
+TRACE_ELBOW = (134, 104)
 
-def _toward(p, q, d):
-    dx, dy = q[0] - p[0], q[1] - p[1]
-    n = math.hypot(dx, dy)
-    return (p[0] + dx / n * d, p[1] + dy / n * d)
-
-
-def _meet(p1, d1, p2, d2):
-    det = d1[0] * -d2[1] - d1[1] * -d2[0]
-    t = ((p2[0] - p1[0]) * -d2[1] - (p2[1] - p1[1]) * -d2[0]) / det
-    return (p1[0] + t * d1[0], p1[1] + t * d1[1])
-
-
-def _f(p):
-    return f"{p[0]:.1f} {p[1]:.1f}"
-
-
-def _trace_path(node_r=None):
-    node_r = node_r or NODE_R
-    n = NODES
-    # (from, to, end at a node's ring?) for each end
-    segs = [
-        (n["a"], n["b"], True, True),
-        (n["a"], JUNCTION, True, False),
-        (JUNCTION, n["c"], False, True),
-        (n["e"], JUNCTION, True, False),
-        (n["d"], (436, 304), True, False),
-    ]
-    out = []
-    for p, q, tp, tq in segs:
-        a = _toward(p, q, node_r) if tp else p
-        b = _toward(q, p, node_r) if tq else q
-        out.append(f"M{_f(a)}L{_f(b)}")
-    return "".join(out)
-
-
-def _m_path():
-    d_thin = (THIN_TOP_R[0] - V_POINT[0], THIN_TOP_R[1] - V_POINT[1])
-    notch = _meet((THICK_TOP[1], 60), (118, 250), THIN_TOP_L, d_thin)
-    return (
-        f"M{THICK_TOP[0]} 60H{THICK_TOP[1]}L{_f(notch)}L{_f(THIN_TOP_L)}L{_f(THIN_TOP_R)}L{_f(V_POINT)}Z"
-        "M72 60H134V446H72Z"            # left stem
-        "M38 52H182V72H38Z"             # left top serif
-        "M38 428H164V446H38Z"           # left foot serif
-        f"M400 60H466V{FOOT_CUT[1][1] - 18}L400 {FOOT_CUT[0][1] - 18}Z"  # right stem, above the foot
-        "M372 52H494V72H372Z"           # right top serif
-    )
+VIEWBOX = (0, 0, 236, 128)
 
 
 def _ring(c, r):
@@ -93,62 +58,67 @@ def _ring(c, r):
     return f"M{x - r} {y}a{r} {r} 0 1 0 {2 * r} 0a{r} {r} 0 1 0 {-2 * r} 0Z"
 
 
-def mark(graphite, blue, *, ids="mo", style="", viewbox=VIEWBOX, size=None,
-         trace=TRACE, node_r=NODE_R, ring=NODE_RING, tile=None, tile_radius=0):
-    """The mark as an SVG document. `graphite`/`blue` may be colours or
-    `currentColor`; `style` is an optional <style> body (for a favicon that
-    follows the browser's theme, give the classes `g` and `b` colours)."""
-    tp = _trace_path(node_r)
-    halo_w = trace + 2 * GAP
-    halo_nodes = "".join(
-        f'<circle cx="{x}" cy="{y}" r="{node_r + ring / 2 + GAP}"/>' for x, y in NODES.values()
-    )
-    nodes = "".join(f'<circle cx="{x}" cy="{y}" r="{node_r}"/>' for x, y in NODES.values())
-    foot = f"M{FOOT_CUT[0][0]} {FOOT_CUT[0][1]}L{FOOT_CUT[1][0]} {FOOT_CUT[1][1]}V446H{FOOT_CUT[0][0]}Z"
-    o = _ring(O_CENTRE, O_OUTER) + _ring(O_CENTRE, O_INNER)
-    vb = " ".join(str(v) for v in viewbox)
+def _trace(node_r):
+    """The trace's path, ending at the node's ring."""
+    cx, cy = O_CENTRE
+    d = node_r / 2 ** 0.5
+    return (f"M{TRACE_START[0]} {TRACE_START[1]}H{TRACE_ELBOW[0]}"
+            f"L{cx - d:.1f} {cy + d:.1f}")
+
+
+def mark(graphite, blue, *, ids="mo", viewbox=VIEWBOX, size=None, trace=TRACE,
+         node_r=NODE_R, tile=None, tile_radius=0, title=True):
+    """The mark as an SVG document. `graphite` and `blue` are colours (or
+    `currentColor`); `tile` puts it on a rounded square of that colour."""
+    x0, y0, w, h = viewbox
+    vb = f"{x0:g} {y0:g} {w:g} {h:g}"
     dims = f' width="{size[0]}" height="{size[1]}"' if size else ""
-    g_attr = 'class="g"' if style else f'fill="{graphite}"'
-    b_fill = 'class="b"' if style else f'fill="{blue}"'
-    b_stroke = 'class="bs"' if style else f'stroke="{blue}"'
-    style_el = f"<style>{style}</style>" if style else ""
-    if tile:
-        x, y, w, h = viewbox
-        style_el += f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{tile_radius}" fill="{tile}"/>'
-    cut_trace = (
-        f'<path d="{tp}" stroke="#000" stroke-width="{halo_w}" stroke-linecap="round" fill="none"/>'
-        f'<g fill="#000">{halo_nodes}</g>'
-    )
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}"{dims} role="img" aria-label="MO">
-<title>MO</title>{style_el}
+    cx, cy = O_CENTRE
+    path = _trace(node_r)
+    clear_trace = (f'<path d="{path}" stroke="#000" stroke-width="{trace + 2 * GAP}" fill="none" '
+                   f'stroke-linejoin="round"/>'
+                   f'<circle cx="{cx}" cy="{cy}" r="{node_r + trace / 2 + GAP}" fill="#000"/>')
+    clear_o = f'<circle cx="{cx}" cy="{cy}" r="{O_CLEAR}" fill="#000"/>'
+
+    def mask(name, cut):
+        return (f'<mask id="{ids}-{name}" maskUnits="userSpaceOnUse" x="{x0:g}" y="{y0:g}" '
+                f'width="{w:g}" height="{h:g}"><rect x="{x0:g}" y="{y0:g}" width="{w:g}" '
+                f'height="{h:g}" fill="#fff"/>{cut}</mask>')
+
+    l, t, r, b = M_BOX
+    stroke = (f'd="{M_STROKE}" stroke-width="{STROKE}" fill="none" '
+              f'stroke-miterlimit="10"')
+    tile_el = (f'<rect x="{x0:g}" y="{y0:g}" width="{w:g}" height="{h:g}" '
+               f'rx="{tile_radius:g}" fill="{tile}"/>' if tile else "")
+    title_el = "<title>MO</title>" if title else ""
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}"{dims} role="img" aria-label="MO">{title_el}
 <defs>
-<mask id="{ids}-m" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="520"><rect width="900" height="520" fill="#fff"/><circle cx="{O_CENTRE[0]}" cy="{O_CENTRE[1]}" r="{O_OUTER + GAP + 2}" fill="#000"/>{cut_trace}</mask>
-<mask id="{ids}-o" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="520"><rect width="900" height="520" fill="#fff"/>{cut_trace}</mask>
-</defs>
-<g mask="url(#{ids}-m)"><path {g_attr} d="{_m_path()}"/><path {b_fill} d="{foot}"/></g>
-<path mask="url(#{ids}-o)" {g_attr} fill-rule="evenodd" d="{o}"/>
-<path {b_stroke} d="{tp}" stroke-width="{trace}" stroke-linecap="round" fill="none"/>
-<g {b_stroke} fill="none" stroke-width="{ring}">{nodes}</g>
+<clipPath id="{ids}-box"><rect x="{l}" y="{t}" width="{r - l}" height="{b - t}"/></clipPath>
+<clipPath id="{ids}-graphite"><path d="{GRAPHITE_PART}"/></clipPath>
+<clipPath id="{ids}-foot"><path d="{BLUE_FOOT}"/></clipPath>
+{mask("m", clear_trace + clear_o)}
+{mask("foot", clear_o)}
+{mask("o", clear_trace)}
+</defs>{tile_el}
+<g clip-path="url(#{ids}-box)">
+<g mask="url(#{ids}-m)"><path clip-path="url(#{ids}-graphite)" stroke="{graphite}" {stroke}/></g>
+<g mask="url(#{ids}-foot)"><path clip-path="url(#{ids}-foot)" stroke="{blue}" {stroke}/></g>
+</g>
+<path mask="url(#{ids}-o)" fill="{graphite}" fill-rule="evenodd" d="{_ring(O_CENTRE, O_OUTER)}{_ring(O_CENTRE, O_INNER)}"/>
+<path d="{path}" stroke="{blue}" stroke-width="{trace}" fill="none" stroke-linejoin="round"/>
+<circle cx="{cx}" cy="{cy}" r="{node_r}" fill="none" stroke="{blue}" stroke-width="{trace}"/>
 </svg>
 """
 
 
-SURFACE_DARK = "#17191C"     # surface, dark theme: the icon tile
-
-
 def icon(size=None):
-    """The app and tab icon: a square dark tile with the mark across it."""
-    vb = square(pad=0.07)
+    """The app and tab icon: the mark on a dark tile, with a heavier trace
+    and node so it still reads at 16px."""
+    x, y, w, h = VIEWBOX
+    side = w * 1.18
+    vb = (x + w / 2 - side / 2, y + h / 2 - side / 2, side, side)
     return mark(GRAPHITE_ON_DARK, BLUE_ON_DARK, viewbox=vb, size=size, ids="mo-icon",
-                trace=20, node_r=22, ring=17, tile=SURFACE_DARK, tile_radius=round(vb[2] * 0.2))
-
-
-def square(viewbox=VIEWBOX, pad=0.0):
-    """A square viewBox around the mark, with `pad` of its width on each side."""
-    x, y, w, h = viewbox
-    side = w * (1 + 2 * pad)
-    cx, cy = x + w / 2, y + h / 2
-    return (round(cx - side / 2, 1), round(cy - side / 2, 1), round(side, 1), round(side, 1))
+                trace=12, node_r=10, tile=SURFACE_DARK, tile_radius=side * 0.22)
 
 
 if __name__ == "__main__":
@@ -157,8 +127,6 @@ if __name__ == "__main__":
         "mo-logo.svg": mark(GRAPHITE, BLUE),
         "mo-logo-on-dark.svg": mark(GRAPHITE_ON_DARK, BLUE_ON_DARK),
         "mo-logo-mono.svg": mark("currentColor", "currentColor"),
-        # Icons: the mark on a dark tile, with a heavier trace so it still
-        # reads at 16px. The tile keeps it legible on light and dark tab bars.
         "favicon.svg": icon(),
     }
     for name, svg in files.items():

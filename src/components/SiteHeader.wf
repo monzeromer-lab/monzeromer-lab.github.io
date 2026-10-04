@@ -10,8 +10,8 @@ component SiteHeader {
     Stack(role: "banner", class: "site-header") {
         Row(align: .center, justify: .between, class: "site-header-inner") {
             Link(to: "/", class: "brand", aria-label: "Monzer Omer, home") {
-                Image(src: "/mo-logo-on-dark.svg", alt: "", class: "logo logo-on-dark", width: 47, height: 26)
-                Image(src: "/mo-logo.svg", alt: "", class: "logo logo-on-light", width: 47, height: 26)
+                Image(src: "/mo-logo-on-dark.svg", alt: "", class: "logo logo-on-dark", width: 48, height: 26)
+                Image(src: "/mo-logo.svg", alt: "", class: "logo logo-on-light", width: 48, height: 26)
                 Text("Monzer Omer", class: "brand-name")
             }
 

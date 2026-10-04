@@ -1,12 +1,16 @@
 # The MO mark
 
-A serif **M** and **O** in graphite, and a blue circuit trace that runs out
-of the M's right stem past five nodes. MO Systems takes its two inks from
-it: graphite is structure, blue is intent.
+A geometric **M** and **O** in graphite, drawn on MO Systems' 4px grid at
+the weight Inter has at display size. The O overlaps the M's right stem and
+cuts into it, as in the original mark. Below the cut the stem turns blue and
+leaves the letter as a circuit trace — along, then up at 45°, the angle
+every trace in the system takes — into a ringed node at the centre of the O.
+Graphite is structure, blue is intent: the design system's rule, in one
+mark.
 
-This is a vector redraw of the original raster. Its geometry lives in
-`mark.py` as numbers (stems, the V, the O's radii, each node), and every
-file here is written from that one source.
+The geometry lives in `mark.py` as numbers on the grid (cap height, stroke,
+the M's path, the cut, the O's radii, the trace), and every file here is
+written from that one source.
 
 | File | Use |
 |---|---|
@@ -19,8 +23,8 @@ file here is written from that one source.
 | `github-social-preview.png` | 1280×640, for the repository's social preview |
 
 The gaps between the letters and the trace are masks, not white strokes, so
-the mark sits on any background. Keep clear space of a node's width around
-it; do not recolour it outside the pairs above.
+the mark sits on any background. Keep clear space of half the O's width
+around it; do not recolour it outside the pairs above.
 
 ## Changing it
 
