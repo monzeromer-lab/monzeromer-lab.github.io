@@ -29,18 +29,16 @@ page Education(path: "/education", title: "Education — Monzer Omer",
         Stack {
             style { gap: 24px; margin-top: 32px }
             Heading("Certifications", class: "section-title").h2
-            Grid(columns: { base: 1, md: 2 }, gap: .md) {
-                style { gap: 16px; @md { gap: 24px } }
+            Stack(class: "panel rows", role: "list") {
+                style { padding-top: 4px; padding-bottom: 4px; @md { padding-top: 4px; padding-bottom: 4px } }
                 for c in education.certifications by c.name {
-                    Stack(class: "panel") {
-                        style { gap: 10px }
-                        Text("{c.issuer} · {c.date}", class: "meta")
-                        Heading(c.name, class: "card-title").h3
+                    Stack(class: "cert", role: "listitem") {
+                        Row(class: "cert-head") {
+                            Heading(c.name, class: "cert-name").h3
+                            Text("{c.issuer} · {c.date}", class: "meta")
+                        }
                         if c.body != "" {
                             Text(c.body, class: "body-muted")
-                        }
-                        if c.topics.length > 0 {
-                            Chips(c.topics)
                         }
                     }
                 }

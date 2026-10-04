@@ -1,10 +1,31 @@
 [
   {
+    "company": "Alhakeem",
+    "title": "Engineering lead",
+    "from": "Dec 2025",
+    "to": "Present",
+    "current": true,
+    "about": "Sudan's first domestic and international telemedicine platform, bringing healthcare services to the MENA region with official support from the Sudanese government.",
+    "points": [
+      "Architected a proprietary analytics engine to monitor, track, and optimize complex user interaction patterns.",
+      "Engineered the platform's core backend infrastructure using Rust as our first-class language, ensuring maximum memory safety, concurrency, and high-performance execution.",
+      "Developed custom DevOps orchestration tools to manage deployments, utilizing blue-green strategies to maintain 100% service availability and zero downtime.",
+      "Spearheading final-stage system optimizations and scaling protocols in preparation for the upcoming commercial launch."
+    ],
+    "tags": [
+      "Rust",
+      "Analytics",
+      "DevOps",
+      "Blue-green deployment"
+    ]
+  },
+  {
     "company": "SilverKey Technologies",
     "title": "Senior Node.js developer",
     "from": "Mar 2025",
     "to": "Present",
     "current": true,
+    "about": "",
     "points": [
       "Designed, developed, and maintained core backend functionality to improve reliability and performance across web and mobile platforms.",
       "Integrated Firebase Analytics, Adjust, and MoEngage to enable data-driven marketing and user engagement strategies.",
@@ -26,30 +47,37 @@
     "title": "Backend developer",
     "from": "Aug 2024",
     "to": "Feb 2025",
+    "current": false,
+    "about": "",
     "points": [
       "Designed, developed, and maintained high-performance, scalable microservices using NestJS, enabling seamless integration with front-end systems and third-party APIs.",
       "Built and managed microservices for document generation, file storage, and file uploads, implementing AES encryption to ensure data security and compliance.",
       "Developed a merchant management microservice to handle critical merchant data, including bank details, user information, payment methods, and fee structures.",
       "Created a statistics microservice to calculate and analyze key metrics, providing actionable insights for business decision-making.",
-      "Utilized RabbitMQ for efficient message queuing and Docker for containerization, streamlining deployment processes and improving system reliability."
+      "Ensured all microservices were highly scalable, maintainable, and thoroughly tested, adhering to best practices for code quality and performance optimization.",
+      "Collaborated closely with product managers and front-end developers to define and implement new features, improving user experience and functionality.",
+      "Utilized RabbitMQ for efficient message queuing and Docker for containerization, streamlining deployment processes and improving system reliability.",
+      "Troubleshot and debugged applications, delivering clean, maintainable, and well-documented code while adhering to Agile development methodologies."
     ],
     "tags": [
       "NestJS",
       "RabbitMQ",
       "Docker",
       "AES"
-    ],
-    "current": false
+    ]
   },
   {
     "company": "Circles",
     "title": "Backend developer",
     "from": "Dec 2022",
     "to": "Jan 2024",
+    "current": false,
+    "about": "",
     "points": [
       "Designed, developed, and maintained a highly scalable Healthcare Management System using a microservices architecture, leveraging GraphQL for optimized data fetching and Kafka for real-time data streaming and event-driven communication.",
       "Built and enhanced a Community & Learning Platform to foster knowledge sharing and collaboration among users, ensuring seamless performance and scalability.",
       "Collaborated closely with frontend developers to deliver high-quality, user-centric features, ensuring smooth integration between backend services and frontend applications.",
+      "Demonstrated strong problem-solving skills and adaptability by tackling complex technical challenges and delivering innovative solutions.",
       "Continuously expanded technical expertise by mastering NestJS, Rust, and GraphQL, applying these technologies to optimize platform performance, reliability, and maintainability."
     ],
     "tags": [
@@ -57,18 +85,20 @@
       "Kafka",
       "Microservices",
       "NestJS"
-    ],
-    "current": false
+    ]
   },
   {
     "company": "Alimny",
     "title": "Backend developer and co-founder",
     "from": "Jan 2021",
     "to": "Dec 2022",
+    "current": false,
+    "about": "",
     "points": [
       "Co-founded a startup providing innovative and accessible e-learning solutions for students and teachers, using technologies such as web development, machine learning, and cloud computing.",
       "Designed, developed, and maintained server-side logic, APIs, and databases for web applications powering the e-learning platform using Node.js, Express.js, MongoDB, GraphQL, and Firebase.",
       "Developed a robust authentication system using JWT and Firebase, and optimized database queries and indexes to improve response time and reduce server load.",
+      "Debugged and resolved issues and bugs reported by users and clients.",
       "Wrote unit tests and documentation for the codebase, and collaborated with co-founders and frontend developers to ensure application quality and performance."
     ],
     "tags": [
@@ -76,14 +106,15 @@
       "GraphQL",
       "Firebase",
       "MongoDB"
-    ],
-    "current": false
+    ]
   },
   {
     "company": "EnayaTech",
     "title": "Backend developer",
     "from": "Feb 2020",
     "to": "Jul 2020",
+    "current": false,
+    "about": "",
     "points": [
       "Designed, developed, and maintained RESTful APIs using Express.js, MySQL, and MongoDB to support various web applications, gaining hands-on experience in backend development.",
       "Collaborated closely with frontend developers, designers, and product managers to deliver high-quality features and seamless user experiences.",
@@ -93,7 +124,6 @@
       "Express.js",
       "MySQL",
       "MongoDB"
-    ],
-    "current": false
+    ]
   }
 ]

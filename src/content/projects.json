@@ -45,9 +45,10 @@
     "id": "al-hakeem",
     "name": "Al-Hakeem",
     "role": "Engineering lead",
-    "summary": "A healthcare platform connecting physicians with medical services.",
-    "body": "Al-Hakeem streamlines physician onboarding and medical service delivery. The platform supports bilingual operation in Arabic and English, serving healthcare professionals across the region with credential management and service coordination.",
+    "summary": "Sudan's first domestic and international telemedicine platform.",
+    "body": "Al-Hakeem brings healthcare services to the MENA region with official support from the Sudanese government. It streamlines physician onboarding and medical service delivery, in Arabic and English, with credential management and service coordination. Its core backend is written in Rust, with blue-green deployments for zero downtime.",
     "tags": [
+      "Rust",
       "Node.js",
       "TypeScript",
       "Healthcare"

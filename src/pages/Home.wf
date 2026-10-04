@@ -7,7 +7,7 @@ const TYPED = [
 
 page Home(path: "/", title: "Monzer Omer — Senior backend engineer",
           description: "Senior backend engineer specializing in Rust, Node.js and distributed systems. AI-augmented workflow.") {
-    derived current = roles.find(r => r.current)
+    derived current = roles.filter(r => r.current)
     derived selected = projects.filter(p => p.selected)
 
     // The typed line. It starts whole — what the static page and a reader
@@ -76,7 +76,7 @@ page Home(path: "/", title: "Monzer Omer — Senior backend engineer",
                     Row(class: "term-line") { Text("[engineer]", class: "t-key") }
                     Row(class: "term-line") { Text("name     ", class: "t-fn")  Text("= ", class: "t-punct")  Text("\"Monzer Omer\"", class: "t-str") }
                     Row(class: "term-line") { Text("role     ", class: "t-fn")  Text("= ", class: "t-punct")  Text("\"Senior backend engineer\"", class: "t-str") }
-                    Row(class: "term-line") { Text("now      ", class: "t-fn")  Text("= ", class: "t-punct")  Text("\"{current?.company ?? "Open to work"}\"", class: "t-str") }
+                    Row(class: "term-line") { Text("now      ", class: "t-fn")  Text("= ", class: "t-punct")  Text("[", class: "t-punct")  Text(current.map(r => "\"{r.company}\"").join(", "), class: "t-str")  Text("]", class: "t-punct") }
                     Row(class: "term-line") { Text("since    ", class: "t-fn")  Text("= ", class: "t-punct")  Text("2020", class: "t-num") }
                     Row(class: "term-line") { Text("ai_share ", class: "t-fn")  Text("= ", class: "t-punct")  Text("0.{AI_SHARE}", class: "t-num") }
                     Row(class: "term-line") { Text(" ") }
@@ -130,7 +130,7 @@ page Home(path: "/", title: "Monzer Omer — Senior backend engineer",
         }
 
         // Where I am now.
-        if current != null {
+        if current.length > 0 {
             Stack {
                 style { gap: 24px }
                 Row(justify: .between, align: .end, gap: .md) {
@@ -142,7 +142,9 @@ page Home(path: "/", title: "Monzer Omer — Senior backend engineer",
                     Link("Full history", to: "/experience", class: "text-link")
                 }
                 Stack(class: "timeline") {
-                    RoleEntry(current)
+                    for r in current by r.company {
+                        RoleEntry(r)
+                    }
                 }
             }
         }

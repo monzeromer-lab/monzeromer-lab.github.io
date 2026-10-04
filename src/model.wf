@@ -30,6 +30,8 @@ type Role {
     from: String
     to: String
     current: Bool = false
+    /// What the company is, when a reader may not know.
+    about: String = ""
     points: [String] = []
     tags: [String] = []
 }

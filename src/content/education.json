@@ -24,24 +24,61 @@
       "name": "Fundamentals of Backend Engineering",
       "issuer": "Udemy",
       "date": "Aug 2025",
-      "body": "Deep dive into the protocols and communication patterns that power modern backend systems.",
-      "topics": []
+      "body": "Deep dive into the protocols and communication patterns that power modern backend systems."
     },
     {
       "name": "Server-side Development with NodeJS, Express and MongoDB",
       "issuer": "Coursera",
-      "date": "2020",
-      "body": "",
-      "topics": [
-        "Introduction to HTML5",
-        "Interactivity with JavaScript",
-        "Front-End Web UI Frameworks: Bootstrap 4",
-        "IT Project Management",
-        "Front-End Web Development with React",
-        "Introduction to TCP/IP",
-        "Introduction to CSS3",
-        "Computer Security and Systems Management"
-      ]
+      "date": "Jun 2020",
+      "body": ""
+    },
+    {
+      "name": "Introduction to HTML5",
+      "issuer": "Coursera",
+      "date": "Jun 2020",
+      "body": ""
+    },
+    {
+      "name": "Interactivity with JavaScript",
+      "issuer": "Coursera",
+      "date": "Jun 2020",
+      "body": ""
+    },
+    {
+      "name": "Front-End Web UI Frameworks and Tools: Bootstrap 4",
+      "issuer": "Coursera",
+      "date": "Jun 2020",
+      "body": ""
+    },
+    {
+      "name": "IT Project Management",
+      "issuer": "Coursera",
+      "date": "Jul 2020",
+      "body": ""
+    },
+    {
+      "name": "Front-End Web Development with React",
+      "issuer": "Coursera",
+      "date": "Jul 2020",
+      "body": ""
+    },
+    {
+      "name": "Introduction to TCP/IP",
+      "issuer": "Coursera",
+      "date": "Aug 2020",
+      "body": ""
+    },
+    {
+      "name": "Introduction to CSS3",
+      "issuer": "Coursera",
+      "date": "Aug 2020",
+      "body": ""
+    },
+    {
+      "name": "Computer Security and Systems Management",
+      "issuer": "Coursera",
+      "date": "Aug 2020",
+      "body": ""
     }
   ]
 }

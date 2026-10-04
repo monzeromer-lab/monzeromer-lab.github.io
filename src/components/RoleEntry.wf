@@ -15,6 +15,9 @@ component RoleEntry(_ role: Role) {
                 Heading(role.company, class: "card-title").h2
                 Text(role.title, class: "body-muted")
             }
+            if role.about != "" {
+                Text(role.about, class: "body")
+            }
             Points(role.points)
             Chips(role.tags)
         }

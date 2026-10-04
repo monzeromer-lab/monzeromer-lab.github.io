@@ -18,13 +18,24 @@
     ]
   },
   {
+    "group": "Backend and APIs",
+    "items": [
+      "Node.js",
+      "NestJS",
+      "Express.js",
+      "GraphQL",
+      "REST APIs"
+    ]
+  },
+  {
     "group": "Databases and storage",
     "items": [
       "PostgreSQL",
       "MySQL",
       "MongoDB",
       "Firebase",
-      "Redis"
+      "Redis",
+      "NoSQL"
     ]
   },
   {
@@ -62,6 +73,8 @@
     "items": [
       "React",
       "React Native",
+      "Angular",
+      "Vue.js",
       "Electron",
       "Tauri",
       "GTK4 / libadwaita"
@@ -75,6 +88,13 @@
       "Unit testing",
       "Code review",
       "Agile / Scrum"
+    ]
+  },
+  {
+    "group": "Spoken languages",
+    "items": [
+      "Arabic",
+      "English"
     ]
   }
 ]
