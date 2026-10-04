@@ -4,3 +4,6 @@ build/
 # WebFluent caches
 .wf-sizes.json
 .wf-cache/
+
+# Python bytecode from brand/mark.py
+__pycache__/
