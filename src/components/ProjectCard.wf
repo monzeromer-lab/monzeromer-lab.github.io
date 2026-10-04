@@ -1,0 +1,29 @@
+/// One project: what it is, what I did on it, and what it is built with.
+component ProjectCard(_ project: Project, full: Bool = true) {
+    derived isSource = (project.link ?? "").includes("github.com")
+
+    Stack(class: ["panel", if project.featured { "panel-featured" }]) {
+        style { gap: 14px; height: 100% }
+        Row(justify: .between, align: .start, gap: .sm) {
+            style { flex-wrap: nowrap }
+            Heading(project.name, class: "card-title").h2
+            Text(project.role, class: if project.featured { "pill pill-brand" } else { "pill" })
+        }
+        if full {
+            Text(project.summary, class: "body-muted")
+            Text(project.body, class: "body")
+            Points(project.points)
+        } else {
+            Text(project.short, class: "body-muted")
+        }
+        Stack {
+            style { margin-top: auto; padding-top: 4px; gap: 14px }
+            Chips(project.tags)
+            if full {
+                if project.link != null {
+                    Link(if isSource { "View the source" } else { "Visit the site" }, href: project.link ?? "", class: "text-link")
+                }
+            }
+        }
+    }
+}

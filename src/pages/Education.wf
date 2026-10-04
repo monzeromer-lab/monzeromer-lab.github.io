@@ -1,94 +1,50 @@
-Page Education (path: "/education", title: "Education — Monzer Omer") {
-
-    Container {
-        style { max-width: "860px" }
-
-        SiteNav()
-
-        Heading("Education", h1) {
-            style { margin-bottom: "2.5rem" }
-        }
-
-        // ── DEGREE ─────────────────────────────────────────────
-        Stack {
-            style {
-                border-bottom: "0.5px solid var(--color-border)"
-                padding-bottom: "2rem"
-                margin-bottom: "2rem"
-            }
-
-            Text("National Ribat University", bold) {
-                style {
-                    font-size: "18px"
-                    margin-bottom: "2px"
+page Education(path: "/education", title: "Education — Monzer Omer",
+               description: "Bachelor of Information Technology, National Ribat University, and certifications in backend engineering.") {
+    Stack(class: "page") {
+        PageHead("Education", eyebrow: "Study")
+        Stack(class: "timeline") {
+            for d in education.degrees by d.school {
+                Stack(class: "entry") {
+                    Stack(class: "entry-when") {
+                        Text("{d.from} — {d.to}", class: "meta")
+                    }
+                    Stack {
+                        style { gap: 12px; min-width: 0 }
+                        Stack {
+                            style { gap: 2px }
+                            Heading(d.school, class: "card-title").h2
+                            Text(d.degree, class: "body-muted")
+                        }
+                        Text(d.body, class: "body")
+                        Points(d.points)
+                        Row(align: .center, gap: .sm) {
+                            Text("Activities", class: "label")
+                            Chips(d.activities)
+                        }
+                    }
                 }
             }
-            Text("Bachelor of Information Technology", muted, small) {
-                style { margin-bottom: "2px" }
-            }
-            Text("Oct 2018 — Feb 2025", muted, small) {
-                style { font-family: "var(--font-family-mono)" }
-            }
-
-            Spacer(sm)
-
-            Text("Completed a comprehensive IT degree over nearly 7 years, overcoming challenges such as COVID-19, political unrest, and revolution. Gained expertise in programming fundamentals, data structures, software engineering, database management, system analysis, and network technologies.")
-
-            Spacer(sm)
-
-            Text("Highlights:", bold, small) {
-                style { margin-bottom: "4px" }
-            }
-            List {
-                Text("Developed practical skills through semester-long projects starting from Semester 3, applying theoretical knowledge to real-world IT solutions")
-                Text("Enhanced soft skills through courses in communication, research methodology, and professional ethics")
-                Text("Balanced academics with work experience, gaining hands-on industry insights and strengthening adaptability and time management")
-                Text("Built a strong foundation in IT, combining technical expertise with problem-solving and teamwork skills")
-            }
-
-            Spacer(sm)
-            Text("Activities: GDSC, Open Days, Juniors Welcoming", muted, small)
-        }
-
-        // ── CERTIFICATIONS ─────────────────────────────────────
-        Heading("Certifications", h2) {
-            style { margin-bottom: "1.5rem" }
         }
 
         Stack {
-            style {
-                border-bottom: "0.5px solid var(--color-border)"
-                padding-bottom: "1.5rem"
-                margin-bottom: "1.5rem"
-            }
-
-            Text("Fundamentals of Backend Engineering", bold)
-            Text("Udemy — Aug 2025", muted, small) {
-                style {
-                    font-family: "var(--font-family-mono)"
-                    margin-bottom: "4px"
+            style { gap: 24px; margin-top: 32px }
+            Heading("Certifications", class: "section-title").h2
+            Grid(columns: { base: 1, md: 2 }, gap: .md) {
+                style { gap: 16px; @md { gap: 24px } }
+                for c in education.certifications by c.name {
+                    Stack(class: "panel") {
+                        style { gap: 10px }
+                        Text("{c.issuer} · {c.date}", class: "meta")
+                        Heading(c.name, class: "card-title").h3
+                        if c.body != "" {
+                            Text(c.body, class: "body-muted")
+                        }
+                        if c.topics.length > 0 {
+                            Chips(c.topics)
+                        }
+                    }
                 }
             }
-            Text("Deep dive into the protocols and communication patterns that power modern backend systems.")
         }
-
-        Stack {
-            Row(gap: sm) {
-                Badge("Coursera")
-                Badge("2020")
-            }
-
-            Spacer(sm)
-
-            Text("Server-side Development with NodeJS, Express and MongoDB", bold) {
-                style { margin-bottom: "4px" }
-            }
-
-            Text("Introduction to HTML5 · Interactivity with JavaScript · Front-End Web UI Frameworks: Bootstrap 4 · IT Project Management · Front-End Web Development with React · Introduction to TCP/IP · Introduction to CSS3 · Computer Security and Systems Management", muted, small) {
-                style { line-height: "1.6" }
-            }
-        }
-
-        SiteFooter()
     }
 }

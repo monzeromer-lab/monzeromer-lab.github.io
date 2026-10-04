@@ -1,0 +1,58 @@
+# Build the site with WebFluent and publish it to GitHub Pages.
+# Nothing built is committed: every push to master builds from src/.
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  WF_VERSION: v5.2.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install WebFluent ${{ env.WF_VERSION }}
+        run: |
+          mkdir -p "$HOME/.webfluent/bin"
+          curl -fsSL "https://github.com/monzeromer-lab/WebFluent/releases/download/$WF_VERSION/wf-$WF_VERSION-x86_64-linux.tar.gz" \
+            | tar xz -C "$HOME/.webfluent/bin" wf
+          echo "$HOME/.webfluent/bin" >> "$GITHUB_PATH"
+
+      - name: Check
+        run: |
+          wf --version
+          wf check --format github --deny-warnings
+
+      - name: Build
+        run: wf build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

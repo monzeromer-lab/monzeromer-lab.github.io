@@ -1,0 +1,22 @@
+/// One role on the timeline: the dates beside the node, the work beside them.
+component RoleEntry(_ role: Role) {
+    Stack(class: ["entry", if role.current { "is-current" }]) {
+        Stack(class: "entry-when") {
+            style { gap: 6px }
+            Text("{role.from} — {role.to}", class: "meta")
+            if role.current {
+                Row { Text("Current", class: "pill pill-live") }
+            }
+        }
+        Stack {
+            style { gap: 12px; min-width: 0 }
+            Stack {
+                style { gap: 2px }
+                Heading(role.company, class: "card-title").h2
+                Text(role.title, class: "body-muted")
+            }
+            Points(role.points)
+            Chips(role.tags)
+        }
+    }
+}

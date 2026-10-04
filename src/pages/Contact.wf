@@ -1,113 +1,31 @@
-Page Contact (path: "/contact", title: "Contact — Monzer Omer") {
-
-    Container {
-        style { max-width: "860px" }
-
-        SiteNav()
-
-        Heading("Let's build something robust.", h1) {
-            style { margin-bottom: "0.4rem" }
-        }
-        Text("Available for senior backend roles, architecture consulting, and high-impact engineering challenges.", muted) {
-            style { margin-bottom: "2.5rem" }
-        }
-
-        // ── CONTACT LINKS ──────────────────────────────────────
-        Stack(gap: lg) {
-
-            Row(align: center, gap: md) {
-                style {
-                    flex-wrap: "nowrap"
-                    padding: "1rem 0"
-                    border-bottom: "0.5px solid var(--color-border)"
+page Contact(path: "/contact", title: "Contact — Monzer Omer",
+             description: "Available for senior backend roles, architecture consulting, and high-impact engineering challenges.") {
+    Stack(class: "page") {
+        PageHead("Let's build something robust", eyebrow: "Contact", lead: "Available for senior backend roles, architecture consulting, and high-impact engineering challenges.")
+        Stack(class: "panel") {
+            style { max-width: 680px; gap: 20px }
+            Stack(class: "rows") {
+                Row(class: "row-item") {
+                    Text("Email", class: "label")
+                    Link(EMAIL, href: "mailto:{EMAIL}")
                 }
-                Icon("mail", primary) {
-                    style {
-                        font-size: "1.5rem"
-                        flex-shrink: "0"
-                    }
+                Row(class: "row-item") {
+                    Text("LinkedIn", class: "label")
+                    Link("linkedin.com/in/monzeromer", href: LINKEDIN)
                 }
-                Stack {
-                    Text("Email", muted, small, uppercase) {
-                        style {
-                            font-family: "var(--font-family-mono)"
-                            letter-spacing: "0.08em"
-                        }
-                    }
-                    Link(to: "mailto:monzer.a.omer@gmail.com") {
-                        Text("monzer.a.omer@gmail.com", primary)
-                    }
+                Row(class: "row-item") {
+                    Text("GitHub", class: "label")
+                    Link("github.com/monzeromer-lab", href: GITHUB)
                 }
             }
-
-            Row(align: center, gap: md) {
-                style {
-                    flex-wrap: "nowrap"
-                    padding: "1rem 0"
-                    border-bottom: "0.5px solid var(--color-border)"
-                }
-                Icon("brand-linkedin", primary) {
-                    style {
-                        font-size: "1.5rem"
-                        flex-shrink: "0"
-                    }
-                }
-                Stack {
-                    Text("LinkedIn", muted, small, uppercase) {
-                        style {
-                            font-family: "var(--font-family-mono)"
-                            letter-spacing: "0.08em"
-                        }
-                    }
-                    Link(to: "https://linkedin.com/in/monzeromer") {
-                        Text("linkedin.com/in/monzeromer", primary)
-                    }
-                }
-            }
-
-            Row(align: center, gap: md) {
-                style {
-                    flex-wrap: "nowrap"
-                    padding: "1rem 0"
-                }
-                Icon("brand-github", primary) {
-                    style {
-                        font-size: "1.5rem"
-                        flex-shrink: "0"
-                    }
-                }
-                Stack {
-                    Text("GitHub", muted, small, uppercase) {
-                        style {
-                            font-family: "var(--font-family-mono)"
-                            letter-spacing: "0.08em"
-                        }
-                    }
-                    Link(to: "https://github.com/monzeromer-lab") {
-                        Text("github.com/monzeromer-lab", primary)
-                    }
-                }
+            Row {
+                Link("Write an email", href: "mailto:{EMAIL}", class: "btn btn-primary")
             }
         }
-
-        Spacer(xl)
-
-        // ── AI NOTE ────────────────────────────────────────────
-        Stack {
-            style {
-                background: "var(--color-surface-alt)"
-                border: "0.5px solid var(--color-border)"
-                border-left: "2px solid var(--color-primary)"
-                border-radius: "0 8px 8px 0"
-                padding: "1rem 1.25rem"
-            }
-
-            Text("Working with me", bold, small) {
-                style { margin-bottom: "4px" }
-            }
-            Text("I move fast. 95% of my coding workflow is AI-assisted, which means I prototype quickly, iterate in hours not days, and deliver production-quality code without the usual overhead. If you value speed and quality together, we'll work well.", muted, small)
+        Stack(class: "callout") {
+            style { max-width: 680px; margin-top: 24px }
+            Text("Working with me", class: "callout-title")
+            Text("I move fast. {AI_SHARE}% of my coding workflow is AI-assisted, which means I prototype quickly, iterate in hours not days, and deliver production-quality code without the usual overhead. If you value speed and quality together, we'll work well.", class: "body")
         }
-
-        SiteFooter()
     }
 }

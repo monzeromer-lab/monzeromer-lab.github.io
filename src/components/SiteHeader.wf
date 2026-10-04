@@ -1,0 +1,46 @@
+/// The top bar: the mark, the places to read, and the theme. On a phone the
+/// places fold behind a menu button.
+component SiteHeader {
+    state menu = false
+    // Dark unless the reader chose light.
+    derived dark = theme != "light"
+
+    on key("Escape") { menu = false }
+
+    Stack(role: "banner", class: "site-header") {
+        Row(align: .center, justify: .between, class: "site-header-inner") {
+            Link(to: "/", class: "brand", aria-label: "Monzer Omer, home") {
+                Text("MO", class: "mark", aria-hidden: "true")
+                Text("Monzer Omer", class: "brand-name")
+            }
+
+            Row(role: "navigation", aria-label: "Site", class: "nav") {
+                Link("Projects", to: "/projects")
+                Link("Experience", to: "/experience")
+                Link("Skills", to: "/skills")
+                Link("Education", to: "/education")
+                Link("Contact", to: "/contact")
+            }
+
+            Row(class: "header-actions") {
+                IconButton(icon: if dark { "sun" } else { "moon" }, label: if dark { "Use the light theme" } else { "Use the dark theme" }, class: "icon-btn") {
+                    on click { setTheme(if dark { "light" } else { "dark" }) }
+                }
+                IconButton(icon: if menu { "close" } else { "menu" }, label: "Menu", class: "icon-btn menu-btn", aria-expanded: menu) {
+                    on click { menu = !menu }
+                }
+            }
+        }
+    }
+
+    if menu {
+        Stack(role: "navigation", aria-label: "Site", class: "menu") {
+            Link("Home", to: "/") { on click { menu = false } }
+            Link("Projects", to: "/projects") { on click { menu = false } }
+            Link("Experience", to: "/experience") { on click { menu = false } }
+            Link("Skills", to: "/skills") { on click { menu = false } }
+            Link("Education", to: "/education") { on click { menu = false } }
+            Link("Contact", to: "/contact") { on click { menu = false } }
+        }
+    }
+}

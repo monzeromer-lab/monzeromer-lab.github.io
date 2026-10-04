@@ -1,0 +1,68 @@
+/// What the site shows, read from `src/content/` at build time.
+
+const EMAIL = "monzer.a.omer@gmail.com"
+const GITHUB = "https://github.com/monzeromer-lab"
+const LINKEDIN = "https://www.linkedin.com/in/monzeromer/"
+const WEBFLUENT = "https://github.com/monzeromer-lab/WebFluent"
+
+/// The share of my coding workflow that is AI-assisted.
+const AI_SHARE = 95
+
+type Project {
+    id: String
+    name: String
+    role: String
+    featured: Bool = false
+    /// Shown on the home page's selected work.
+    selected: Bool = false
+    summary: String
+    /// The one-line version the home page uses.
+    short: String
+    body: String
+    points: [String] = []
+    tags: [String] = []
+    link: String? = null
+}
+
+type Role {
+    company: String
+    title: String
+    from: String
+    to: String
+    current: Bool = false
+    points: [String] = []
+    tags: [String] = []
+}
+
+type SkillGroup {
+    group: String
+    items: [String]
+}
+
+type Degree {
+    school: String
+    degree: String
+    from: String
+    to: String
+    body: String
+    points: [String] = []
+    activities: [String] = []
+}
+
+type Certification {
+    name: String
+    issuer: String
+    date: String
+    body: String = ""
+    topics: [String] = []
+}
+
+type Education {
+    degrees: [Degree]
+    certifications: [Certification]
+}
+
+data projects: [Project] = "content/projects.json"
+data roles: [Role] = "content/experience.json"
+data skills: [SkillGroup] = "content/skills.json"
+data education: Education = "content/education.json"

@@ -1,0 +1,11 @@
+/// The top of a page: an eyebrow, the one h1, and a line under it.
+component PageHead(_ title: String, eyebrow: String, lead: String = "") {
+    Stack(gap: .sm) {
+        style { gap: 12px; margin-bottom: 40px; @md { margin-bottom: 48px } }
+        Text(eyebrow, class: "overline")
+        Heading(title, class: "title").h1
+        if lead != "" {
+            Text(lead, class: "lead")
+        }
+    }
+}

@@ -1,0 +1,47 @@
+{
+  "degrees": [
+    {
+      "school": "National Ribat University",
+      "degree": "Bachelor of Information Technology",
+      "from": "Oct 2018",
+      "to": "Feb 2025",
+      "body": "Completed a comprehensive IT degree over nearly 7 years, overcoming challenges such as COVID-19, political unrest, and revolution. Gained expertise in programming fundamentals, data structures, software engineering, database management, system analysis, and network technologies.",
+      "points": [
+        "Developed practical skills through semester-long projects starting from Semester 3, applying theoretical knowledge to real-world IT solutions",
+        "Enhanced soft skills through courses in communication, research methodology, and professional ethics",
+        "Balanced academics with work experience, gaining hands-on industry insights and strengthening adaptability and time management",
+        "Built a strong foundation in IT, combining technical expertise with problem-solving and teamwork skills"
+      ],
+      "activities": [
+        "GDSC",
+        "Open Days",
+        "Juniors Welcoming"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Fundamentals of Backend Engineering",
+      "issuer": "Udemy",
+      "date": "Aug 2025",
+      "body": "Deep dive into the protocols and communication patterns that power modern backend systems.",
+      "topics": []
+    },
+    {
+      "name": "Server-side Development with NodeJS, Express and MongoDB",
+      "issuer": "Coursera",
+      "date": "2020",
+      "body": "",
+      "topics": [
+        "Introduction to HTML5",
+        "Interactivity with JavaScript",
+        "Front-End Web UI Frameworks: Bootstrap 4",
+        "IT Project Management",
+        "Front-End Web Development with React",
+        "Introduction to TCP/IP",
+        "Introduction to CSS3",
+        "Computer Security and Systems Management"
+      ]
+    }
+  ]
+}

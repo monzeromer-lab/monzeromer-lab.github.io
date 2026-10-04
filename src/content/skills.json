@@ -1,0 +1,80 @@
+[
+  {
+    "group": "AI and tooling",
+    "items": [
+      "Claude",
+      "Cursor",
+      "GitHub Copilot",
+      "LLM APIs"
+    ]
+  },
+  {
+    "group": "Languages",
+    "items": [
+      "Rust",
+      "TypeScript",
+      "JavaScript",
+      "SQL"
+    ]
+  },
+  {
+    "group": "Databases and storage",
+    "items": [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Firebase",
+      "Redis"
+    ]
+  },
+  {
+    "group": "Messaging and streaming",
+    "items": [
+      "Apache Kafka",
+      "RabbitMQ",
+      "Event-driven design",
+      "WebSocket",
+      "gRPC"
+    ]
+  },
+  {
+    "group": "Systems and architecture",
+    "items": [
+      "Microservices architecture",
+      "Distributed systems",
+      "WebAssembly",
+      "System design",
+      "Compiler design"
+    ]
+  },
+  {
+    "group": "DevOps and infrastructure",
+    "items": [
+      "Docker",
+      "Nginx",
+      "Linux",
+      "CI/CD",
+      "Git"
+    ]
+  },
+  {
+    "group": "Frontend and desktop",
+    "items": [
+      "React",
+      "React Native",
+      "Electron",
+      "Tauri",
+      "GTK4 / libadwaita"
+    ]
+  },
+  {
+    "group": "Security and quality",
+    "items": [
+      "AES encryption",
+      "JWT / OAuth",
+      "Unit testing",
+      "Code review",
+      "Agile / Scrum"
+    ]
+  }
+]

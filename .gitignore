@@ -1,3 +1,6 @@
+# Build output — GitHub Actions builds and deploys it
 build/
-*.tmp
-.DS_Store
+
+# WebFluent caches
+.wf-sizes.json
+.wf-cache/

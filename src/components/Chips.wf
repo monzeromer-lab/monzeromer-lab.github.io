@@ -1,0 +1,8 @@
+/// Technologies, each set as a literal.
+component Chips(_ items: [String]) {
+    Row(class: "chips", role: "list") {
+        for item in items by item {
+            Text(item, class: "chip", role: "listitem")
+        }
+    }
+}

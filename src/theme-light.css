@@ -1,0 +1,39 @@
+/* MO Systems, light. The site is dark by default (MoDark in theme.wf);
+   this is the palette a reader gets after choosing light, which the runtime
+   records as <html data-theme="light">. Only the tokens that differ. */
+
+:root { color-scheme: dark; }
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-primary: #2B5178;
+  --color-secondary: #0F7285;
+  --color-success: #1C7A5A;
+  --color-danger: #B3261E;
+  --color-warning: #8A5800;
+  --color-info: #2B5178;
+  --color-background: #F9FAFB;
+  --color-surface: #FFFFFF;
+  --color-text: #17191C;
+  --color-text-muted: #5A5F64;
+  --color-border: #E2E5E8;
+  --shadow-sm: 0 1px 2px rgba(23,25,28,0.06), 0 2px 6px rgba(23,25,28,0.06);
+  --shadow-md: 0 2px 4px rgba(23,25,28,0.05), 0 8px 20px rgba(23,25,28,0.10);
+  --shadow-lg: 0 4px 8px rgba(23,25,28,0.06), 0 16px 40px rgba(23,25,28,0.16);
+  --surface-canvas: #EEF0F2;
+  --surface-raised: #FFFFFF;
+  --surface-sunken: #F4F6F7;
+  --surface-overlay: #FFFFFF;
+  --surface-hover: #F4F6F7;
+  --ink-subtle: #676C71;
+  --ink-inverse: #F9FAFB;
+  --brand-hover: #234362;
+  --brand-ink: #2B5178;
+  --brand-subtle: #E7EEF6;
+  --brand-ring: #33689C;
+  --accent: #0F7285;
+  --accent-ink: #0D6274;
+  --accent-subtle: #E0F2F6;
+  --border-strong: #868B91;
+  --border-brand: #2B5178;
+  --term-bg: #1B1F22;
+}

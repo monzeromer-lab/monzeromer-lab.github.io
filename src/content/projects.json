@@ -1,0 +1,168 @@
+[
+  {
+    "id": "webfluent",
+    "name": "WebFluent",
+    "role": "Flagship",
+    "featured": true,
+    "selected": true,
+    "summary": "A web-first programming language that compiles to HTML, CSS, JavaScript, and PDF.",
+    "short": "A web-first language that compiles to HTML, CSS, JS, and PDF. This portfolio is built with it.",
+    "body": "WebFluent replaces the traditional web stack with a single, expressive language. It features reactive state, declarative UI components, built-in routing, i18n, SSG, and PDF output — all from .wf source files. This portfolio is built entirely with WebFluent.",
+    "points": [
+      "Reactive state with automatic UI updates",
+      "Full component library — layout, forms, navigation, data display",
+      "Static site generation with JS hydration",
+      "PDF compilation with page layout, headers, footers",
+      "Built-in i18n with automatic RTL support"
+    ],
+    "tags": [
+      "Rust",
+      "Compiler design",
+      "Language design",
+      "PDF generation"
+    ],
+    "link": "https://github.com/monzeromer-lab/WebFluent"
+  },
+  {
+    "id": "circles",
+    "name": "Circles",
+    "role": "Team lead",
+    "selected": true,
+    "summary": "A comprehensive business operating system for small and medium clinics.",
+    "short": "Business OS for clinics — EMR, telehealth, AI diagnostics, multi-branch. Live across MENA & Africa.",
+    "body": "Circles manages every aspect of clinic operations — from financials and patient scheduling to HIPAA-compliant EMR, telehealth, AI-powered diagnostics, multi-branch support, and branded patient apps. Available across MENA and Africa through local partners.",
+    "tags": [
+      "GraphQL",
+      "Kafka",
+      "Microservices",
+      "Healthcare"
+    ],
+    "link": "https://www.circles.clinic/ar/",
+    "featured": false,
+    "points": []
+  },
+  {
+    "id": "al-hakeem",
+    "name": "Al-Hakeem",
+    "role": "Engineering lead",
+    "summary": "A healthcare platform connecting physicians with medical services.",
+    "body": "Al-Hakeem streamlines physician onboarding and medical service delivery. The platform supports bilingual operation in Arabic and English, serving healthcare professionals across the region with credential management and service coordination.",
+    "tags": [
+      "Node.js",
+      "TypeScript",
+      "Healthcare"
+    ],
+    "link": "https://platform.alhakeem.app/",
+    "featured": false,
+    "selected": false,
+    "short": "A healthcare platform connecting physicians with medical services.",
+    "points": []
+  },
+  {
+    "id": "dabdoob",
+    "name": "Dabdoob",
+    "role": "Featured",
+    "summary": "A mobile-first e-commerce platform serving the Middle East.",
+    "body": "Dabdoob is a cross-platform shopping application available on iOS and Android, operating across Kuwait, Saudi Arabia, UAE, Qatar, and Bahrain. The platform delivers exclusive deals and a seamless mobile shopping experience across the GCC region.",
+    "tags": [
+      "Node.js",
+      "E-commerce",
+      "Mobile"
+    ],
+    "link": "https://dabdoob.com/",
+    "featured": false,
+    "selected": false,
+    "short": "A mobile-first e-commerce platform serving the Middle East.",
+    "points": []
+  },
+  {
+    "id": "sys-voice-daemon",
+    "name": "sys-voice-daemon",
+    "role": "Open source",
+    "selected": true,
+    "summary": "Privacy-first, offline voice-to-text daemon for Linux.",
+    "short": "Privacy-first offline voice-to-text for Linux. Kernel-level uinput injection, zero cloud dependency.",
+    "body": "A system-level daemon that automatically detects active text fields and injects transcriptions into any window. Uses a kernel-level virtual keyboard via uinput for seamless, privacy-respecting voice input — entirely offline with no cloud dependency.",
+    "tags": [
+      "Rust",
+      "Linux",
+      "uinput",
+      "Systems"
+    ],
+    "link": "https://github.com/monzeromer-lab/sys-voice-daemon",
+    "featured": false,
+    "points": []
+  },
+  {
+    "id": "rubiks-trainer",
+    "name": "rubiks-trainer",
+    "role": "Open source",
+    "summary": "A virtual 3D Rubik's cube game and speedcubing trainer built in Rust.",
+    "body": "Supports 2×2, 3×3, 4×4, and 5×5 cubes with custom-built solvers written from scratch — no external solver crates. Features a progressive learning track from beginner LBL through advanced CFOP, plus a daily-use timer and drill mode designed for speedcubers.",
+    "tags": [
+      "Rust",
+      "Bevy",
+      "3D graphics",
+      "Algorithms"
+    ],
+    "link": "https://github.com/monzeromer-lab/rubik-cube-trainer",
+    "featured": false,
+    "selected": false,
+    "short": "A virtual 3D Rubik's cube game and speedcubing trainer built in Rust.",
+    "points": []
+  },
+  {
+    "id": "oxide-explorer",
+    "name": "Oxide Explorer",
+    "role": "Open source",
+    "summary": "A blazing-fast, power-user-centric file manager built with Rust, GTK4, and libadwaita.",
+    "body": "Combines the visual elegance of GNOME Files with the advanced productivity features of Directory Opus and Total Commander. Designed for developers and power users who need dual-pane browsing, batch operations, and keyboard-driven workflows in a native Linux environment.",
+    "tags": [
+      "Rust",
+      "GTK4",
+      "libadwaita",
+      "Linux desktop"
+    ],
+    "link": "https://github.com/monzeromer-lab/oxide-explorer",
+    "featured": false,
+    "selected": false,
+    "short": "A blazing-fast, power-user-centric file manager built with Rust, GTK4, and libadwaita.",
+    "points": []
+  },
+  {
+    "id": "xbuild",
+    "name": "xbuild",
+    "role": "Contribution",
+    "summary": "A build tool for Rust projects with cross-compilation and publishing to all major app stores.",
+    "body": "Contributed ARM 32-bit target support to xbuild, expanding the tool's cross-compilation reach to legacy and embedded ARM devices. xbuild aims to make native app development as easy as web development — build once, publish everywhere.",
+    "tags": [
+      "Rust",
+      "Cross-compilation",
+      "ARM",
+      "Open source"
+    ],
+    "link": "https://github.com/rust-mobile/xbuild",
+    "featured": false,
+    "selected": false,
+    "short": "A build tool for Rust projects with cross-compilation and publishing to all major app stores.",
+    "points": []
+  },
+  {
+    "id": "micro-kernel",
+    "name": "Micro-kernel architecture",
+    "role": "Tech talk",
+    "summary": "A micro-kernel web backend where business logic lives in dynamically-loaded WebAssembly modules.",
+    "body": "The server core is intentionally minimal — routing, auth, and module lifecycle. All business logic runs in sandboxed WebAssembly modules that can be deployed, hot-swapped, rolled back, call external services, and call each other via an internal IPC layer. A demonstration of how micro-kernel principles apply to backend architecture.",
+    "tags": [
+      "Rust",
+      "WebAssembly",
+      "Systems design",
+      "Architecture"
+    ],
+    "link": "https://github.com/monzeromer-lab/micro-kernel-backend",
+    "featured": false,
+    "selected": false,
+    "short": "A micro-kernel web backend where business logic lives in dynamically-loaded WebAssembly modules.",
+    "points": []
+  }
+]

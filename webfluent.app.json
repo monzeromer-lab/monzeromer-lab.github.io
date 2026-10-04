@@ -1,21 +1,36 @@
 {
-    "name": "Monzer Omer — Senior Backend Engineer",
-    "theme": {
-        "name": "default",
-        "tokens": {
-            "color-primary": "#2563EB",
-            "color-primary-dark": "#1d4ed8",
-            "font-family": "Inter, system-ui, sans-serif",
-            "font-family-mono": "'JetBrains Mono', 'Fira Code', monospace"
-        }
-    },
-    "build": {
-        "output": "./",
-        "ssg": true,
-        "output_type": "static"
-    },
-    "meta": {
-        "description": "Senior Backend Engineer specializing in Rust, Node.js, and Distributed Systems. AI-augmented workflow.",
-        "author": "Monzer Omer"
-    }
+  "name": "Monzer Omer — Portfolio",
+  "version": "2.0.0",
+  "author": "Monzer Omer",
+  "theme": {
+    "name": "MoDark"
+  },
+  "build": {
+    "output": "./build",
+    "minify": true,
+    "ssg": true,
+    "split": true,
+    "compress": false,
+    "csp": true
+  },
+  "dev": {
+    "port": 3000,
+    "hot_reload": true
+  },
+  "motion": {
+    "duration": "120ms",
+    "easing": "$ease-standard"
+  },
+  "meta": {
+    "title": "Monzer Omer — Senior backend engineer",
+    "description": "Senior backend engineer working in Rust, Node.js and distributed systems.",
+    "lang": "en",
+    "favicon": "/favicon.svg",
+    "site_url": "https://monzeromer.dev",
+    "site_name": "Monzer Omer",
+    "sitemap": true,
+    "fonts": [
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    ]
+  }
 }

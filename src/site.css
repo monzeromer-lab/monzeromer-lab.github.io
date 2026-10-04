@@ -1,0 +1,150 @@
+/* The portfolio's own rules, in MO Systems. Graphite is structure, blue is
+   intent, cyan is data, and nothing else carries colour. Every value here
+   is a theme token; MoLight and MoDark change them, these rules do not. */
+
+html { background: var(--color-background); }
+body { font-family: var(--font-family); color: var(--color-text); background: var(--color-background); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--brand-subtle); color: var(--color-text); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--brand-ring); outline-offset: 2px; }
+.page p, .site-header p, .site-footer p { margin: 0; }
+
+/* Type, by the MO scale. */
+.overline { margin: 0; font-size: 11px; line-height: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.wf-heading.display { margin: 0; font-size: 40px; line-height: 44px; font-weight: 800; letter-spacing: -0.022em; color: var(--color-text); }
+.wf-heading.title { margin: 0; font-size: 28px; line-height: 34px; font-weight: 700; letter-spacing: -0.012em; color: var(--color-text); }
+.wf-heading.section-title { margin: 0; font-size: 22px; line-height: 28px; font-weight: 700; letter-spacing: -0.008em; color: var(--color-text); }
+.wf-heading.card-title { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: -0.004em; color: var(--color-text); }
+.lead { margin: 0; max-width: var(--prose-max); font-size: 17px; line-height: 26px; color: var(--color-text-muted); }
+.body { margin: 0; max-width: var(--prose-max); font-size: 15px; line-height: 23px; color: var(--color-text); }
+.body-muted { margin: 0; font-size: 15px; line-height: 23px; color: var(--color-text-muted); }
+.meta { margin: 0; font-family: var(--font-family-mono); font-size: 12px; line-height: 18px; color: var(--ink-subtle); font-variant-numeric: tabular-nums; }
+@media (min-width: 768px) {
+  .wf-heading.display { font-size: 56px; line-height: 56px; }
+  .wf-heading.title { font-size: 34px; line-height: 38px; letter-spacing: -0.016em; }
+}
+
+/* The page column: 16px on a phone, 40px on a desktop, 1120px at most. */
+.page { width: 100%; max-width: var(--content-max); margin: 0 auto; padding: 48px 16px 80px; box-sizing: border-box; }
+@media (min-width: 768px) { .page { padding: 64px 40px 96px; } }
+
+/* Buttons and links. A button is 34px, or 42px when it is the call to action. */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 42px; padding: 0 16px; box-sizing: border-box;
+  border-radius: 4px; border: 1px solid transparent; font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0.002em;
+  text-decoration: none; white-space: nowrap; cursor: pointer; font-family: inherit;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.btn:hover { text-decoration: none; }
+.btn-primary { background: var(--color-primary); color: #ffffff; }
+.btn-primary:hover { background: var(--brand-hover); color: #ffffff; }
+.btn-secondary { background: var(--surface-raised); color: var(--color-text); border-color: var(--border-strong); box-shadow: 0 1px 1px rgba(0,0,0,0.05); }
+.btn-secondary:hover { background: var(--surface-hover); color: var(--color-text); }
+.text-link { color: var(--brand-ink); font-size: 14px; line-height: 20px; font-weight: 600; text-decoration: none; }
+.text-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Chips: a technology, written as a literal. */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; height: 24px; margin: 0; padding: 0 8px; border-radius: 4px; background: var(--surface-sunken); border: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: 12px; line-height: 18px; color: var(--color-text-muted); white-space: nowrap; }
+.pill { display: inline-flex; align-items: center; height: 22px; margin: 0; padding: 0 8px; border-radius: 999px; font-size: 12px; line-height: 16px; font-weight: 500; white-space: nowrap; background: var(--surface-sunken); border: 1px solid var(--color-border); color: var(--color-text-muted); }
+.pill-brand { background: var(--brand-subtle); border-color: var(--border-brand); color: var(--brand-ink); }
+.pill-live { background: var(--accent-subtle); border-color: var(--accent); color: var(--accent-ink); gap: 6px; }
+.pill-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+/* Cards: round corners, a border, and in the light theme a small shadow. */
+.panel { background: var(--surface-raised); border: 1px solid var(--color-border); border-radius: 10px; padding: 20px; box-shadow: var(--shadow-sm); box-sizing: border-box; min-width: 0; }
+@media (min-width: 768px) { .panel { padding: 24px; } }
+.panel-featured { border-color: var(--border-brand); }
+.points { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.points p { position: relative; padding-left: 18px; font-size: 14px; line-height: 21px; color: var(--color-text-muted); }
+.points p::before { content: ""; position: absolute; left: 2px; top: 8px; width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid var(--brand-ink); box-sizing: border-box; }
+
+/* Metrics: numbers in mono, so their digits line up. */
+.metric { margin: 0; font-family: var(--font-family-mono); font-size: 34px; line-height: 38px; font-weight: 600; letter-spacing: -0.012em; color: var(--color-text); font-variant-numeric: tabular-nums; }
+.metric-label { margin: 0; font-size: 13px; line-height: 20px; color: var(--color-text-muted); }
+
+/* The timeline: a trace with a node per role, as in the mark. The current
+   role's node is the one accent on the page. */
+.timeline { position: relative; display: flex; flex-direction: column; gap: 0; }
+.entry { position: relative; display: grid; grid-template-columns: 1fr; gap: 6px 32px; padding: 0 0 32px 28px; }
+.entry::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: -8px; width: 2px; background: var(--color-border); }
+.entry:last-child::before { display: none; }
+.entry::after { content: ""; position: absolute; left: 0; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--color-background); border: 2px solid var(--brand-ink); box-sizing: border-box; }
+.entry.is-current::after { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-subtle); }
+.entry-when { padding-top: 1px; }
+@media (min-width: 768px) {
+  .entry { grid-template-columns: 160px 1fr; padding-left: 32px; }
+}
+
+/* Definition rows on the contact page: a label, then a literal. */
+.rows { display: flex; flex-direction: column; }
+.row-item { display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-bottom: 1px solid var(--color-border); }
+.row-item:last-child { border-bottom: 0; }
+.row-item a { font-family: var(--font-family-mono); font-size: 14px; line-height: 20px; color: var(--brand-ink); text-decoration: none; overflow-wrap: anywhere; }
+.row-item a:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (min-width: 640px) { .row-item { flex-direction: row; align-items: center; gap: 24px; } .row-item .label { width: 96px; flex-shrink: 0; } }
+.label { margin: 0; font-size: 13px; line-height: 16px; font-weight: 500; color: var(--color-text-muted); }
+
+/* A console stays dark in both themes. */
+.term { background: var(--term-bg); border-radius: 10px; overflow: hidden; border: 1px solid var(--color-border); box-shadow: var(--shadow-md); min-width: 0; }
+.term-bar { display: flex; align-items: center; justify-content: space-between; height: 36px; padding: 0 14px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.term-bar p { font-family: var(--font-family-mono); font-size: 12px; line-height: 18px; color: var(--term-dim); }
+.term-body { padding: 14px 16px 16px; overflow-x: auto; }
+.term.term, .term .term-body, .term .term-line { gap: 0; }
+.term-line { display: flex; flex-wrap: nowrap; min-height: 22px; }
+.term-line p { margin: 0; white-space: pre; font-family: var(--font-family-mono); font-size: 13px; line-height: 22px; color: var(--term-ink); }
+.term-line .t-dim { color: var(--term-dim); }
+.term-line .t-key { color: var(--syntax-keyword); }
+.term-line .t-str { color: var(--syntax-string); }
+.term-line .t-num { color: var(--syntax-number); }
+.term-line .t-fn { color: var(--syntax-function); }
+.term-line .t-punct { color: var(--syntax-punct); }
+
+/* The header: the mark, the places to read, the theme. */
+.site-header { position: sticky; top: 0; z-index: 200; background: var(--color-background); border-bottom: 1px solid var(--color-border); }
+.site-header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 56px; max-width: var(--content-max); margin: 0 auto; padding: 0 16px; box-sizing: border-box; flex-wrap: nowrap; }
+@media (min-width: 768px) { .site-header-inner { height: 60px; padding: 0 40px; } }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--color-text); text-decoration: none; flex-wrap: nowrap; }
+.brand:hover { text-decoration: none; }
+.mark { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 6px; background: var(--color-primary); color: #ffffff; font-family: var(--font-family-mono); font-size: 12px; font-weight: 600; letter-spacing: -0.02em; margin: 0; }
+.brand-name { margin: 0; font-size: 15px; line-height: 20px; font-weight: 600; letter-spacing: -0.004em; white-space: nowrap; }
+.nav { display: none; align-items: center; gap: 2px; flex-wrap: nowrap; }
+.nav a, .menu a { display: inline-flex; align-items: center; border-radius: 4px; color: var(--color-text-muted); text-decoration: none; font-size: 13px; line-height: 16px; font-weight: 500; transition: background 120ms ease, color 120ms ease; }
+.nav a { height: 32px; padding: 0 10px; }
+.nav a:hover, .menu a:hover { background: var(--surface-hover); color: var(--color-text); text-decoration: none; }
+.nav a.active, .menu a.active { background: var(--brand-subtle); color: var(--brand-ink); font-weight: 600; }
+@media (min-width: 900px) { .nav { display: flex; } }
+.header-actions { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; }
+.icon-btn.wf-icon-btn { width: 34px; height: 34px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-background); color: var(--color-text-muted); }
+.icon-btn.wf-icon-btn:hover { color: var(--color-text); background: var(--surface-hover); border-color: var(--border-strong); }
+@media (min-width: 900px) { .menu-btn.wf-icon-btn { display: none; } }
+.menu { position: sticky; top: 56px; z-index: 199; display: flex; flex-direction: column; gap: 2px; padding: 8px 16px 16px; background: var(--color-background); border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-md); }
+.menu a { height: 44px; padding: 0 12px; font-size: 15px; }
+@media (min-width: 900px) { .menu { display: none; } }
+
+/* The footer. */
+.site-footer { border-top: 1px solid var(--color-border); background: var(--surface-canvas); }
+.site-footer-inner { display: flex; flex-direction: column; gap: 16px; max-width: var(--content-max); margin: 0 auto; padding: 24px 16px; box-sizing: border-box; }
+.site-footer a { color: var(--color-text-muted); font-size: 13px; line-height: 20px; text-decoration: none; }
+.site-footer a:hover { color: var(--color-text); }
+.site-footer .note { font-size: 13px; line-height: 20px; color: var(--ink-subtle); }
+.site-footer .links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+@media (min-width: 768px) { .site-footer-inner { flex-direction: row; align-items: center; justify-content: space-between; padding: 24px 40px; } }
+
+/* The hero's second line and the typed line under it. */
+.hero-role { margin: 0; font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: -0.008em; color: var(--color-text-muted); }
+.typed { margin: 0; min-height: 20px; font-family: var(--font-family-mono); font-size: 13px; line-height: 20px; color: var(--ink-subtle); white-space: pre-wrap; }
+.typed::after { content: ""; display: inline-block; width: 7px; height: 15px; margin-left: 2px; vertical-align: -2px; background: var(--brand-ink); }
+@media (min-width: 768px) { .hero-role { font-size: 28px; line-height: 34px; } .typed { font-size: 14px; } }
+
+/* The AI share, as a meter: the word, the bar, the number. */
+.ai-badge { display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; flex-wrap: nowrap; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--border-brand); background: var(--brand-subtle); }
+.ai-badge-label { margin: 0; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--brand-ink); white-space: nowrap; }
+.ai-badge-value { margin: 0; font-family: var(--font-family-mono); font-size: 12px; line-height: 16px; font-weight: 600; color: var(--brand-ink); font-variant-numeric: tabular-nums; }
+.ai-meter { width: 64px; height: 4px; border-radius: 2px; background: var(--color-border); overflow: hidden; gap: 0; }
+/* 95%: keep in step with AI_SHARE in model.wf. A literal here keeps the CSP free of inline styles. */
+.ai-meter-fill { width: 95%; height: 100%; background: var(--brand-ink); }
+
+/* A callout: an informational note, tinted with the brand. */
+.callout { gap: 8px; padding: 16px 20px; border-radius: 10px; background: var(--brand-subtle); border: 1px solid var(--color-border); border-left: 3px solid var(--border-brand); }
+.callout-title { margin: 0; font-size: 15px; line-height: 20px; font-weight: 600; color: var(--color-text); }
+.callout .body { max-width: none; color: var(--color-text-muted); }

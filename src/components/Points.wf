@@ -1,0 +1,10 @@
+/// A list of short statements, each behind a circuit node.
+component Points(_ items: [String]) {
+    if items.length > 0 {
+        Stack(class: "points", role: "list") {
+            for item in items by item {
+                Text(item, role: "listitem")
+            }
+        }
+    }
+}
