@@ -11,7 +11,8 @@
     "ssg": true,
     "split": false,
     "compress": false,
-    "csp": true
+    "csp": true,
+    "clean_urls": "file"
   },
   "dev": {
     "port": 3000,
@@ -28,8 +29,66 @@
     "favicon": "/favicon.svg",
     "touch_icon": "/apple-touch-icon.png",
     "image": "/og.png",
+    "image_alt": "Monzer Omer, senior backend engineer — Rust, Node.js and distributed systems. monzeromer.dev",
     "site_url": "https://monzeromer.dev",
     "site_name": "Monzer Omer",
-    "sitemap": true
+    "owner": "person",
+    "job_title": "Senior Backend Engineer",
+    "same_as": [
+      "https://github.com/monzeromer-lab",
+      "https://www.linkedin.com/in/monzeromer/"
+    ],
+    "owner_details": {
+      "alternateName": "Elmonther Omer",
+      "description": "Senior backend engineer specializing in Rust, Node.js and distributed systems.",
+      "email": "mailto:monzer.a.omer@gmail.com",
+      "image": "https://monzeromer.dev/icon-512.png",
+      "worksFor": [
+        {
+          "@type": "Organization",
+          "name": "Alhakeem",
+          "url": "https://platform.alhakeem.app/"
+        },
+        {
+          "@type": "Organization",
+          "name": "SilverKey Technologies"
+        }
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "National Ribat University"
+      },
+      "knowsAbout": [
+        "Rust",
+        "Node.js",
+        "TypeScript",
+        "Distributed systems",
+        "Microservices",
+        "Apache Kafka",
+        "GraphQL",
+        "Compiler design",
+        "WebAssembly"
+      ],
+      "knowsLanguage": [
+        "ar",
+        "en"
+      ]
+    },
+    "sitemap": true,
+    "preload": [
+      "/fonts/inter-latin.woff2",
+      "/fonts/jetbrains-mono-latin.woff2"
+    ],
+    "scripts": [
+      "https://www.googletagmanager.com/gtag/js?id=G-NJ43DW0SFV"
+    ],
+    "connect": [
+      "https://*.google-analytics.com",
+      "https://*.analytics.google.com",
+      "https://www.googletagmanager.com"
+    ]
+  },
+  "lints": {
+    "D05": "off"
   }
 }

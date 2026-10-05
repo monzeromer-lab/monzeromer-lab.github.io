@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  WF_VERSION: v5.2.0
+  WF_VERSION: v5.3.0
 
 jobs:
   build:
@@ -37,9 +37,7 @@ jobs:
           wf check --format github --deny-warnings
 
       - name: Build
-        run: |
-          wf build
-          python3 tools/pages.py build
+        run: wf build
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -4,7 +4,7 @@ Personal portfolio site built entirely with [WebFluent](https://github.com/monze
 
 ## Structure
 
-Written in WebFluent 5.2, styled with MO Systems. The site is dark by
+Written in WebFluent 5.3, styled with MO Systems. The site is dark by
 default: `src/theme.wf` is the dark theme it builds with, and
 `src/theme-light.css` the light palette a reader can switch to.
 
@@ -15,6 +15,7 @@ src/
 ├── theme.wf              # MO Systems, dark: the site's theme
 ├── theme-light.css       # MO Systems, light: applied when a reader picks it
 ├── site.css              # Shared rules, all on theme tokens
+├── analytics.js          # Google Analytics set-up (live site only)
 ├── content/              # projects, experience, skills, education (JSON)
 ├── components/           # Header, footer, cards, timeline entries, AI badge and callout
 └── pages/                # Home, Projects, Experience, Skills, Education, Contact
@@ -24,7 +25,7 @@ To change what the site says, edit the JSON under `src/content/`.
 
 ## Setup
 
-Needs `wf` 5.2 or later.
+Needs `wf` 5.3 or later.
 
 ```bash
 wf serve          # Dev server on localhost:3000
@@ -40,16 +41,26 @@ pinned `wf` release, runs `wf check --deny-warnings`, builds, and publishes
 `build/` to GitHub Pages on every push to `master`. Pull requests are checked
 and built but not deployed.
 
-Between the build and the upload, `tools/pages.py` finishes the output for
-GitHub Pages: a `<route>.html` beside each `<route>/index.html`, so `/contact`
-is served directly instead of redirecting to `/contact/`; a `Person` in the
-structured data where WebFluent writes an `Organization`; the sharing
-card's size and alt text; and preloads for the two fonts.
+`webfluent.app.json` says everything the build needs for GitHub Pages and
+for search: `build.clean_urls: "file"` writes a `<route>.html` beside each
+`<route>/index.html`, so `/contact` is served directly instead of
+redirecting to `/contact/`; `meta.owner: "person"`, `job_title`, `same_as`
+and `owner_details` describe you in the structured data; `meta.image_alt`
+describes the sharing card; and `meta.preload` asks for the two fonts with
+the page.
 
 The fonts — Inter and JetBrains Mono, Latin subsets, SIL Open Font License
 1.1 — are served from `public/fonts/` rather than Google Fonts, so nothing
-from another origin stands in the way of the first paint. To move to a new WebFluent release, change
-`WF_VERSION` in the workflow. The custom domain, `monzeromer.dev`, is
+from another origin stands in the way of the first paint.
+
+Google Analytics (GA4, `G-NJ43DW0SFV`): the library is in `meta.scripts`,
+the endpoints it reports to are in `meta.connect` (the policy's
+`connect-src`), and the set-up Google's snippet does inline is
+`src/analytics.js`, which only reports on `monzeromer.dev`, so local builds
+and Lighthouse runs are not counted. `lints` turns `D05` off: `gtag.js`
+changes at Google's will, so it cannot carry an integrity hash.
+
+To move to a new WebFluent release, change `WF_VERSION` in the workflow. The custom domain, `monzeromer.dev`, is
 `public/CNAME`, copied into every build.
 
 ## License
