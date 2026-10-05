@@ -43,8 +43,12 @@ and built but not deployed.
 Between the build and the upload, `tools/pages.py` finishes the output for
 GitHub Pages: a `<route>.html` beside each `<route>/index.html`, so `/contact`
 is served directly instead of redirecting to `/contact/`; a `Person` in the
-structured data where WebFluent writes an `Organization`; and the sharing
-card's size and alt text. To move to a new WebFluent release, change
+structured data where WebFluent writes an `Organization`; the sharing
+card's size and alt text; and preloads for the two fonts.
+
+The fonts — Inter and JetBrains Mono, Latin subsets, SIL Open Font License
+1.1 — are served from `public/fonts/` rather than Google Fonts, so nothing
+from another origin stands in the way of the first paint. To move to a new WebFluent release, change
 `WF_VERSION` in the workflow. The custom domain, `monzeromer.dev`, is
 `public/CNAME`, copied into every build.
 

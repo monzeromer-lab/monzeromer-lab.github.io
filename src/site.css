@@ -2,6 +2,12 @@
    intent, cyan is data, and nothing else carries colour. Every value here
    is a theme token; MoLight and MoDark change them, these rules do not. */
 
+/* The two faces, served from the site itself: no third-party stylesheet in
+   the way of the first paint. Latin subsets of the variable fonts, from
+   Google Fonts; both under the SIL Open Font License 1.1. */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400 800; font-display: swap; src: url("/fonts/inter-latin.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("/fonts/jetbrains-mono-latin.woff2") format("woff2"); }
+
 html { background: var(--color-background); }
 body { font-family: var(--font-family); color: var(--color-text); background: var(--color-background); -webkit-font-smoothing: antialiased; }
 ::selection { background: var(--brand-subtle); color: var(--color-text); }
@@ -135,9 +141,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--brand-ring); ou
 
 /* The hero's second line and the typed line under it. */
 .hero-role { margin: 0; font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: -0.008em; color: var(--color-text-muted); }
-.typed { margin: 0; min-height: 20px; font-family: var(--font-family-mono); font-size: 13px; line-height: 20px; color: var(--ink-subtle); white-space: pre-wrap; }
+/* The typed line keeps the height of its longest line — two lines on a
+   phone — so typing and deleting never moves what is below it. */
+.typed { margin: 0; height: 40px; overflow: hidden; font-family: var(--font-family-mono); font-size: 13px; line-height: 20px; color: var(--ink-subtle); white-space: pre-wrap; }
 .typed::after { content: ""; display: inline-block; width: 7px; height: 15px; margin-left: 2px; vertical-align: -2px; background: var(--brand-ink); }
-@media (min-width: 768px) { .hero-role { font-size: 28px; line-height: 34px; } .typed { font-size: 14px; } }
+@media (min-width: 768px) { .hero-role { font-size: 28px; line-height: 34px; } .typed { height: 20px; font-size: 14px; } }
 
 /* The AI share, as a meter: the word, the bar, the number. */
 .ai-badge { display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; flex-wrap: nowrap; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--border-brand); background: var(--brand-subtle); }

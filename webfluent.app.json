@@ -9,7 +9,7 @@
     "output": "./build",
     "minify": true,
     "ssg": true,
-    "split": true,
+    "split": false,
     "compress": false,
     "csp": true
   },
@@ -30,9 +30,6 @@
     "image": "/og.png",
     "site_url": "https://monzeromer.dev",
     "site_name": "Monzer Omer",
-    "sitemap": true,
-    "fonts": [
-      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    ]
+    "sitemap": true
   }
 }

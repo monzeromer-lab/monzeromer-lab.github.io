@@ -16,6 +16,10 @@
    and `og:locale` in the `en_US` form Open Graph reads (WebFluent writes
    the page's `lang`, `en`).
 
+4. The fonts, asked for early. They are referenced from styles.css, so the
+   browser would only find them once that has arrived; a preload in the head
+   starts both downloads with the stylesheet's.
+
 Usage: tools/pages.py build
 """
 import json
@@ -47,6 +51,8 @@ PERSON = {
 CARD = {"width": "1200", "height": "630",
         "alt": "Monzer Omer, senior backend engineer — Rust, Node.js and distributed systems. monzeromer.dev"}
 
+FONTS = ["/fonts/inter-latin.woff2", "/fonts/jetbrains-mono-latin.woff2"]
+
 LD = re.compile(r'(<script type="application/ld\+json">)(.*?)(</script>)', re.S)
 
 
@@ -77,10 +83,18 @@ def card(html: str) -> str:
     return html.replace('<meta name="twitter:card"', tags + '<meta name="twitter:card"', 1)
 
 
+def preload(html: str) -> str:
+    if 'rel="preload"' in html:
+        return html
+    links = "".join(f'<link rel="preload" href="{f}" as="font" type="font/woff2" crossorigin>\n    '
+                    for f in FONTS)
+    return html.replace('<link rel="stylesheet"', links + '<link rel="stylesheet"', 1)
+
+
 def main(out: Path) -> None:
     pages = sorted(out.glob("index.html")) + sorted(out.glob("*/index.html"))
     for page in pages:
-        page.write_text(card(person(page.read_text())))
+        page.write_text(preload(card(person(page.read_text()))))
     for page in sorted(out.glob("*/index.html")):
         shutil.copyfile(page, out / f"{page.parent.name}.html")
     print(f"{len(pages)} page(s) finished for GitHub Pages")
