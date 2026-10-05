@@ -1,0 +1,17 @@
+/// The analytics question, at the foot of the screen until it is answered.
+/// It floats, so it never moves the page, and it is only drawn in the
+/// browser, where there is an answer to read.
+component ConsentBanner {
+    after(0) { Consent.check() }
+
+    if Consent.asking {
+        Stack(role: "region", aria-label: "Cookie consent", class: "consent") {
+            Text("Analytics", class: "callout-title")
+            Text("This site uses Google Analytics to count visits. It sets cookies only if you allow it; you can change your mind under Cookie settings at the bottom of any page.", class: "consent-text")
+            Row(class: "consent-actions") {
+                Button("Decline", class: "btn btn-secondary btn-sm") { on click { Consent.choose(false) } }
+                Button("Allow analytics", class: "btn btn-primary btn-sm") { on click { Consent.choose(true) } }
+            }
+        }
+    }
+}

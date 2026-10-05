@@ -15,9 +15,10 @@ src/
 ├── theme.wf              # MO Systems, dark: the site's theme
 ├── theme-light.css       # MO Systems, light: applied when a reader picks it
 ├── site.css              # Shared rules, all on theme tokens
-├── analytics.js          # Google Analytics set-up (live site only)
+├── analytics.js          # Google Analytics and Consent Mode (live site only)
+├── stores/               # Consent: whether the banner is asking
 ├── content/              # projects, experience, skills, education (JSON)
-├── components/           # Header, footer, cards, timeline entries, AI badge and callout
+├── components/           # Header, footer, cards, timeline entries, AI badge and callout, consent banner
 └── pages/                # Home, Projects, Experience, Skills, Education, Contact
 ```
 
@@ -25,7 +26,7 @@ To change what the site says, edit the JSON under `src/content/`.
 
 ## Setup
 
-Needs `wf` 5.3 or later.
+Needs `wf` 5.3.1 or later.
 
 ```bash
 wf serve          # Dev server on localhost:3000
@@ -53,12 +54,16 @@ The fonts — Inter and JetBrains Mono, Latin subsets, SIL Open Font License
 1.1 — are served from `public/fonts/` rather than Google Fonts, so nothing
 from another origin stands in the way of the first paint.
 
-Google Analytics (GA4, `G-NJ43DW0SFV`): the library is in `meta.scripts`,
-the endpoints it reports to are in `meta.connect` (the policy's
-`connect-src`), and the set-up Google's snippet does inline is
-`src/analytics.js`, which only reports on `monzeromer.dev`, so local builds
-and Lighthouse runs are not counted. `lints` turns `D05` off: `gtag.js`
-changes at Google's will, so it cannot carry an integrity hash.
+Google Analytics (GA4, `G-NJ43DW0SFV`) with Consent Mode v2: the library is
+in `meta.scripts`, loaded `async` so it never holds up the page; the
+endpoints it reports to are in `meta.connect` (the policy's `connect-src`);
+and `src/analytics.js` does the set-up Google's inline snippet would. Every
+consent type starts `denied`, so nothing is stored until the reader allows
+it in the banner (`ConsentBanner`, reopened by "Cookie settings" in the
+footer); the answer is kept in `localStorage`. Only `monzeromer.dev`
+reports, so local builds and Lighthouse runs are not counted. `lints` turns
+`D05` off: `gtag.js` changes at Google's will, so it cannot carry an
+integrity hash.
 
 To move to a new WebFluent release, change `WF_VERSION` in the workflow. The custom domain, `monzeromer.dev`, is
 `public/CNAME`, copied into every build.

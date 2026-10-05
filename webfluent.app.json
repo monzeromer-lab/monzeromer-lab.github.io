@@ -80,7 +80,10 @@
       "/fonts/jetbrains-mono-latin.woff2"
     ],
     "scripts": [
-      "https://www.googletagmanager.com/gtag/js?id=G-NJ43DW0SFV"
+      {
+        "src": "https://www.googletagmanager.com/gtag/js?id=G-NJ43DW0SFV",
+        "async": true
+      }
     ],
     "connect": [
       "https://*.google-analytics.com",

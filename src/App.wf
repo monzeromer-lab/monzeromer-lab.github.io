@@ -2,4 +2,5 @@ app {
     SiteHeader
     Router
     SiteFooter
+    ConsentBanner
 }

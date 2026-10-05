@@ -6,6 +6,7 @@ component SiteFooter {
                 Link("GitHub", href: GITHUB)
                 Link("LinkedIn", href: LINKEDIN)
                 Link(EMAIL, href: "mailto:{EMAIL}")
+                Button("Cookie settings", class: "link-btn") { on click { Consent.reopen() } }
             }
             Row(align: .center) {
                 style { gap: 4px }

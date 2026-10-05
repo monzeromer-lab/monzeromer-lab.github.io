@@ -165,3 +165,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--brand-ring); ou
 .cert:last-child { border-bottom: 0; }
 .cert-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
 .wf-heading.cert-name { margin: 0; font-size: 15px; line-height: 20px; font-weight: 600; color: var(--color-text); }
+
+/* The analytics question: a card at the foot of the screen. It floats, so
+   it never moves the page (no layout shift), and it is an overlay, so it
+   carries the overlay surface and shadow. */
+.consent { position: fixed; z-index: 300; left: 16px; right: 16px; bottom: 16px; gap: 8px; padding: 16px; border-radius: 10px; background: var(--surface-overlay); border: 1px solid var(--color-border); box-shadow: var(--shadow-lg); }
+.consent-text { margin: 0; font-size: 13px; line-height: 20px; color: var(--color-text-muted); }
+.consent-actions { justify-content: flex-end; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
+.btn.btn-sm { height: 34px; padding: 0 12px; font-size: 14px; }
+@media (min-width: 640px) { .consent { left: auto; right: 24px; bottom: 24px; width: 400px; } }
+
+/* A button that reads as a footer link. */
+.link-btn.wf-btn { all: unset; cursor: pointer; color: var(--color-text-muted); font-size: 13px; line-height: 20px; }
+.link-btn.wf-btn:hover { color: var(--color-text); }
+.link-btn.wf-btn:focus-visible { outline: 2px solid var(--brand-ring); outline-offset: 2px; border-radius: 2px; }
