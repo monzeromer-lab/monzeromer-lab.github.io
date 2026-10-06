@@ -26,7 +26,7 @@ To change what the site says, edit the JSON under `src/content/`.
 
 ## Setup
 
-Needs `wf` 5.3.2 or later.
+Needs `wf` 5.3.3 or later.
 
 ```bash
 wf serve          # Dev server on localhost:3000
@@ -56,7 +56,8 @@ from another origin stands in the way of the first paint.
 
 Google Analytics (GA4, `G-NJ43DW0SFV`) with Consent Mode v2: the library is
 in `meta.scripts`, loaded `async` so it never holds up the page; the
-endpoints it reports to are in `meta.connect` (the policy's `connect-src`);
+endpoints it reports to are in `meta.connect` (the policy's `connect-src`)
+and its image beacons' origins in `meta.img` (`img-src`);
 and `src/analytics.js` does the set-up Google's inline snippet would. Every
 consent type starts `denied`, so nothing is stored until the reader allows
 it in the banner (`ConsentBanner`, reopened by "Cookie settings" in the
