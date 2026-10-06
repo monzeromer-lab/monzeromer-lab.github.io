@@ -82,7 +82,7 @@
     "scripts": [
       {
         "src": "https://www.googletagmanager.com/gtag/js?id=G-NJ43DW0SFV",
-        "async": true
+        "load": "after"
       }
     ],
     "connect": [
