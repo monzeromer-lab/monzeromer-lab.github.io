@@ -26,7 +26,7 @@ To change what the site says, edit the JSON under `src/content/`.
 
 ## Setup
 
-Needs `wf` 5.3.1 or later.
+Needs `wf` 5.3.2 or later.
 
 ```bash
 wf serve          # Dev server on localhost:3000

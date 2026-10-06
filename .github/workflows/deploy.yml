@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  WF_VERSION: v5.3.1
+  WF_VERSION: v5.3.2
 
 jobs:
   build:
