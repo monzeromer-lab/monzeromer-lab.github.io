@@ -11,11 +11,11 @@ page Contact(path: "/contact", title: "Contact — Monzer Omer",
                 }
                 Row(class: "row-item") {
                     Text("LinkedIn", class: "label")
-                    Link("linkedin.com/in/monzeromer", href: LINKEDIN)
+                    Link("linkedin.com/in/monzeromer", href: LINKEDIN, data-track: "generate_lead", data-track-method: "linkedin")
                 }
                 Row(class: "row-item") {
                     Text("GitHub", class: "label")
-                    Link("github.com/monzeromer-lab", href: GITHUB)
+                    Link("github.com/monzeromer-lab", href: GITHUB, data-track: "generate_lead", data-track-method: "github")
                 }
             }
             Row {

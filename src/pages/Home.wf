@@ -62,8 +62,8 @@ page Home(path: "/", title: "Monzer Omer — Senior backend engineer",
                 AIBadge
                 Row(gap: .sm) {
                     style { gap: 10px; margin-top: 8px }
-                    Link("View projects", to: "/projects", class: "btn btn-primary")
-                    Link("Get in touch", to: "/contact", class: "btn btn-secondary")
+                    Link("View projects", to: "/projects", class: "btn btn-primary", data-track: "select_content", data-track-content-type: "cta", data-track-item-id: "view_projects")
+                    Link("Get in touch", to: "/contact", class: "btn btn-secondary", data-track: "select_content", data-track-content-type: "cta", data-track-item-id: "get_in_touch")
                 }
             }
 

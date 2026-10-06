@@ -3,8 +3,8 @@ component SiteFooter {
     Footer(class: "site-footer") {
         Row(class: "site-footer-inner") {
             Row(class: "links") {
-                Link("GitHub", href: GITHUB)
-                Link("LinkedIn", href: LINKEDIN)
+                Link("GitHub", href: GITHUB, data-track: "generate_lead", data-track-method: "github")
+                Link("LinkedIn", href: LINKEDIN, data-track: "generate_lead", data-track-method: "linkedin")
                 Link(EMAIL, href: "mailto:{EMAIL}")
                 Button("Cookie settings", class: "link-btn") { on click { Consent.reopen() } }
             }

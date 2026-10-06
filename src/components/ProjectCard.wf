@@ -21,7 +21,7 @@ component ProjectCard(_ project: Project, full: Bool = true) {
             Chips(project.tags)
             if full {
                 if project.link != null {
-                    Link(if isSource { "View the source" } else { "Visit the site" }, href: project.link ?? "", class: "text-link")
+                    Link(if isSource { "View the source" } else { "Visit the site" }, href: project.link ?? "", class: "text-link", data-track: "select_content", data-track-content-type: "project", data-track-item-id: project.id)
                 }
             }
         }

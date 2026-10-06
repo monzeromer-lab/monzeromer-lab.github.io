@@ -24,7 +24,7 @@ component SiteHeader {
             }
 
             Row(class: "header-actions") {
-                IconButton(icon: if dark { "sun" } else { "moon" }, label: if dark { "Use the light theme" } else { "Use the dark theme" }, class: "icon-btn") {
+                IconButton(icon: if dark { "sun" } else { "moon" }, label: if dark { "Use the light theme" } else { "Use the dark theme" }, class: "icon-btn", data-track: "select_content", data-track-content-type: "theme", data-track-item-id: if dark { "light" } else { "dark" }) {
                     on click { setTheme(if dark { "light" } else { "dark" }) }
                 }
                 IconButton(icon: if menu { "close" } else { "menu" }, label: "Menu", class: "icon-btn menu-btn", aria-expanded: menu) {
