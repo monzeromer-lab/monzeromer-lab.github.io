@@ -1,0 +1,17 @@
+/// A few lines of this site's own source, highlighted: the proof that the
+/// site is written in WebFluent. Code reads left to right in both languages.
+component CodeExcerpt(caption: String) {
+    Stack(class: "code", dir: "ltr") {
+        Text(caption, class: "code-caption")
+        Stack(class: "code-body") {
+            Row(class: "code-line") { Text("page", class: "t-key")  Text(" ")  Text("Home", class: "t-fn")  Text("(", class: "t-punct")  Text("path", class: "t-dim")  Text(": ", class: "t-punct")  Text("\"/\"", class: "t-str")  Text(", ", class: "t-punct")  Text("title", class: "t-dim")  Text(": ", class: "t-punct")  Text("\"Monzer Omer\"", class: "t-str")  Text(") {", class: "t-punct") }
+            Row(class: "code-line") { Text("    ")  Text("Stack", class: "t-fn")  Text("(", class: "t-punct")  Text("class", class: "t-dim")  Text(": ", class: "t-punct")  Text("\"page\"", class: "t-str")  Text(") {", class: "t-punct") }
+            Row(class: "code-line") { Text("        ")  Text("Heading", class: "t-fn")  Text("(", class: "t-punct")  Text("\"Monzer Omer\"", class: "t-str")  Text(", ", class: "t-punct")  Text("class", class: "t-dim")  Text(": ", class: "t-punct")  Text("\"display\"", class: "t-str")  Text(")", class: "t-punct")  Text(".h1", class: "t-num") }
+            Row(class: "code-line") { Text("        ")  Text("Text", class: "t-fn")  Text("(", class: "t-punct")  Text("\"Senior backend engineer\"", class: "t-str")  Text(", ", class: "t-punct")  Text("class", class: "t-dim")  Text(": ", class: "t-punct")  Text("\"hero-role\"", class: "t-str")  Text(")", class: "t-punct") }
+            Row(class: "code-line") { Text("        ")  Text("AIBadge", class: "t-fn") }
+            Row(class: "code-line") { Text("        ")  Text("Link", class: "t-fn")  Text("(", class: "t-punct")  Text("\"View projects\"", class: "t-str")  Text(", ", class: "t-punct")  Text("to", class: "t-dim")  Text(": ", class: "t-punct")  Text("\"/projects\"", class: "t-str")  Text(")", class: "t-punct") }
+            Row(class: "code-line") { Text("    }", class: "t-punct") }
+            Row(class: "code-line") { Text("}", class: "t-punct") }
+        }
+    }
+}

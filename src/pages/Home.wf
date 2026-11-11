@@ -1,152 +1,115 @@
-const TYPED = [
-    "> specializing in Rust, Node.js, distributed systems",
-    "> 6+ years shipping production-grade backends",
-    "> building with AI — 95% of my workflow, intentionally",
-    "> available for senior roles & architecture consulting"
-]
+/// The front page: who, the career as a trace, how I work, selected work,
+/// where I am now, and how to reach me.
+component HomeView(lang: Lang = .ar) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+    derived base = if lang == .ar { "" } else { "/en" }
+    derived ps = if lang == .ar { projectsAr } else { projects }
+    derived rs = if lang == .ar { rolesAr } else { roles }
+    derived flagship = ps.filter(p => p.featured)
+    derived selected = ps.filter(p => p.selected && !p.featured)
+    derived current = rs.filter(r => r.current)
 
-page Home(path: "/", title: "Monzer Omer — Senior backend engineer",
-          description: "Senior backend engineer specializing in Rust, Node.js and distributed systems. AI-augmented workflow.") {
-    derived current = roles.filter(r => r.current)
-    derived selected = projects.filter(p => p.selected)
-
-    // The typed line. It starts whole — what the static page and a reader
-    // who asked for less motion see — then deletes and types the next one.
-    // One tick is 40ms; `wait` holds a finished line on screen.
-    state line = 0
-    state chars = (TYPED[0] ?? "").length
-    state deleting = true
-    state wait = 55
-    state calm = true
-    derived typed = (TYPED[line] ?? "").slice(0, chars)
-
-    after(0) { calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches }
-    every(40) {
-        if !calm {
-            if wait > 0 {
-                wait = wait - 1
-            } else if deleting {
-                chars = chars - 1
-                if chars <= 0 {
-                    line = (line + 1) % TYPED.length
-                    deleting = false
-                    wait = 8
-                }
-            } else {
-                chars = chars + 1
-                if chars >= (TYPED[line] ?? "").length {
-                    deleting = true
-                    wait = 55
-                }
+    Stack(class: "page home") {
+        Stack(class: "hero") {
+            Row { Status(c.status) }
+            Stack(class: "hero-name") {
+                Heading(c.name, class: "display").h1
+                Text(c.role, class: "hero-role")
             }
-        }
-    }
-
-    Stack(class: "page") {
-        style { gap: 80px; @md { gap: 96px } }
-
-        // The introduction, beside a console that says the same in TOML.
-        Grid(columns: { base: 1, lg: 2 }, gap: .xl, align: .center) {
-            style { gap: 40px; @lg { grid-template-columns: 7fr 5fr; gap: 56px } }
-
-            Stack {
-                style { gap: 20px }
-                Row { Text("Available for work", class: "pill pill-live") }
-                Stack {
-                    style { gap: 8px }
-                    Heading("Monzer Omer", class: "display").h1
-                    Text("Senior backend engineer", class: "hero-role")
-                }
-                Text(typed, class: "typed", aria-hidden: "true")
-                Text("Building scalable, resilient systems — with Rust, Node.js, and distributed architecture. I design for correctness and optimize for the long run.", class: "lead")
-                AIBadge
-                Row(gap: .sm) {
-                    style { gap: 10px; margin-top: 8px }
-                    Link("View projects", to: "/projects", class: "btn btn-primary", data-track: "select_content", data-track-content-type: "cta", data-track-item-id: "view_projects")
-                    Link("Get in touch", to: "/contact", class: "btn btn-secondary", data-track: "select_content", data-track-content-type: "cta", data-track-item-id: "get_in_touch")
-                }
-            }
-
-            Stack(class: "term", aria-label: "Profile, as a TOML file") {
-                Row(class: "term-bar") {
-                    Text("~/profile.toml")
-                    Text("toml")
-                }
-                Stack(class: "term-body") {
-                    Row(class: "term-line") { Text("[engineer]", class: "t-key") }
-                    Row(class: "term-line") { Text("name     ", class: "t-fn")  Text("= ", class: "t-punct")  Text("\"Monzer Omer\"", class: "t-str") }
-                    Row(class: "term-line") { Text("role     ", class: "t-fn")  Text("= ", class: "t-punct")  Text("\"Senior backend engineer\"", class: "t-str") }
-                    Row(class: "term-line") { Text("now      ", class: "t-fn")  Text("= ", class: "t-punct")  Text("[", class: "t-punct")  Text(current.map(r => "\"{r.company}\"").join(", "), class: "t-str")  Text("]", class: "t-punct") }
-                    Row(class: "term-line") { Text("since    ", class: "t-fn")  Text("= ", class: "t-punct")  Text("2020", class: "t-num") }
-                    Row(class: "term-line") { Text("ai_share ", class: "t-fn")  Text("= ", class: "t-punct")  Text("0.{AI_SHARE}", class: "t-num") }
-                    Row(class: "term-line") { Text(" ") }
-                    Row(class: "term-line") { Text("[engineer.focus]", class: "t-key") }
-                    Row(class: "term-line") { Text("languages", class: "t-fn")  Text(" = [", class: "t-punct")  Text("\"Rust\"", class: "t-str")  Text(", ", class: "t-punct")  Text("\"TypeScript\"", class: "t-str")  Text("]", class: "t-punct") }
-                    Row(class: "term-line") { Text("systems  ", class: "t-fn")  Text(" = [", class: "t-punct")  Text("\"Kafka\"", class: "t-str")  Text(", ", class: "t-punct")  Text("\"RabbitMQ\"", class: "t-str")  Text("]", class: "t-punct") }
-                    Row(class: "term-line") { Text("# Builds a language on the side.", class: "t-dim") }
-                }
+            Text(c.lead, class: "lead")
+            Row(class: "actions") {
+                Link(c.cta1, to: "{base}/projects", class: "btn btn-primary", data-track: "select_content", data-track-content-type: "cta", data-track-item-id: "view_projects")
+                Link(c.cta2, href: "mailto:{EMAIL}", class: "btn btn-secondary")
             }
         }
 
-        // Three numbers from the work itself.
-        Grid(columns: { base: 1, md: 3 }, gap: .md) {
-            style { gap: 16px; @md { gap: 24px } }
-            Stack(class: "panel") {
-                style { gap: 6px }
-                Text("98%", class: "metric")
-                Text("Faster image processing after moving the service to Rust", class: "metric-label")
+        Stack(class: "section") {
+            Row(class: "section-head") {
+                Heading(c.trace_h, class: "section-title").h2
             }
-            Stack(class: "panel") {
-                style { gap: 6px }
-                Text("5", class: "metric")
-                Text("Gulf markets served by the Dabdoob platform", class: "metric-label")
+            Trace(lang: lang)
+        }
+
+        Row(class: "section split") {
+            Stack(class: "split-head") {
+                Heading(c.ai_h, class: "section-title").h2
             }
-            Stack(class: "panel") {
-                style { gap: 6px }
-                Text("{roles.length}", class: "metric")
-                Text("Companies, backend first, since 2020", class: "metric-label")
+            Stack(class: "split-body") {
+                AIMeter(lang: lang, large: true)
+                Text(c.ai_p, class: "body muted")
             }
         }
 
-        AICallout
-
-        // Selected work.
-        Stack {
-            style { gap: 24px }
-            Row(justify: .between, align: .end, gap: .md) {
-                Stack {
-                    style { gap: 8px }
-                    Text("Selected work", class: "overline")
-                    Heading("Projects", class: "section-title").h2
-                }
-                Link("All projects", to: "/projects", class: "text-link")
+        Stack(class: "section") {
+            Row(class: "section-head") {
+                Heading(c.work_h, class: "section-title").h2
+                Link(c.work_all, to: "{base}/projects", class: "text-link")
             }
-            Grid(columns: { base: 1, md: 3 }, gap: .md) {
-                style { gap: 16px; @md { gap: 24px } }
+            for p in flagship by p.id {
+                Flagship(p, lang: lang)
+            }
+            Stack(class: "index") {
                 for p in selected by p.id {
-                    ProjectCard(p, full: false)
+                    ProjectRow(p, lang: lang)
                 }
             }
         }
 
-        // Where I am now.
-        if current.length > 0 {
-            Stack {
-                style { gap: 24px }
-                Row(justify: .between, align: .end, gap: .md) {
-                    Stack {
-                        style { gap: 8px }
-                        Text("Now", class: "overline")
-                        Heading("Experience", class: "section-title").h2
-                    }
-                    Link("Full history", to: "/experience", class: "text-link")
-                }
-                Stack(class: "timeline") {
-                    for r in current by r.company {
-                        RoleEntry(r)
+        Stack(class: "section") {
+            Row(class: "section-head") {
+                Heading(c.now_h, class: "section-title").h2
+                Link(c.now_all, to: "{base}/experience", class: "text-link")
+            }
+            Row(class: "now-grid") {
+                for r in current by r.company {
+                    Stack(class: "now-card") {
+                        Row(class: "now-card-top") {
+                            Text("{r.from} – {r.to}", class: "num muted")
+                            Status(c.current)
+                        }
+                        Stack(class: "entry-title") {
+                            Heading(r.company, class: "entry-name").h3
+                            Text(r.title, class: "entry-sub")
+                        }
+                        Text(if r.about != "" { r.about } else { r.points.first() ?? "" }, class: "body")
+                        Chips(r.tags)
                     }
                 }
             }
         }
+
+        Row(class: "band") {
+            Stack(class: "band-text") {
+                Heading(c.band_h, class: "section-title").h2
+                Text(c.band_p, class: "body muted")
+                Link(EMAIL, href: "mailto:{EMAIL}", class: "band-email", dir: "ltr")
+            }
+            Row(class: "actions") {
+                Link("LinkedIn", href: LINKEDIN, class: "btn btn-secondary", data-track: "generate_lead", data-track-method: "linkedin")
+                Link("GitHub", href: GITHUB, class: "btn btn-secondary", data-track: "generate_lead", data-track-method: "github")
+            }
+        }
     }
+}
+
+page HomeAr(path: "/", title: "منذر عمر — Senior Backend Engineer",
+            description: "منذر عمر، Senior Backend Engineer يعمل بـ Rust وNode.js والـ Distributed Systems. المشاريع والخبرات وطرق التواصل.",
+            layout: Shell(lang: .ar, current: .home)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/")
+    }
+    HomeView(lang: .ar)
+}
+
+page HomeEn(path: "/en", title: "Monzer Omer — Senior backend engineer",
+            description: "Senior backend engineer specializing in Rust, Node.js and distributed systems. AI-augmented workflow.",
+            layout: Shell(lang: .en, current: .home)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/")
+    }
+    HomeView(lang: .en)
 }

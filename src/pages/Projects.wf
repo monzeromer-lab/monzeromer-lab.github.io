@@ -1,21 +1,47 @@
-page Projects(path: "/projects", title: "Projects — Monzer Omer",
-              description: "Things I've designed, built, and shipped: WebFluent, Circles, Al-Hakeem, Dabdoob and open-source Rust tools.") {
-    derived featured = projects.filter(p => p.featured)
-    derived rest = projects.filter(p => !p.featured)
+/// Everything I have designed, built and shipped: the flagship beside its
+/// source, then the rest as an index.
+component ProjectsView(lang: Lang = .ar) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+    derived ps = if lang == .ar { projectsAr } else { projects }
+    derived flagship = ps.filter(p => p.featured)
+    derived rest = ps.filter(p => !p.featured)
 
     Stack(class: "page") {
-        PageHead("Projects", eyebrow: "Work", lead: "Things I've designed, built, and shipped.")
-        Stack {
-            style { gap: 24px }
-            for p in featured by p.id {
-                ProjectCard(p)
+        PageHead(c.projects_h, lead: c.projects_lead)
+        for p in flagship by p.id {
+            Flagship(p, lang: lang, full: true, top: true)
+        }
+        Stack(class: "section") {
+            Row(class: "section-head") {
+                Heading(c.more, class: "section-title").h2
             }
-            Grid(columns: { base: 1, md: 2 }, gap: .md) {
-                style { gap: 16px; @md { gap: 24px } }
+            Stack(class: "index") {
                 for p in rest by p.id {
-                    ProjectCard(p)
+                    ProjectRow(p, lang: lang, full: true)
                 }
             }
         }
     }
+}
+
+page ProjectsAr(path: "/projects", title: "المشاريع — منذر عمر",
+                description: "أشياء صمّمتها وبنيتها وأطلقتها: WebFluent وCircles والحكيم ودبدوب وأدوات Open Source بلغة Rust.",
+                layout: Shell(lang: .ar, current: .projects)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/projects")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en/projects")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/projects")
+    }
+    ProjectsView(lang: .ar)
+}
+
+page ProjectsEn(path: "/en/projects", title: "Projects — Monzer Omer",
+                description: "Things I've designed, built, and shipped: WebFluent, Circles, Al-Hakeem, Dabdoob and open-source Rust tools.",
+                layout: Shell(lang: .en, current: .projects)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/projects")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en/projects")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/projects")
+    }
+    ProjectsView(lang: .en)
 }

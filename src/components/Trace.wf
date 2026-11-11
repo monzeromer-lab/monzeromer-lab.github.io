@@ -1,0 +1,64 @@
+/// The years the career trace draws: one column a month, January 2020 to the
+/// end of 2026. Add a year here (and its column classes in `trace.css`) when
+/// the trace runs past it.
+const YEARS = [2020, 2021, 2022, 2023, 2024, 2025, 2026]
+
+/// The career, drawn as a distributed trace: each role a span on a time axis,
+/// oldest first, so the waterfall steps down to now. A past role is blue, a
+/// current one cyan and open to the "now" edge. Every position is a class
+/// (`s-<month>` where a span starts, `w-<months>` how long it runs), so the
+/// page paints without a script and without inline styles, and the axis
+/// mirrors in Arabic by itself.
+component Trace(lang: Lang = .ar) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+    derived spans = (if lang == .ar { rolesAr } else { roles }).sortBy(r => r.start)
+
+    Stack(class: "trace") {
+        Row(class: "trace-head") {
+            Row(class: "trace-request", dir: "ltr") {
+                Text("GET", class: "trace-method")
+                Text("/career", class: "trace-path")
+                Text("200", class: "trace-status")
+                Text("{spans.length} {c.spans}")
+            }
+            Row(class: "trace-legend") {
+                Row(class: "trace-key") {
+                    Text("", class: "trace-swatch", aria-hidden: "true")
+                    Text(c.legend_past)
+                }
+                Row(class: "trace-key") {
+                    Text("", class: "trace-swatch is-current", aria-hidden: "true")
+                    Text(c.legend_now)
+                }
+            }
+        }
+        Stack(class: "trace-scroll") {
+            Stack(class: "trace-body") {
+                Row(class: "trace-row trace-axis", aria-hidden: "true") {
+                    Text("", class: "trace-label")
+                    Stack(class: "trace-track") {
+                        for y in YEARS by y {
+                            Text("{y}", class: "trace-tick s-{(y - 2020) * 12}")
+                        }
+                        Text(c.now, class: "trace-now")
+                    }
+                    Text("", class: "trace-len")
+                }
+                Stack(role: "table", aria-label: c.trace_label, class: "trace-rows") {
+                    for r in spans by r.company {
+                        Row(role: "row", class: "trace-row") {
+                            Stack(role: "cell", class: "trace-label") {
+                                Text(r.company, class: "trace-company")
+                                Text(r.title, class: "trace-title")
+                            }
+                            Stack(role: "cell", class: "trace-track") {
+                                Text("", class: ["trace-span", "s-{r.start}", if r.current { "is-current" } else { "w-{r.months ?? 1}" }], aria-hidden: "true")
+                            }
+                            Text(if r.current { c.current } else { r.length }, role: "cell", class: ["trace-len", if r.current { "is-current" }])
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

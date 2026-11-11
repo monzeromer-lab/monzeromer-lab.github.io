@@ -1,0 +1,147 @@
+[
+  {
+    "company": "الحكيم",
+    "title": "Engineering Lead",
+    "from": "ديسمبر 2025",
+    "to": "حاليًا",
+    "current": true,
+    "about": "أول منصة سودانية للطب عن بُعد على المستويين المحلي والدولي، تقدّم خدمات الرعاية الصحية في منطقة الشرق الأوسط وشمال أفريقيا بدعم رسمي من الحكومة السودانية.",
+    "points": [
+      "صمّمت Analytics Engine خاصًا لرصد أنماط تفاعل المستخدمين المعقدة وتتبّعها وتحسينها.",
+      "بنيت الـ Backend Infrastructure الأساسية للمنصة بلغة Rust كلغة أولى، لضمان أعلى درجات الـ Memory Safety والـ Concurrency والأداء.",
+      "طوّرت أدوات DevOps Orchestration مخصّصة لإدارة الـ Deployments باستراتيجية Blue-green، للحفاظ على توفّر الخدمة بنسبة 100% دون أي Downtime.",
+      "أقود المرحلة الأخيرة من الـ Optimizations وخطط الـ Scaling استعدادًا للإطلاق التجاري القريب."
+    ],
+    "tags": [
+      "Rust",
+      "Analytics",
+      "DevOps",
+      "Blue-green deployment"
+    ],
+    "start": 71,
+    "months": null,
+    "length": ""
+  },
+  {
+    "company": "SilverKey Technologies",
+    "title": "Senior Node.js Developer",
+    "from": "مارس 2025",
+    "to": "حاليًا",
+    "current": true,
+    "about": "",
+    "points": [
+      "صمّمت وطوّرت وصُنت الـ Core Backend Functionality لتحسين الموثوقية والأداء عبر منصات Web وMobile.",
+      "دمجت Firebase Analytics وAdjust وMoEngage لتمكين استراتيجيات تسويق وUser Engagement قائمة على البيانات.",
+      "حسّنت الـ Endpoints الخاصة بعرض المنتجات وعالجت مشكلات الـ Crawlers لتعزيز الـ SEO وقابلية اكتشاف المنتجات.",
+      "بنيت Microservice عالية الأداء لمعالجة الصور بلغة Rust، حققت تحسنًا في الأداء يتجاوز 98% في المتوسط.",
+      "نقلت الـ Codebase إلى TypeScript، ما حسّن الـ Maintainability والـ Type Safety والـ Scalability على المدى الطويل.",
+      "طوّرت الـ Documentation والأدوات الداخلية، ما سهّل الـ Onboarding وعزّز التعاون بين الفرق.",
+      "حسّنت أداء المنصة عبر الـ Query Optimization والـ System Design."
+    ],
+    "tags": [
+      "Rust",
+      "TypeScript",
+      "Node.js",
+      "Firebase"
+    ],
+    "start": 62,
+    "months": null,
+    "length": ""
+  },
+  {
+    "company": "Ecom Payments",
+    "title": "Backend Developer",
+    "from": "أغسطس 2024",
+    "to": "فبراير 2025",
+    "current": false,
+    "about": "",
+    "points": [
+      "صمّمت وطوّرت وصُنت Microservices عالية الأداء وScalable باستخدام NestJS، تتكامل بسلاسة مع الـ Frontend والـ Third-party APIs.",
+      "بنيت وأدرت Microservices لتوليد المستندات والـ File Storage والـ File Uploads، مع AES Encryption لضمان أمان البيانات والـ Compliance.",
+      "طوّرت Microservice لإدارة التجّار تتعامل مع بياناتهم الحساسة، من التفاصيل البنكية ومعلومات المستخدمين إلى طرق الدفع وهياكل الرسوم.",
+      "أنشأت Statistics Microservice تحسب الـ Metrics الرئيسية وتحلّلها، وتقدّم رؤى عملية لاتخاذ القرار.",
+      "حرصت على أن تكون جميع الـ Microservices قابلة للـ Scaling والصيانة ومغطّاة بالـ Tests، وفق الـ Best Practices لجودة الكود والأداء.",
+      "تعاونت مع الـ Product Managers ومطوّري الـ Frontend لتحديد ميزات جديدة وتنفيذها، ما حسّن الـ UX.",
+      "استخدمت RabbitMQ للـ Message Queuing وDocker للـ Containerization، ما بسّط الـ Deployment وزاد موثوقية النظام.",
+      "عملت على الـ Troubleshooting والـ Debugging، وسلّمت كودًا نظيفًا وموثّقًا وقابلًا للصيانة وفق منهجيات Agile."
+    ],
+    "tags": [
+      "NestJS",
+      "RabbitMQ",
+      "Docker",
+      "AES"
+    ],
+    "start": 55,
+    "months": 7,
+    "length": "7 أشهر"
+  },
+  {
+    "company": "Circles",
+    "title": "Backend Developer",
+    "from": "ديسمبر 2022",
+    "to": "يناير 2024",
+    "current": false,
+    "about": "",
+    "points": [
+      "صمّمت وطوّرت وصُنت Healthcare Management System عالي الـ Scalability بمعمارية Microservices، مع GraphQL لجلب البيانات بكفاءة وKafka للـ Real-time Data Streaming والـ Event-driven Communication.",
+      "بنيت Community & Learning Platform وطوّرتها لتعزيز تبادل المعرفة والتعاون بين المستخدمين، مع أداء سلس وScalability عالية.",
+      "تعاونت عن قرب مع مطوّري الـ Frontend لتسليم ميزات عالية الجودة تتمحور حول المستخدم، مع Integration سلس بين خدمات الـ Backend وتطبيقات الـ Frontend.",
+      "واجهت تحديات تقنية معقدة بحلول مبتكرة، ما أظهر قدرة على حل المشكلات والتكيّف.",
+      "وسّعت خبرتي التقنية بإتقان NestJS وRust وGraphQL، وطبّقتها لتحسين أداء المنصة والـ Reliability والـ Maintainability."
+    ],
+    "tags": [
+      "GraphQL",
+      "Kafka",
+      "Microservices",
+      "NestJS"
+    ],
+    "start": 35,
+    "months": 14,
+    "length": "سنة وشهران"
+  },
+  {
+    "company": "علّمني",
+    "title": "Backend Developer & Co-founder",
+    "from": "يناير 2021",
+    "to": "ديسمبر 2022",
+    "current": false,
+    "about": "",
+    "points": [
+      "شاركت في تأسيس Startup تقدّم حلول E-learning مبتكرة وسهلة الوصول للطلاب والمعلمين، باستخدام Web Development والـ Machine Learning والـ Cloud Computing.",
+      "صمّمت وطوّرت وصُنت الـ Server-side Logic والـ APIs والـ Databases للمنصة باستخدام Node.js وExpress.js وMongoDB وGraphQL وFirebase.",
+      "طوّرت Authentication System متينًا باستخدام JWT وFirebase، وحسّنت الـ Queries والـ Indexes لتسريع الـ Response Time وتخفيف الحمل على الـ Server.",
+      "شخّصت الـ Bugs والمشكلات التي أبلغ عنها المستخدمون والعملاء وأصلحتها.",
+      "كتبت الـ Unit Tests والـ Documentation، وتعاونت مع الشركاء المؤسسين ومطوّري الـ Frontend لضمان جودة التطبيق وأدائه."
+    ],
+    "tags": [
+      "Node.js",
+      "GraphQL",
+      "Firebase",
+      "MongoDB"
+    ],
+    "start": 12,
+    "months": 24,
+    "length": "سنتان"
+  },
+  {
+    "company": "EnayaTech",
+    "title": "Backend Developer",
+    "from": "فبراير 2020",
+    "to": "يوليو 2020",
+    "current": false,
+    "about": "",
+    "points": [
+      "صمّمت وطوّرت وصُنت RESTful APIs باستخدام Express.js وMySQL وMongoDB لدعم تطبيقات ويب متعددة، واكتسبت خبرة عملية في الـ Backend Development.",
+      "تعاونت مع مطوّري الـ Frontend والمصممين والـ Product Managers لتقديم ميزات عالية الجودة وتجربة استخدام سلسة.",
+      "تعلّمت تقنيات وأدوات جديدة وطبّقتها، وشاركت في الـ Code Reviews والـ Documentation والـ Testing للارتقاء بجودة الـ Codebase."
+    ],
+    "tags": [
+      "Express.js",
+      "MySQL",
+      "MongoDB"
+    ],
+    "start": 1,
+    "months": 6,
+    "length": "6 أشهر"
+  }
+]

@@ -1,0 +1,173 @@
+/* The career trace's columns: one a month from January 2020, 84 in all.
+   `s-N` starts a span (or a year's tick) at month N; `w-N` runs it N months.
+   Written out so the page paints without a script or an inline style;
+   grid columns follow the writing direction, so Arabic mirrors by itself.
+   A year past 2026 adds 12 columns here and in `.trace-track`. */
+.s-0{grid-column-start:1}
+.s-1{grid-column-start:2}
+.s-2{grid-column-start:3}
+.s-3{grid-column-start:4}
+.s-4{grid-column-start:5}
+.s-5{grid-column-start:6}
+.s-6{grid-column-start:7}
+.s-7{grid-column-start:8}
+.s-8{grid-column-start:9}
+.s-9{grid-column-start:10}
+.s-10{grid-column-start:11}
+.s-11{grid-column-start:12}
+.s-12{grid-column-start:13}
+.s-13{grid-column-start:14}
+.s-14{grid-column-start:15}
+.s-15{grid-column-start:16}
+.s-16{grid-column-start:17}
+.s-17{grid-column-start:18}
+.s-18{grid-column-start:19}
+.s-19{grid-column-start:20}
+.s-20{grid-column-start:21}
+.s-21{grid-column-start:22}
+.s-22{grid-column-start:23}
+.s-23{grid-column-start:24}
+.s-24{grid-column-start:25}
+.s-25{grid-column-start:26}
+.s-26{grid-column-start:27}
+.s-27{grid-column-start:28}
+.s-28{grid-column-start:29}
+.s-29{grid-column-start:30}
+.s-30{grid-column-start:31}
+.s-31{grid-column-start:32}
+.s-32{grid-column-start:33}
+.s-33{grid-column-start:34}
+.s-34{grid-column-start:35}
+.s-35{grid-column-start:36}
+.s-36{grid-column-start:37}
+.s-37{grid-column-start:38}
+.s-38{grid-column-start:39}
+.s-39{grid-column-start:40}
+.s-40{grid-column-start:41}
+.s-41{grid-column-start:42}
+.s-42{grid-column-start:43}
+.s-43{grid-column-start:44}
+.s-44{grid-column-start:45}
+.s-45{grid-column-start:46}
+.s-46{grid-column-start:47}
+.s-47{grid-column-start:48}
+.s-48{grid-column-start:49}
+.s-49{grid-column-start:50}
+.s-50{grid-column-start:51}
+.s-51{grid-column-start:52}
+.s-52{grid-column-start:53}
+.s-53{grid-column-start:54}
+.s-54{grid-column-start:55}
+.s-55{grid-column-start:56}
+.s-56{grid-column-start:57}
+.s-57{grid-column-start:58}
+.s-58{grid-column-start:59}
+.s-59{grid-column-start:60}
+.s-60{grid-column-start:61}
+.s-61{grid-column-start:62}
+.s-62{grid-column-start:63}
+.s-63{grid-column-start:64}
+.s-64{grid-column-start:65}
+.s-65{grid-column-start:66}
+.s-66{grid-column-start:67}
+.s-67{grid-column-start:68}
+.s-68{grid-column-start:69}
+.s-69{grid-column-start:70}
+.s-70{grid-column-start:71}
+.s-71{grid-column-start:72}
+.s-72{grid-column-start:73}
+.s-73{grid-column-start:74}
+.s-74{grid-column-start:75}
+.s-75{grid-column-start:76}
+.s-76{grid-column-start:77}
+.s-77{grid-column-start:78}
+.s-78{grid-column-start:79}
+.s-79{grid-column-start:80}
+.s-80{grid-column-start:81}
+.s-81{grid-column-start:82}
+.s-82{grid-column-start:83}
+.s-83{grid-column-start:84}
+.w-1{grid-column-end:span 1}
+.w-2{grid-column-end:span 2}
+.w-3{grid-column-end:span 3}
+.w-4{grid-column-end:span 4}
+.w-5{grid-column-end:span 5}
+.w-6{grid-column-end:span 6}
+.w-7{grid-column-end:span 7}
+.w-8{grid-column-end:span 8}
+.w-9{grid-column-end:span 9}
+.w-10{grid-column-end:span 10}
+.w-11{grid-column-end:span 11}
+.w-12{grid-column-end:span 12}
+.w-13{grid-column-end:span 13}
+.w-14{grid-column-end:span 14}
+.w-15{grid-column-end:span 15}
+.w-16{grid-column-end:span 16}
+.w-17{grid-column-end:span 17}
+.w-18{grid-column-end:span 18}
+.w-19{grid-column-end:span 19}
+.w-20{grid-column-end:span 20}
+.w-21{grid-column-end:span 21}
+.w-22{grid-column-end:span 22}
+.w-23{grid-column-end:span 23}
+.w-24{grid-column-end:span 24}
+.w-25{grid-column-end:span 25}
+.w-26{grid-column-end:span 26}
+.w-27{grid-column-end:span 27}
+.w-28{grid-column-end:span 28}
+.w-29{grid-column-end:span 29}
+.w-30{grid-column-end:span 30}
+.w-31{grid-column-end:span 31}
+.w-32{grid-column-end:span 32}
+.w-33{grid-column-end:span 33}
+.w-34{grid-column-end:span 34}
+.w-35{grid-column-end:span 35}
+.w-36{grid-column-end:span 36}
+.w-37{grid-column-end:span 37}
+.w-38{grid-column-end:span 38}
+.w-39{grid-column-end:span 39}
+.w-40{grid-column-end:span 40}
+.w-41{grid-column-end:span 41}
+.w-42{grid-column-end:span 42}
+.w-43{grid-column-end:span 43}
+.w-44{grid-column-end:span 44}
+.w-45{grid-column-end:span 45}
+.w-46{grid-column-end:span 46}
+.w-47{grid-column-end:span 47}
+.w-48{grid-column-end:span 48}
+.w-49{grid-column-end:span 49}
+.w-50{grid-column-end:span 50}
+.w-51{grid-column-end:span 51}
+.w-52{grid-column-end:span 52}
+.w-53{grid-column-end:span 53}
+.w-54{grid-column-end:span 54}
+.w-55{grid-column-end:span 55}
+.w-56{grid-column-end:span 56}
+.w-57{grid-column-end:span 57}
+.w-58{grid-column-end:span 58}
+.w-59{grid-column-end:span 59}
+.w-60{grid-column-end:span 60}
+.w-61{grid-column-end:span 61}
+.w-62{grid-column-end:span 62}
+.w-63{grid-column-end:span 63}
+.w-64{grid-column-end:span 64}
+.w-65{grid-column-end:span 65}
+.w-66{grid-column-end:span 66}
+.w-67{grid-column-end:span 67}
+.w-68{grid-column-end:span 68}
+.w-69{grid-column-end:span 69}
+.w-70{grid-column-end:span 70}
+.w-71{grid-column-end:span 71}
+.w-72{grid-column-end:span 72}
+.w-73{grid-column-end:span 73}
+.w-74{grid-column-end:span 74}
+.w-75{grid-column-end:span 75}
+.w-76{grid-column-end:span 76}
+.w-77{grid-column-end:span 77}
+.w-78{grid-column-end:span 78}
+.w-79{grid-column-end:span 79}
+.w-80{grid-column-end:span 80}
+.w-81{grid-column-end:span 81}
+.w-82{grid-column-end:span 82}
+.w-83{grid-column-end:span 83}
+.w-84{grid-column-end:span 84}

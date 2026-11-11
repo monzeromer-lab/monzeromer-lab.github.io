@@ -1,0 +1,15 @@
+/// The frame of every page: the language and direction it is written in, the
+/// header, the footer, and the analytics question. A page names it as its
+/// `layout:` with its language and its place.
+component Shell(lang: Lang = .ar, current: Place = .home) {
+    slot
+
+    Stack(lang: if lang == .ar { "ar" } else { "en" }, dir: if lang == .ar { "rtl" } else { "ltr" }, class: "shell") {
+        SiteHeader(lang: lang, current: current)
+        Stack(class: "shell-main") {
+            children
+        }
+        SiteFooter(lang: lang)
+        ConsentBanner(lang: lang)
+    }
+}

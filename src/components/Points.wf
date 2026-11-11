@@ -1,4 +1,4 @@
-/// A list of short statements, each behind a circuit node.
+/// A list of short statements, each behind a small square node.
 component Points(_ items: [String]) {
     if items.length > 0 {
         Stack(class: "points", role: "list") {

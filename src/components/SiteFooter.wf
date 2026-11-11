@@ -1,17 +1,18 @@
 /// The footer: where else to find me, and what the site is made of.
-component SiteFooter {
+component SiteFooter(lang: Lang = .ar) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+
     Footer(class: "site-footer") {
         Row(class: "site-footer-inner") {
+            Row(class: "footer-note") {
+                Text(c.footer_copy, class: "note")
+                Link("WebFluent", href: WEBFLUENT)
+            }
             Row(class: "links") {
                 Link("GitHub", href: GITHUB, data-track: "generate_lead", data-track-method: "github")
                 Link("LinkedIn", href: LINKEDIN, data-track: "generate_lead", data-track-method: "linkedin")
-                Link(EMAIL, href: "mailto:{EMAIL}")
-                Button("Cookie settings", class: "link-btn") { on click { Consent.reopen() } }
-            }
-            Row(align: .center) {
-                style { gap: 4px }
-                Text("© 2026 Monzer Omer · Written in", class: "note")
-                Link("WebFluent", href: WEBFLUENT)
+                Link(EMAIL, href: "mailto:{EMAIL}", dir: "ltr")
+                Button(c.cookies, class: "link-btn") { on click { Consent.reopen() } }
             }
         }
     }

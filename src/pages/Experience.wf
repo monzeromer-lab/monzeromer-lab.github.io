@@ -1,11 +1,38 @@
-page Experience(path: "/experience", title: "Experience — Monzer Omer",
-                description: "Backend roles since 2020, newest first: SilverKey Technologies, Ecom Payments, Circles, Alimny and EnayaTech.") {
+/// Every role since 2020: the trace first, then each role in full, newest
+/// first.
+component ExperienceView(lang: Lang = .ar) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+    derived rs = if lang == .ar { rolesAr } else { roles }
+
     Stack(class: "page") {
-        PageHead("Experience", eyebrow: "Career", lead: "A reverse-chronological record of roles, responsibilities, and impact.")
-        Stack(class: "timeline") {
-            for role in roles by "{role.company}-{role.from}" {
-                RoleEntry(role)
+        PageHead(c.exp_h, lead: c.exp_lead)
+        Trace(lang: lang)
+        Stack(class: "entries") {
+            for r in rs by "{r.company}-{r.from}" {
+                RoleEntry(r, lang: lang)
             }
         }
     }
+}
+
+page ExperienceAr(path: "/experience", title: "الخبرات — منذر عمر",
+                  description: "أدوار الـ Backend منذ 2020، الأحدث أولًا: الحكيم وSilverKey Technologies وEcom Payments وCircles وعلّمني وEnayaTech.",
+                  layout: Shell(lang: .ar, current: .experience)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/experience")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en/experience")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/experience")
+    }
+    ExperienceView(lang: .ar)
+}
+
+page ExperienceEn(path: "/en/experience", title: "Experience — Monzer Omer",
+                  description: "Backend roles since 2020, newest first: Alhakeem, SilverKey Technologies, Ecom Payments, Circles, Alimny and EnayaTech.",
+                  layout: Shell(lang: .en, current: .experience)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/experience")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en/experience")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/experience")
+    }
+    ExperienceView(lang: .en)
 }

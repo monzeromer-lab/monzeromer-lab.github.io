@@ -1,0 +1,5 @@
+/// Something live: a cyan dot with a word beside it, so the state is never
+/// colour alone.
+component Status(_ label: String) {
+    Text(label, class: "status")
+}

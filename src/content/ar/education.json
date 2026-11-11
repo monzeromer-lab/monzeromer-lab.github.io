@@ -1,0 +1,85 @@
+{
+  "degrees": [
+    {
+      "school": "جامعة الرباط الوطني",
+      "degree": "بكالوريوس تقنية المعلومات",
+      "from": "أكتوبر 2018",
+      "to": "فبراير 2025",
+      "body": "أكملت درجة شاملة في تقنية المعلومات على مدى قرابة سبع سنوات، متجاوزًا تحديات مثل جائحة كوفيد-19 والاضطرابات السياسية والثورة. اكتسبت خبرة في أساسيات البرمجة والـ Data Structures والـ Software Engineering والـ Database Management والـ System Analysis والـ Networking.",
+      "points": [
+        "طوّرت مهارات عملية عبر مشاريع فصلية بدءًا من الفصل الثالث، طبّقت فيها المعرفة النظرية على حلول تقنية حقيقية",
+        "عزّزت الـ Soft Skills عبر مقررات في التواصل ومنهجية البحث وأخلاقيات المهنة",
+        "وازنت بين الدراسة والعمل، فاكتسبت خبرة عملية من سوق العمل وعزّزت القدرة على التكيّف وإدارة الوقت",
+        "بنيت أساسًا متينًا في تقنية المعلومات يجمع الخبرة التقنية مع حل المشكلات والعمل الجماعي"
+      ],
+      "activities": [
+        "GDSC",
+        "الأيام المفتوحة",
+        "استقبال الطلاب الجدد"
+      ],
+      "length": "6 سنوات و5 أشهر"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Fundamentals of Backend Engineering",
+      "issuer": "Udemy",
+      "date": "أغسطس 2025",
+      "body": "دراسة معمّقة للـ Protocols والـ Communication Patterns التي تشغّل أنظمة الـ Backend الحديثة."
+    },
+    {
+      "name": "Server-side Development with NodeJS, Express and MongoDB",
+      "issuer": "Coursera",
+      "date": "يونيو 2020",
+      "body": ""
+    },
+    {
+      "name": "Introduction to HTML5",
+      "issuer": "Coursera",
+      "date": "يونيو 2020",
+      "body": ""
+    },
+    {
+      "name": "Interactivity with JavaScript",
+      "issuer": "Coursera",
+      "date": "يونيو 2020",
+      "body": ""
+    },
+    {
+      "name": "Front-End Web UI Frameworks and Tools: Bootstrap 4",
+      "issuer": "Coursera",
+      "date": "يونيو 2020",
+      "body": ""
+    },
+    {
+      "name": "IT Project Management",
+      "issuer": "Coursera",
+      "date": "يوليو 2020",
+      "body": ""
+    },
+    {
+      "name": "Front-End Web Development with React",
+      "issuer": "Coursera",
+      "date": "يوليو 2020",
+      "body": ""
+    },
+    {
+      "name": "Introduction to TCP/IP",
+      "issuer": "Coursera",
+      "date": "أغسطس 2020",
+      "body": ""
+    },
+    {
+      "name": "Introduction to CSS3",
+      "issuer": "Coursera",
+      "date": "أغسطس 2020",
+      "body": ""
+    },
+    {
+      "name": "Computer Security and Systems Management",
+      "issuer": "Coursera",
+      "date": "أغسطس 2020",
+      "body": ""
+    }
+  ]
+}

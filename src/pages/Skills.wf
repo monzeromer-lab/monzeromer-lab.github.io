@@ -1,18 +1,42 @@
-page Skills(path: "/skills", title: "Skills — Monzer Omer",
-            description: "Languages, frameworks, and systems I architect, build, and deploy with.") {
+/// What I work with, group by group.
+component SkillsView(lang: Lang = .ar) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+    derived groups = if lang == .ar { skillsAr } else { skills }
+
     Stack(class: "page") {
-        PageHead("Infrastructure and capabilities", eyebrow: "Skills", lead: "Languages, frameworks, and systems I architect, build, and deploy with.")
-        AICallout
-        Spacer { style { height: 32px } }
-        Grid(columns: { base: 1, md: 2, lg: 4 }, gap: .md) {
-            style { gap: 16px; @md { gap: 24px } }
-            for g in skills by g.group {
-                Stack(class: "panel") {
-                    style { gap: 14px }
-                    Heading(g.group, class: "card-title").h2
+        PageHead(c.skills_h, lead: c.skills_lead)
+        Stack(class: "skills-meter") {
+            AIMeter(lang: lang)
+        }
+        Stack(class: "index") {
+            for g in groups by g.group {
+                Row(class: "skill-row") {
+                    Heading(g.group, class: "skill-group").h2
                     Chips(g.items)
                 }
             }
         }
     }
+}
+
+page SkillsAr(path: "/skills", title: "المهارات — منذر عمر",
+              description: "لغات البرمجة والـ Frameworks والأنظمة التي أستخدمها في الـ Architecture والبناء والـ Deployment.",
+              layout: Shell(lang: .ar, current: .skills)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/skills")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en/skills")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/skills")
+    }
+    SkillsView(lang: .ar)
+}
+
+page SkillsEn(path: "/en/skills", title: "Skills — Monzer Omer",
+              description: "Languages, frameworks, and systems I architect, build, and deploy with.",
+              layout: Shell(lang: .en, current: .skills)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/skills")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en/skills")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/skills")
+    }
+    SkillsView(lang: .en)
 }
