@@ -1,0 +1,169 @@
+[
+  {
+    "id": "webfluent",
+    "name": "WebFluent",
+    "role": "المشروع الأبرز",
+    "featured": true,
+    "selected": true,
+    "summary": "لغة برمجة Web-first، يحوّلها الـ Compiler إلى HTML وCSS وJavaScript وPDF.",
+    "short": "لغة Web-first يحوّلها الـ Compiler إلى HTML وCSS وJS وPDF. هذا الموقع مكتوب بها.",
+    "body": "تستبدل WebFluent الـ Web Stack التقليدي بلغة واحدة معبّرة: Reactive State، وDeclarative UI Components، وRouting مدمج، وi18n، وSSG، وإخراج PDF، كلها من ملفات .wf. هذا الموقع مبنيّ بالكامل بـ WebFluent.",
+    "points": [
+      "Reactive State تحدّث الواجهة تلقائيًا",
+      "Component Library كاملة: Layout وForms وNavigation وData Display",
+      "Static Site Generation مع JS Hydration",
+      "Compile إلى PDF مع Page Layout وHeaders وFooters",
+      "i18n مدمج مع دعم RTL تلقائي"
+    ],
+    "tags": [
+      "Rust",
+      "Compiler design",
+      "Language design",
+      "PDF generation"
+    ],
+    "link": "https://github.com/monzeromer-lab/WebFluent"
+  },
+  {
+    "id": "circles",
+    "name": "Circles",
+    "role": "Team Lead",
+    "selected": true,
+    "summary": "Business Operating System متكامل للعيادات الصغيرة والمتوسطة.",
+    "short": "Business OS للعيادات: EMR وTelehealth وAI Diagnostics وMulti-branch. يعمل في الشرق الأوسط وأفريقيا.",
+    "body": "يدير Circles كل جوانب تشغيل العيادة، من الشؤون المالية وجدولة المرضى إلى EMR متوافق مع HIPAA، والـ Telehealth، والتشخيص المدعوم بالـ AI، ودعم الـ Multi-branch، وتطبيقات للمرضى بهوية العيادة. متاح في الشرق الأوسط وأفريقيا عبر شركاء محليين.",
+    "tags": [
+      "GraphQL",
+      "Kafka",
+      "Microservices",
+      "Healthcare"
+    ],
+    "link": "https://www.circles.clinic/ar/",
+    "featured": false,
+    "points": []
+  },
+  {
+    "id": "al-hakeem",
+    "name": "الحكيم",
+    "role": "Engineering Lead",
+    "summary": "أول منصة سودانية للطب عن بُعد محليًا ودوليًا.",
+    "body": "تقدّم منصة الحكيم خدمات الرعاية الصحية في الشرق الأوسط وشمال أفريقيا بدعم رسمي من الحكومة السودانية. تبسّط الـ Onboarding للأطباء وتقديم الخدمات الطبية بالعربية والإنجليزية، مع Credential Management وتنسيق الخدمات. الـ Core Backend مكتوب بلغة Rust، مع Blue-green Deployments دون أي Downtime.",
+    "tags": [
+      "Rust",
+      "Node.js",
+      "TypeScript",
+      "Healthcare"
+    ],
+    "link": "https://platform.alhakeem.app/",
+    "featured": false,
+    "selected": false,
+    "short": "منصة رعاية صحية تربط الأطباء بالخدمات الطبية.",
+    "points": []
+  },
+  {
+    "id": "dabdoob",
+    "name": "دبدوب",
+    "role": "مشروع مميّز",
+    "summary": "منصة E-commerce بنهج Mobile-first تخدم الشرق الأوسط.",
+    "body": "دبدوب تطبيق تسوّق على iOS وAndroid يعمل في الكويت والسعودية والإمارات وقطر والبحرين، ويقدّم عروضًا حصرية وتجربة تسوّق سلسة على الموبايل في دول الخليج.",
+    "tags": [
+      "Node.js",
+      "E-commerce",
+      "Mobile"
+    ],
+    "link": "https://dabdoob.com/",
+    "featured": false,
+    "selected": false,
+    "short": "منصة E-commerce بنهج Mobile-first تخدم الشرق الأوسط.",
+    "points": []
+  },
+  {
+    "id": "sys-voice-daemon",
+    "name": "sys-voice-daemon",
+    "role": "مفتوح المصدر",
+    "selected": true,
+    "summary": "Daemon لتحويل الصوت إلى نص (Voice-to-text) على Linux، يعمل Offline ويحترم الخصوصية.",
+    "short": "Voice-to-text على Linux يعمل Offline، بإدخال عبر uinput على مستوى الـ Kernel ودون أي اعتماد على الـ Cloud.",
+    "body": "Daemon على مستوى النظام يكتشف حقول النص النشطة تلقائيًا ويُدخل النص المحوَّل في أي نافذة، عبر Virtual Keyboard على مستوى الـ Kernel باستخدام uinput: إدخال صوتي سلس يحترم الخصوصية ويعمل Offline تمامًا.",
+    "tags": [
+      "Rust",
+      "Linux",
+      "uinput",
+      "Systems"
+    ],
+    "link": "https://github.com/monzeromer-lab/sys-voice-daemon",
+    "featured": false,
+    "points": []
+  },
+  {
+    "id": "rubiks-trainer",
+    "name": "rubiks-trainer",
+    "role": "مفتوح المصدر",
+    "summary": "لعبة مكعب روبيك 3D ومدرّب Speedcubing، مبنية بلغة Rust.",
+    "body": "تدعم المكعبات 2×2 و3×3 و4×4 و5×5 بـ Solvers مكتوبة من الصفر دون أي Solver Crates خارجية، مع مسار تعلّم متدرّج من طريقة LBL للمبتدئين حتى CFOP المتقدمة، وTimer يومي وDrill Mode لمحترفي الـ Speedcubing.",
+    "tags": [
+      "Rust",
+      "Bevy",
+      "3D graphics",
+      "Algorithms"
+    ],
+    "link": "https://github.com/monzeromer-lab/rubik-cube-trainer",
+    "featured": false,
+    "selected": false,
+    "short": "لعبة مكعب روبيك 3D ومدرّب Speedcubing، مبنية بلغة Rust.",
+    "points": []
+  },
+  {
+    "id": "oxide-explorer",
+    "name": "Oxide Explorer",
+    "role": "مفتوح المصدر",
+    "summary": "File Manager سريع جدًا للـ Power Users، مبني بـ Rust وGTK4 وlibadwaita.",
+    "body": "يجمع أناقة GNOME Files مع ميزات الإنتاجية المتقدمة في Directory Opus وTotal Commander. مصمَّم للمطوّرين والـ Power Users الذين يحتاجون Dual-pane Browsing والـ Batch Operations والعمل بالـ Keyboard في بيئة Linux Native.",
+    "tags": [
+      "Rust",
+      "GTK4",
+      "libadwaita",
+      "Linux desktop"
+    ],
+    "link": "https://github.com/monzeromer-lab/oxide-explorer",
+    "featured": false,
+    "selected": false,
+    "short": "File Manager سريع جدًا للـ Power Users، مبني بـ Rust وGTK4 وlibadwaita.",
+    "points": []
+  },
+  {
+    "id": "xbuild",
+    "name": "xbuild",
+    "role": "مساهمة",
+    "summary": "Build Tool لمشاريع Rust مع Cross-compilation والنشر في كل متاجر التطبيقات الكبرى.",
+    "body": "أضفت دعم ARM 32-bit Target إلى xbuild، ما وسّع نطاق الـ Cross-compilation ليشمل أجهزة ARM القديمة والـ Embedded. يهدف xbuild إلى جعل تطوير الـ Native Apps سهلًا كتطوير الويب: Build مرة واحدة وPublish في كل مكان.",
+    "tags": [
+      "Rust",
+      "Cross-compilation",
+      "ARM",
+      "Open source"
+    ],
+    "link": "https://github.com/rust-mobile/xbuild",
+    "featured": false,
+    "selected": false,
+    "short": "Build Tool لمشاريع Rust مع Cross-compilation والنشر في كل متاجر التطبيقات الكبرى.",
+    "points": []
+  },
+  {
+    "id": "micro-kernel",
+    "name": "Micro-kernel Architecture",
+    "role": "محاضرة تقنية",
+    "summary": "Web Backend بمعمارية Micro-kernel، يعيش فيه الـ Business Logic داخل WebAssembly Modules تُحمَّل ديناميكيًا.",
+    "body": "الـ Server Core صغير عن قصد: Routing وAuth وإدارة الـ Module Lifecycle. ويعمل كل الـ Business Logic داخل WebAssembly Modules معزولة (Sandboxed) يمكن عمل Deploy وHot-swap وRollback لها، واستدعاء خدمات خارجية، واستدعاء بعضها بعضًا عبر طبقة IPC داخلية. عرض عملي لتطبيق مبادئ الـ Micro-kernel على الـ Backend Architecture.",
+    "tags": [
+      "Rust",
+      "WebAssembly",
+      "Systems design",
+      "Architecture"
+    ],
+    "link": "https://github.com/monzeromer-lab/micro-kernel-backend",
+    "featured": false,
+    "selected": false,
+    "short": "Web Backend بمعمارية Micro-kernel، يعيش فيه الـ Business Logic داخل WebAssembly Modules تُحمَّل ديناميكيًا.",
+    "points": []
+  }
+]

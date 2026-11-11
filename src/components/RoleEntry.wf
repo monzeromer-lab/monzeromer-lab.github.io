@@ -1,19 +1,21 @@
-/// One role on the timeline: the dates beside the node, the work beside them.
-component RoleEntry(_ role: Role) {
-    Stack(class: ["entry", if role.current { "is-current" }]) {
+/// One role, in full: the dates and the length beside it, then the work.
+component RoleEntry(_ role: Role, lang: Lang = .ar) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+
+    Row(class: "entry") {
         Stack(class: "entry-when") {
-            style { gap: 6px }
-            Text("{role.from} — {role.to}", class: "meta")
+            Text("{role.from} – {role.to}", class: "num")
+            if role.length != "" {
+                Text(role.length, class: "num subtle")
+            }
             if role.current {
-                Row { Text("Current", class: "pill pill-live") }
+                Row { Status(c.current) }
             }
         }
-        Stack {
-            style { gap: 12px; min-width: 0 }
-            Stack {
-                style { gap: 2px }
-                Heading(role.company, class: "card-title").h2
-                Text(role.title, class: "body-muted")
+        Stack(class: "entry-what") {
+            Stack(class: "entry-title") {
+                Heading(role.company, class: "entry-name").h2
+                Text(role.title, class: "entry-sub")
             }
             if role.about != "" {
                 Text(role.about, class: "body")

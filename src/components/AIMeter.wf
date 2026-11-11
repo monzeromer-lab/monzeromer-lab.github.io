@@ -1,0 +1,15 @@
+/// How much of my code is written with AI assistance: the figure, the words,
+/// and a bar drawn to it.
+component AIMeter(lang: Lang = .ar, large: Bool = false) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+
+    Stack(class: ["ai-meter", if large { "is-large" }], role: "img", aria-label: "{AI_SHARE}% {c.ai_meter}") {
+        Row(class: "ai-meter-line") {
+            Text("{AI_SHARE}%", class: "ai-meter-value")
+            Text(c.ai_meter, class: "ai-meter-label")
+        }
+        Stack(class: "ai-meter-track") {
+            Stack(class: "ai-meter-fill")
+        }
+    }
+}

@@ -1,0 +1,30 @@
+/// One project as a row of the index: its name and role, then what it is.
+/// `full` adds the long description, the points and the link.
+component ProjectRow(_ project: Project, lang: Lang = .ar, full: Bool = false) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+    derived isSource = (project.link ?? "").includes("github.com")
+
+    Row(class: "project-row") {
+        Stack(class: "project-meta") {
+            Heading(project.name, class: "card-title").h3
+            Text(project.role, class: "role-tag")
+        }
+        Stack(class: "project-content") {
+            if full {
+                Text(project.summary, class: "project-summary")
+                Text(project.body, class: "body muted")
+                Points(project.points)
+            } else {
+                Text(project.short, class: "body muted")
+            }
+            Chips(project.tags)
+            if full {
+                if project.link != null {
+                    Row {
+                        Link(if isSource { c.source } else { c.site }, href: project.link ?? "", class: "text-link", data-track: "select_content", data-track-content-type: "project", data-track-item-id: project.id)
+                    }
+                }
+            }
+        }
+    }
+}

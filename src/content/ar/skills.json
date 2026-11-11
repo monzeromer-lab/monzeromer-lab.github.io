@@ -1,0 +1,100 @@
+[
+  {
+    "group": "AI والأدوات",
+    "items": [
+      "Claude",
+      "Cursor",
+      "GitHub Copilot",
+      "LLM APIs"
+    ]
+  },
+  {
+    "group": "لغات البرمجة",
+    "items": [
+      "Rust",
+      "TypeScript",
+      "JavaScript",
+      "SQL"
+    ]
+  },
+  {
+    "group": "Backend وAPIs",
+    "items": [
+      "Node.js",
+      "NestJS",
+      "Express.js",
+      "GraphQL",
+      "REST APIs"
+    ]
+  },
+  {
+    "group": "Databases وStorage",
+    "items": [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Firebase",
+      "Redis",
+      "NoSQL"
+    ]
+  },
+  {
+    "group": "Messaging وStreaming",
+    "items": [
+      "Apache Kafka",
+      "RabbitMQ",
+      "Event-driven design",
+      "WebSocket",
+      "gRPC"
+    ]
+  },
+  {
+    "group": "Systems وArchitecture",
+    "items": [
+      "Microservices architecture",
+      "Distributed systems",
+      "WebAssembly",
+      "System design",
+      "Compiler design"
+    ]
+  },
+  {
+    "group": "DevOps وInfrastructure",
+    "items": [
+      "Docker",
+      "Nginx",
+      "Linux",
+      "CI/CD",
+      "Git"
+    ]
+  },
+  {
+    "group": "Frontend وDesktop",
+    "items": [
+      "React",
+      "React Native",
+      "Angular",
+      "Vue.js",
+      "Electron",
+      "Tauri",
+      "GTK4 / libadwaita"
+    ]
+  },
+  {
+    "group": "Security وQuality",
+    "items": [
+      "AES encryption",
+      "JWT / OAuth",
+      "Unit testing",
+      "Code review",
+      "Agile / Scrum"
+    ]
+  },
+  {
+    "group": "اللغات المحكية",
+    "items": [
+      "العربية",
+      "الإنجليزية"
+    ]
+  }
+]

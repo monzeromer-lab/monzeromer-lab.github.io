@@ -17,7 +17,10 @@
       "Analytics",
       "DevOps",
       "Blue-green deployment"
-    ]
+    ],
+    "start": 71,
+    "months": null,
+    "length": ""
   },
   {
     "company": "SilverKey Technologies",
@@ -40,7 +43,10 @@
       "TypeScript",
       "Node.js",
       "Firebase"
-    ]
+    ],
+    "start": 62,
+    "months": null,
+    "length": ""
   },
   {
     "company": "Ecom Payments",
@@ -64,7 +70,10 @@
       "RabbitMQ",
       "Docker",
       "AES"
-    ]
+    ],
+    "start": 55,
+    "months": 7,
+    "length": "7 mo"
   },
   {
     "company": "Circles",
@@ -85,7 +94,10 @@
       "Kafka",
       "Microservices",
       "NestJS"
-    ]
+    ],
+    "start": 35,
+    "months": 14,
+    "length": "1 yr 2 mo"
   },
   {
     "company": "Alimny",
@@ -106,7 +118,10 @@
       "GraphQL",
       "Firebase",
       "MongoDB"
-    ]
+    ],
+    "start": 12,
+    "months": 24,
+    "length": "2 yr"
   },
   {
     "company": "EnayaTech",
@@ -124,6 +139,9 @@
       "Express.js",
       "MySQL",
       "MongoDB"
-    ]
+    ],
+    "start": 1,
+    "months": 6,
+    "length": "6 mo"
   }
 ]

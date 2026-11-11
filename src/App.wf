@@ -1,6 +1,5 @@
+/// Each page draws its own frame (`Shell`), in its own language, so the app
+/// is the router alone.
 app {
-    SiteHeader
     Router
-    SiteFooter
-    ConsentBanner
 }

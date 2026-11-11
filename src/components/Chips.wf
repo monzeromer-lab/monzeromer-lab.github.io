@@ -1,4 +1,4 @@
-/// Technologies, each set as a literal.
+/// Technologies, each set as a small tag.
 component Chips(_ items: [String]) {
     Row(class: "chips", role: "list") {
         for item in items by item {

@@ -1,48 +1,83 @@
-page Education(path: "/education", title: "Education — Monzer Omer",
-               description: "Bachelor of Information Technology, National Ribat University, and certifications in backend engineering.") {
+/// The degree, then every certification as a table.
+component EducationView(lang: Lang = .ar) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+    derived edu = if lang == .ar { educationAr } else { education }
+
     Stack(class: "page") {
-        PageHead("Education", eyebrow: "Study")
-        Stack(class: "timeline") {
-            for d in education.degrees by d.school {
-                Stack(class: "entry") {
+        PageHead(c.edu_h)
+        Stack(class: "entries") {
+            for d in edu.degrees by d.school {
+                Row(class: "entry") {
                     Stack(class: "entry-when") {
-                        Text("{d.from} — {d.to}", class: "meta")
+                        Text("{d.from} – {d.to}", class: "num")
+                        if d.length != "" {
+                            Text(d.length, class: "num subtle")
+                        }
                     }
-                    Stack {
-                        style { gap: 12px; min-width: 0 }
-                        Stack {
-                            style { gap: 2px }
-                            Heading(d.school, class: "card-title").h2
-                            Text(d.degree, class: "body-muted")
+                    Stack(class: "entry-what") {
+                        Stack(class: "entry-title") {
+                            Heading(d.school, class: "entry-name").h2
+                            Text(d.degree, class: "entry-sub")
                         }
                         Text(d.body, class: "body")
                         Points(d.points)
-                        Row(align: .center, gap: .sm) {
-                            Text("Activities", class: "label")
+                        Row(class: "activities") {
+                            Text(c.activities, class: "label")
                             Chips(d.activities)
                         }
                     }
                 }
             }
         }
-
-        Stack {
-            style { gap: 24px; margin-top: 32px }
-            Heading("Certifications", class: "section-title").h2
-            Stack(class: "panel rows", role: "list") {
-                style { padding-top: 4px; padding-bottom: 4px; @md { padding-top: 4px; padding-bottom: 4px } }
-                for c in education.certifications by c.name {
-                    Stack(class: "cert", role: "listitem") {
-                        Row(class: "cert-head") {
-                            Heading(c.name, class: "cert-name").h3
-                            Text("{c.issuer} · {c.date}", class: "meta")
+        Stack(class: "section certs") {
+            Heading(c.certs_h, class: "section-title").h2
+            Stack(class: "table-scroll") {
+                Table(caption: c.certs_h, class: "cert-table") {
+                    Table.Head {
+                        Table.Row {
+                            Table.Cell(c.cert_course)
+                            Table.Cell(c.cert_issuer)
+                            Table.Cell(c.cert_date)
                         }
-                        if c.body != "" {
-                            Text(c.body, class: "body-muted")
+                    }
+                    Table.Body {
+                        for cert in edu.certifications by cert.name {
+                            Table.Row {
+                                Table.Cell {
+                                    Text(cert.name, class: "cert-name", dir: "ltr")
+                                    if cert.body != "" {
+                                        Text(cert.body, class: "cert-body")
+                                    }
+                                }
+                                Table.Cell(cert.issuer)
+                                Table.Cell(cert.date, class: "num")
+                            }
                         }
                     }
                 }
             }
         }
     }
+}
+
+page EducationAr(path: "/education", title: "التعليم — منذر عمر",
+                 description: "بكالوريوس تقنية المعلومات من جامعة الرباط الوطني، وشهادات في الـ Backend Engineering.",
+                 layout: Shell(lang: .ar, current: .education)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/education")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en/education")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/education")
+    }
+    EducationView(lang: .ar)
+}
+
+page EducationEn(path: "/en/education", title: "Education — Monzer Omer",
+                 description: "Bachelor of Information Technology, National Ribat University, and certifications in backend engineering.",
+                 layout: Shell(lang: .en, current: .education)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/education")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en/education")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/education")
+    }
+    EducationView(lang: .en)
 }

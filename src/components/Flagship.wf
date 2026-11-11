@@ -1,0 +1,35 @@
+/// The flagship project, beside an excerpt of the source it compiles: the
+/// short version on the home page, everything on the projects page.
+/// `top` when it sits straight under the page's h1, so its name is an h2.
+component Flagship(_ project: Project, lang: Lang = .ar, full: Bool = false, top: Bool = false) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+    derived isSource = (project.link ?? "").includes("github.com")
+
+    Row(class: "flagship") {
+        Stack(class: "flagship-text") {
+            Text(project.role, class: "role-tag is-brand")
+            if top {
+                Heading(project.name, class: "flagship-name").h2
+            } else {
+                Heading(project.name, class: "flagship-name").h3
+            }
+            if full {
+                Text(project.summary, class: "flagship-summary")
+                Text(project.body, class: "body muted")
+                Points(project.points)
+            } else {
+                Text(project.short, class: "flagship-short")
+            }
+            Chips(project.tags)
+            Text(c.flag_note, class: "note")
+            if project.link != null {
+                Row {
+                    Link(if isSource { c.source } else { c.site }, href: project.link ?? "", class: "text-link", data-track: "select_content", data-track-content-type: "project", data-track-item-id: project.id)
+                }
+            }
+        }
+        Stack(class: "flagship-code") {
+            CodeExcerpt(caption: c.code_cap)
+        }
+    }
+}

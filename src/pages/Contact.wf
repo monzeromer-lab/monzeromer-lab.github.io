@@ -1,31 +1,60 @@
-page Contact(path: "/contact", title: "Contact — Monzer Omer",
-             description: "Available for senior backend roles, architecture consulting, and high-impact engineering challenges.") {
+/// How to reach me, and what working with me is like.
+component ContactView(lang: Lang = .ar) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+
     Stack(class: "page") {
-        PageHead("Let's build something robust", eyebrow: "Contact", lead: "Available for senior backend roles, architecture consulting, and high-impact engineering challenges.")
-        Stack(class: "panel") {
-            style { max-width: 680px; gap: 20px }
-            Stack(class: "rows") {
-                Row(class: "row-item") {
-                    Text("Email", class: "label")
-                    Link(EMAIL, href: "mailto:{EMAIL}")
-                }
-                Row(class: "row-item") {
-                    Text("LinkedIn", class: "label")
-                    Link("linkedin.com/in/monzeromer", href: LINKEDIN, data-track: "generate_lead", data-track-method: "linkedin")
-                }
-                Row(class: "row-item") {
-                    Text("GitHub", class: "label")
-                    Link("github.com/monzeromer-lab", href: GITHUB, data-track: "generate_lead", data-track-method: "github")
+        PageHead(c.contact_h, lead: c.contact_lead)
+        Row(class: "contact") {
+            Stack(class: "contact-main") {
+                Link(EMAIL, href: "mailto:{EMAIL}", class: "contact-email", dir: "ltr")
+                Row {
+                    Link(c.write, href: "mailto:{EMAIL}", class: "btn btn-primary")
                 }
             }
-            Row {
-                Link("Write an email", href: "mailto:{EMAIL}", class: "btn btn-primary")
+            Stack(class: "channels") {
+                Row(class: "channel") {
+                    Text(c.email_l, class: "label")
+                    Link(EMAIL, href: "mailto:{EMAIL}", dir: "ltr")
+                }
+                Row(class: "channel") {
+                    Text("LinkedIn", class: "label")
+                    Link("linkedin.com/in/monzeromer", href: LINKEDIN, dir: "ltr", data-track: "generate_lead", data-track-method: "linkedin")
+                }
+                Row(class: "channel") {
+                    Text("GitHub", class: "label")
+                    Link("github.com/monzeromer-lab", href: GITHUB, dir: "ltr", data-track: "generate_lead", data-track-method: "github")
+                }
             }
         }
-        Stack(class: "callout") {
-            style { max-width: 680px; margin-top: 24px }
-            Text("Working with me", class: "callout-title")
-            Text("I move fast. {AI_SHARE}% of my coding workflow is AI-assisted, which means I prototype quickly, iterate in hours not days, and deliver production-quality code without the usual overhead. If you value speed and quality together, we'll work well.", class: "body")
+        Row(class: "section split working") {
+            Stack(class: "split-head") {
+                Heading(c.with_h, class: "section-title").h2
+            }
+            Stack(class: "split-body") {
+                Text(c.with_p, class: "body muted")
+            }
         }
     }
+}
+
+page ContactAr(path: "/contact", title: "تواصل — منذر عمر",
+               description: "متاح لأدوار Senior Backend، واستشارات Architecture، والتحديات الهندسية عالية الأثر.",
+               layout: Shell(lang: .ar, current: .contact)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/contact")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en/contact")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/contact")
+    }
+    ContactView(lang: .ar)
+}
+
+page ContactEn(path: "/en/contact", title: "Contact — Monzer Omer",
+               description: "Available for senior backend roles, architecture consulting, and high-impact engineering challenges.",
+               layout: Shell(lang: .en, current: .contact)) {
+    head {
+        link(rel: "alternate", hreflang: "ar", href: "{SITE}/contact")
+        link(rel: "alternate", hreflang: "en", href: "{SITE}/en/contact")
+        link(rel: "alternate", hreflang: "x-default", href: "{SITE}/contact")
+    }
+    ContactView(lang: .en)
 }

@@ -1,16 +1,21 @@
-/// The analytics question, at the foot of the screen until it is answered.
-/// It floats, so it never moves the page, and it is only drawn in the
-/// browser, where there is an answer to read.
-component ConsentBanner {
+/// The analytics question, floating at the foot of the screen until it is
+/// answered. It floats, so it never moves the page, and it is only drawn in
+/// the browser, where there is an answer to read.
+component ConsentBanner(lang: Lang = .ar) {
+    derived c = if lang == .ar { copyAr } else { copyEn }
+
     after(0) { Consent.check() }
 
     if Consent.asking {
-        Stack(role: "region", aria-label: "Cookie consent", class: "consent") {
-            Text("Analytics", class: "callout-title")
-            Text("This site uses Google Analytics to count visits. It sets cookies only if you allow it; you can change your mind under Cookie settings at the bottom of any page.", class: "consent-text")
+        Stack(role: "region", aria-label: c.consent_region, class: "consent") {
+            Row(class: "consent-head") {
+                Icon("eye")
+                Heading(c.consent_title, class: "consent-title").h2
+            }
+            Text(c.consent_body, class: "consent-text")
             Row(class: "consent-actions") {
-                Button("Decline", class: "btn btn-secondary btn-sm") { on click { Consent.choose(false) } }
-                Button("Allow analytics", class: "btn btn-primary btn-sm") { on click { Consent.choose(true) } }
+                Button(c.consent_decline, class: "btn btn-secondary btn-sm") { on click { Consent.choose(false) } }
+                Button(c.consent_allow, class: "btn btn-primary btn-sm") { on click { Consent.choose(true) } }
             }
         }
     }

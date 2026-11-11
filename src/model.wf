@@ -1,12 +1,21 @@
-/// What the site shows, read from `src/content/` at build time.
+/// What the site shows, read from `src/content/` at build time: the English
+/// files at its root, the Arabic ones under `ar/`, with the same shapes.
 
 const EMAIL = "monzer.a.omer@gmail.com"
 const GITHUB = "https://github.com/monzeromer-lab"
 const LINKEDIN = "https://www.linkedin.com/in/monzeromer/"
 const WEBFLUENT = "https://github.com/monzeromer-lab/WebFluent"
+const SITE = "https://monzeromer.dev"
 
 /// The share of my coding workflow that is AI-assisted.
 const AI_SHARE = 95
+
+/// The two languages the site is written in. Arabic is the default and lives
+/// at the root; English lives under `/en`.
+enum Lang { ar, en }
+
+/// The places the site has, for the navigation and the language switch.
+enum Place { home, projects, experience, skills, education, contact }
 
 type Project {
     id: String
@@ -34,6 +43,12 @@ type Role {
     about: String = ""
     points: [String] = []
     tags: [String] = []
+    /// Where the role starts on the career trace: months since January 2020.
+    start: Number
+    /// How many months it lasted; none while it goes on.
+    months: Number? = null
+    /// The length, written out ("1 yr 2 mo", "سنة وشهران"); empty while it goes on.
+    length: String = ""
 }
 
 type SkillGroup {
@@ -46,6 +61,7 @@ type Degree {
     degree: String
     from: String
     to: String
+    length: String = ""
     body: String
     points: [String] = []
     activities: [String] = []
@@ -64,7 +80,81 @@ type Education {
     certifications: [Certification]
 }
 
+/// The interface's own words, one file per language.
+type Copy {
+    name: String
+    status: String
+    role: String
+    lead: String
+    cta1: String
+    cta2: String
+    trace_h: String
+    trace_label: String
+    spans: String
+    legend_past: String
+    legend_now: String
+    now: String
+    ai_h: String
+    ai_meter: String
+    ai_p: String
+    work_h: String
+    work_all: String
+    flag_note: String
+    now_h: String
+    now_all: String
+    current: String
+    band_h: String
+    band_p: String
+    source: String
+    site: String
+    projects_h: String
+    projects_lead: String
+    more: String
+    exp_h: String
+    exp_lead: String
+    skills_h: String
+    skills_lead: String
+    edu_h: String
+    certs_h: String
+    activities: String
+    cert_course: String
+    cert_issuer: String
+    cert_date: String
+    contact_h: String
+    contact_lead: String
+    write: String
+    email_l: String
+    with_h: String
+    with_p: String
+    code_cap: String
+    nav_projects: String
+    nav_experience: String
+    nav_skills: String
+    nav_education: String
+    nav_contact: String
+    nav_label: String
+    home_label: String
+    menu: String
+    other_lang: String
+    theme_to_light: String
+    theme_to_dark: String
+    footer_copy: String
+    cookies: String
+    consent_region: String
+    consent_title: String
+    consent_body: String
+    consent_decline: String
+    consent_allow: String
+}
+
 data projects: [Project] = "content/projects.json"
 data roles: [Role] = "content/experience.json"
 data skills: [SkillGroup] = "content/skills.json"
 data education: Education = "content/education.json"
+data copyEn: Copy = "content/copy.json"
+
+data projectsAr: [Project] = "content/ar/projects.json"
+data rolesAr: [Role] = "content/ar/experience.json"
+data skillsAr: [SkillGroup] = "content/ar/skills.json"
+data educationAr: Education = "content/ar/education.json"
+data copyAr: Copy = "content/ar/copy.json"
